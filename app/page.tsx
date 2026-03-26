@@ -51,14 +51,14 @@ export default function Home() {
             />
 
             <h1
-              className="text-[104px] leading-[0.9] text-center tracking-[-8.32px] text-black"
+              className="text-[104px] leading-[0.9] text-center tracking-[-8px] text-black"
               style={{ fontFamily: "var(--font-alike-angular)" }}
             >
               Popcorn is Your App Chat
             </h1>
 
             <p
-              className="text-[20px] leading-[1.3] text-center font-semibold text-black max-w-[760px]"
+              className="text-[20px] leading-[1.3] text-center font-semibold text-black max-w-190"
               style={{ fontFamily: "var(--font-albert-sans)" }}
             >
               Team chat where every conversation contains an app. Talk about
@@ -69,13 +69,13 @@ export default function Home() {
           {/* CTA */}
           <div className="flex flex-col items-center gap-2.5">
             <button
-              className="bg-black text-white px-[30px] py-[20px] rounded-[20px] text-[18px] font-medium tracking-[0.18px]"
+              className="bg-black text-white px-8 py-4 rounded-[20px] text-[18px] font-medium"
               style={{ fontFamily: "var(--font-albert-sans)" }}
             >
               Sign Up
             </button>
             <p
-              className="text-[14px] leading-[1.1] tracking-[0.28px] opacity-70 text-black text-center"
+              className="text-[14px] opacity-70 text-black text-center"
               style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
             >
               44 SPOTS AVAILABLE
