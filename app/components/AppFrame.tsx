@@ -10,6 +10,10 @@ import Nav from "./Nav";
 // Sidebars live inside this box, so their space is already accounted for.
 const TARGET_W = 1600;
 const TARGET_H = 900;
+const SIDEBAR_W = 260;
+const FRAME_TRANSITION = "all 3s ease-in-out 0.3s";
+const SPRING = "linear(    0, 0.006, 0.025, 0.057 3.7%, 0.102 5.2%, 0.202 7.8%, 0.553 16.2%, 0.657 19.1%, 0.743, 0.816, 0.876, 0.924 30.4%, 0.961 33.6%, 0.986 36.5%, 1.004 39.8%, 1.015 43.3%, 1.021 47.4%, 1.02 53.6%, 1.003 77%, 1)";
+const SIDEBAR_TRANSITION = `all 0.5s ${SPRING} 3.3s`;
 
 // Fraction of the viewport the windowed container may occupy
 const CONTENT_W_RATIO = 0.9;
@@ -81,16 +85,24 @@ export default function AppFrame() {
 					transform: `scale(${windowed ? dims.scale : 1})`,
 					transformOrigin: "top left",
 					// filter: windowed ? "drop-shadow(0 24px 80px rgba(0,0,0,0.18))" : "none",
-					transition: "all 0.7s ease-in-out",
+					transition: FRAME_TRANSITION,
 				}}
 			>
 				{/* Channels sidebar — fades in after container finishes scaling */}
 				<div className="hidden md:block shrink-0">
-					<ChannelsSidebar open={windowed} />
+					<div
+						className="overflow-hidden shrink-0"
+						style={{
+							width: windowed ? `${SIDEBAR_W}px` : "0px",
+							transition: FRAME_TRANSITION,
+						}}
+					>
+						<ChannelsSidebar open={windowed} width={SIDEBAR_W} transition={SIDEBAR_TRANSITION} />
+					</div>
 				</div>
 
 				{/* Main page content */}
-				<div className="flex-1 flex flex-col relative min-w-0 min-h-full overflow-hidden ">
+				<div className="flex-1 flex flex-col relative min-w-0 min-h-full overflow-hidden bg-amber-100 z-0">
 					<div className="absolute inset-0 w-full h-full -z-10">
 						<UnicornScene
 							projectId="8piQu3B6rsUX3zy4aDoS"
@@ -115,7 +127,7 @@ export default function AppFrame() {
 						/>
 
 						<h1
-							className="text-[48px] md:text-[72px] lg:text-[104px] leading-[0.9] text-center tracking-[-8px] text-black"
+							className="text-[clamp(48px,8vw,95px)] leading-[0.9] text-center tracking-[-8px] text-black"
 							style={{ fontFamily: "var(--font-alike-angular)" }}
 						>
 							Popcorn is Your App Chat
@@ -149,7 +161,15 @@ export default function AppFrame() {
 
 				{/* Chat sidebar — fades in slightly after channels */}
 				<div className="hidden md:block shrink-0">
-					<ChatSidebar open={windowed} />
+					<div
+						className="overflow-hidden shrink-0"
+						style={{
+							width: windowed ? `${SIDEBAR_W}px` : "0px",
+							transition: FRAME_TRANSITION,
+						}}
+					>
+						<ChatSidebar open={windowed} width={SIDEBAR_W} transition={SIDEBAR_TRANSITION} />
+					</div>
 				</div>
 			</div>
 
@@ -160,7 +180,7 @@ export default function AppFrame() {
 				style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
 			>
 				<span className="text-[11px] tracking-widest uppercase">
-					{windowed ? "Full view" : "App view"}
+					{windowed ? "App view" : "Full view" }
 				</span>
 				<span className="flex gap-1 items-center">
 					<span
