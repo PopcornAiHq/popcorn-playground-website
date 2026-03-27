@@ -4,5 +4,8 @@
       "mcp__figma__get_design_context",
       "Bash(npx next:*)"
     ]
+  },
+  "enabledPlugins": {
+    "popcorn@popcorn": true
   }
 }
