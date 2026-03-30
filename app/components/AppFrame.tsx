@@ -67,7 +67,7 @@ export default function AppFrame() {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-neutral-700 relative overflow-hidden"
+		<div className="h-screen bg-neutral-700 relative overflow-hidden"
 			style={{
 				background: "url('/background.png') center / cover no-repeat",
 			}}
@@ -176,19 +176,14 @@ export default function AppFrame() {
 			{/* Toggle — outside the scaled container, always visible */}
 			<button
 				onClick={() => setWindowed((v) => !v)}
-				className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-black/80 hover:bg-black text-white px-4 py-2 rounded-full backdrop-blur-sm transition-colors"
+				className="absolute top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-black/80 hover:bg-black text-white px-4 py-2 rounded-full backdrop-blur-sm transition-colors"
 				style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
 			>
 				<span className="text-[11px] tracking-widest uppercase">
 					{windowed ? "App view" : "Full view" }
 				</span>
-				<span className="flex gap-1 items-center">
-					<span
-						className={`block h-1.5 w-1.5 rounded-full transition-colors ${windowed ? "bg-white/40" : "bg-white"}`}
-					/>
-					<span
-						className={`block h-1.5 w-1.5 rounded-full transition-colors ${windowed ? "bg-white" : "bg-white/40"}`}
-					/>
+				<span className={`relative inline-flex w-7 h-4 px-0.5 rounded-full transition-colors duration-200 ${windowed ? "bg-white/40" : "bg-white/20"}`}>
+					<span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition-transform duration-200 ${windowed ? "translate-x-3" : ""}`} />
 				</span>
 			</button>
 		</div>
