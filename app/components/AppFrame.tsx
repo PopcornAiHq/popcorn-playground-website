@@ -14,11 +14,11 @@ const DEFAULTS = {
   sidebarW: 260,
   contentWRatio: 0.9,
   contentHRatio: 0.9,
-  frameDuration: 3,
+  frameDuration: 2,
   frameDelay: 0.3,
-  sidebarDuration: 0.5,
-  leftDelay: 3.3,
-  rightDelay: 3.3,
+  sidebarDuration: 0.3,
+  leftDelay: 2,
+  rightDelay: 2,
 };
 
 type Cfg = typeof DEFAULTS;
@@ -117,7 +117,7 @@ export default function AppFrame() {
         <div className="flex-1 flex flex-col relative min-w-0 min-h-full overflow-hidden bg-amber-100 z-0">
           <div className="absolute inset-0 w-full h-full -z-10">
             <UnicornScene
-              projectId="8piQu3B6rsUX3zy4aDoS"
+              projectId="Dy4crfooAOZD6FlsT7Xl"
               width="100%"
               height="100%"
               scale={1}
@@ -136,15 +136,14 @@ export default function AppFrame() {
               className="text-[clamp(48px,8vw,95px)] leading-[0.9] text-center tracking-[-8px] text-black"
               style={{ fontFamily: "var(--font-alike-angular)" }}
             >
-              Popcorn is Your App Chat
+              Your prototype deserves a better conversation.
             </h1>
 
             <p
-              className="text-[20px] leading-[1.3] text-center font-semibold text-black max-w-190"
+              className="text-[20px] leading-[1.3] text-center font-medium text-black max-w-190"
               style={{ fontFamily: "var(--font-albert-sans)" }}
             >
-              Team chat where every conversation contains an app. Talk about
-              what you see, point at what matters, and watch it change, live.
+              Meet the product playground where every prototype spins up its own channel for feedback, updates, and the next version. Popcorn is your feedback loop, finally in one place.
             </p>
 
             <div className="flex flex-col items-center gap-2.5">
