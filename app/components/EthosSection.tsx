@@ -14,32 +14,17 @@ export default function EthosSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const spotRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
-    const content = contentRef.current;
-    const spot = spotRef.current;
-    if (content && spot) {
-      const onMouseMove = (e: MouseEvent) => {
-        const rect = content.getBoundingClientRect();
-        spot.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px)`;
-        spot.style.opacity = "1";
-      };
-      const onMouseLeave = () => { spot.style.opacity = "0"; };
-      content.addEventListener("mousemove", onMouseMove);
-      content.addEventListener("mouseleave", onMouseLeave);
-      return () => {
-        content.removeEventListener("mousemove", onMouseMove);
-        content.removeEventListener("mouseleave", onMouseLeave);
-      };
-    }
-  }, []);
 
   useEffect(() => {
     const card = cardRef.current;
     const content = contentRef.current;
     const section = sectionRef.current;
-    if (!card || !content || !section) return;
+    const sticky = stickyRef.current;
+    if (!card || !content || !section || !sticky) return;
 
     const onScroll = () => {
       const sectionTop = section.getBoundingClientRect().top;
@@ -74,15 +59,20 @@ export default function EthosSection() {
       card.style.boxShadow = progress > 0.05 ? `${shadow}px ${shadow}px 0px black` : "none";
       card.style.borderWidth = `${lerp(0, 2, progress)}px`;
 
-      // Once animation is done, switch to absolute so it scrolls with the section
-      if (progress >= 1) {
-        card.style.position = "absolute";
-        card.style.left = `${finalLeft}px`;
-        card.style.top = `${finalTop}px`;
-      } else {
-        card.style.position = "fixed";
+      // Always fixed. Three phases:
+      // 1. Animating: follow lerp'd position
+      // 2. Landed + still sticky: stay at finalTop
+      // 3. Section scrolled past sticky point: follow section upward
+      card.style.position = "fixed";
+      if (progress < 1) {
         card.style.left = `${left}px`;
         card.style.top = `${top}px`;
+      } else {
+        const stickyH = sticky ? sticky.offsetHeight : vh * 0.8;
+        const unstickThreshold = -(section.offsetHeight - stickyH);
+        const overshoot = sectionTop < unstickThreshold ? sectionTop - unstickThreshold : 0;
+        card.style.left = `${finalLeft}px`;
+        card.style.top = `${finalTop + overshoot}px`;
       }
 
       content.style.opacity = String(Math.max(0, (progress - 0.55) / 0.45));
@@ -93,13 +83,119 @@ export default function EthosSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const span = spanRef.current;
+    const canvas = canvasRef.current;
+    if (!span || !canvas) return;
+
+    type Particle = {
+      x: number; y: number;
+      vx: number; vy: number;
+      life: number; maxLife: number;
+      size: number; rotation: number; rotSpeed: number;
+      color: string;
+    };
+
+    const particles: Particle[] = [];
+    const COLORS = ["#FF5555", "#FF8888", "#FFD700", "#FF5555", "#ffffff"];
+    let rafId: number;
+    let running = false;
+
+    const spawnBurst = () => {
+      const rect = span.getBoundingClientRect();
+      const canvasRect = canvas.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2 - canvasRect.left;
+      const cy = rect.top + rect.height / 2 - canvasRect.top;
+      for (let i = 0; i < 28; i++) {
+        const angle = (Math.PI * 2 * i) / 28 + Math.random() * 0.4;
+        const speed = 2 + Math.random() * 5;
+        particles.push({
+          x: cx + (Math.random() - 0.5) * rect.width * 0.8,
+          y: cy + (Math.random() - 0.5) * rect.height * 0.5,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 1,
+          life: 1,
+          maxLife: 0.6 + Math.random() * 0.6,
+          size: 4 + Math.random() * 8,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.3,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        });
+      }
+    };
+
+    // Draw a 4-pointed star
+    const drawStar = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number, rot: number) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rot);
+      ctx.beginPath();
+      for (let i = 0; i < 8; i++) {
+        const r = i % 2 === 0 ? size : size * 0.4;
+        const a = (Math.PI / 4) * i;
+        i === 0 ? ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r) : ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const tick = () => {
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.15; // gravity
+        p.life -= 0.02 / p.maxLife;
+        p.rotation += p.rotSpeed;
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.color;
+        drawStar(ctx, p.x, p.y, p.size, p.rotation);
+      }
+      ctx.globalAlpha = 1;
+
+      if (particles.length > 0 || running) rafId = requestAnimationFrame(tick);
+    };
+
+    const isSectionFullyVisible = () => {
+      const content = contentRef.current;
+      if (!content) return false;
+      return parseFloat(content.style.opacity) >= 0.99;
+    };
+
+    const onEnter = () => {
+      if (!isSectionFullyVisible()) return;
+      running = true;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      spawnBurst();
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const onLeave = () => { running = false; };
+
+    span.addEventListener("mouseenter", onEnter);
+    span.addEventListener("mouseleave", onLeave);
+    return () => {
+      span.removeEventListener("mouseenter", onEnter);
+      span.removeEventListener("mouseleave", onLeave);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <section
       ref={sectionRef}
       className="relative bg-[#FEFABB]"
       style={{ height: "105vh" }}
     >
-      <div className="sticky top-0 overflow-hidden bg-[#FEFABB] z-[4] relative" style={{ height: "80vh" }}>
+      <div ref={stickyRef} className="sticky top-0 bg-[#FEFABB] z-[4] relative" style={{ height: "80vh" }}>
         {/* Shrinking hero card — starts full-screen, lands as small left card */}
         <div
           ref={cardRef}
@@ -124,27 +220,8 @@ export default function EthosSection() {
         <div
           ref={contentRef}
           className="absolute h-full flex flex-col justify-start z-[6]"
-          style={{ left: "40vw", right: "5.5vw", opacity: 0, top: "18vh", isolation: "isolate" }}
+          style={{ left: "40vw", right: "5.5vw", opacity: 0, top: "18vh" }}
         >
-          {/* Mouse-following red spotlight */}
-          <div
-            ref={spotRef}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "320px",
-              height: "320px",
-              marginLeft: "-160px",
-              marginTop: "-160px",
-              background: "radial-gradient(circle, rgba(255,85,85,0.95) 0%, transparent 68%)",
-              mixBlendMode: "screen",
-              pointerEvents: "none",
-              opacity: 0,
-              transition: "opacity 0.3s ease, transform 0.05s ease",
-              borderRadius: "50%",
-            }}
-          />
           <p
             className="text-[45px] leading-[1.05] tracking-[-1px] text-black"
             style={{ fontFamily: "var(--font-alike-angular)" }}
@@ -167,10 +244,17 @@ export default function EthosSection() {
             style={{ fontFamily: "var(--font-alike-angular)" }}
           >
             We call it the{" "}
-            <span className="text-[#FF5555]">product playground</span>.
+            <span ref={spanRef} className="text-[#FF5555] cursor-default">product playground</span>.
           </p>
         </div>
       </div>
+
+      {/* Full-viewport canvas for sparkle particles */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 pointer-events-none z-[50]"
+        style={{ width: "100vw", height: "100vh" }}
+      />
     </section>
   );
 }
