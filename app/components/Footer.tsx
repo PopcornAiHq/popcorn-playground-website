@@ -251,7 +251,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="relative bg-[#FEFABB] flex flex-col items-center" style={{ marginTop: "-20vh" }}>
+    <footer ref={footerRef} className="relative bg-[#FEFABB] flex flex-col items-center" style={{ marginTop: "-0vh" }}>
 
       {/* Full-footer sparkle + button overlay */}
       <div className="absolute inset-0 z-20 pointer-events-none">

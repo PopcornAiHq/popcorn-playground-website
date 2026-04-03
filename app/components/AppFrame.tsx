@@ -19,6 +19,7 @@ const DEFAULTS = {
   sidebarDuration: 0.3,
   leftDelay: 2,
   rightDelay: 2,
+  autoPlayDelay: 1,
 };
 
 type Cfg = typeof DEFAULTS;
@@ -53,6 +54,12 @@ export default function AppFrame() {
   });
 
   const set = (key: keyof Cfg) => (v: number) => setCfg((c) => ({ ...c, [key]: v }));
+
+  // Auto-play: trigger windowed state after configured delay
+  useEffect(() => {
+    const t = setTimeout(() => setWindowed(true), cfg.autoPlayDelay * 1000);
+    return () => clearTimeout(t);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const compute = () => {
@@ -211,6 +218,7 @@ export default function AppFrame() {
               <p className="text-white/30 text-[10px] uppercase tracking-widest mb-1">Frame</p>
               <NumInput label="Duration (s)" value={cfg.frameDuration} onChange={set("frameDuration")} />
               <NumInput label="Delay (s)" value={cfg.frameDelay} onChange={set("frameDelay")} />
+              <NumInput label="Auto-play (s)" value={cfg.autoPlayDelay} onChange={set("autoPlayDelay")} />
             </section>
 
             <div className="h-px bg-white/10" />

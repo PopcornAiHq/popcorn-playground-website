@@ -30,21 +30,20 @@ export default function EthosSection() {
       const sectionTop = section.getBoundingClientRect().top;
       const vh = window.innerHeight;
 
-      // Start when the use case section has 5% of its height still visible at the top
+      // Animate from when use-case section is halfway scrolled to when ethos hits viewport top
       const useCase = document.getElementById("usecase-section");
       const ucHeight = useCase ? useCase.offsetHeight : 800;
       const animStart = ucHeight * 0.5;
-      const animEnd = animStart - vh * 0.7;
+      const animEnd = vh * 0.2; // ethos section top reaches viewport top
       const raw = (animStart - sectionTop) / (animStart - animEnd);
       const progress = easeOutCubic(Math.max(0, Math.min(1, raw)));
 
-      // Final card: 38vw wide, 30vh tall, sitting top-left with margin
       const vw = window.innerWidth;
 
       const finalW = vw * 0.3;
       const finalH = finalW * (9 / 16);
       const finalLeft = vw * 0.055;
-      const finalTop = vh * 0.18;
+      const finalTop = animEnd + content.offsetTop + 80;
 
       const w = lerp(vw, finalW, progress);
       const h = lerp(vh, finalH, progress);
@@ -59,20 +58,16 @@ export default function EthosSection() {
       card.style.boxShadow = progress > 0.05 ? `${shadow}px ${shadow}px 0px black` : "none";
       card.style.borderWidth = `${lerp(0, 2, progress)}px`;
 
-      // Always fixed. Three phases:
-      // 1. Animating: follow lerp'd position
-      // 2. Landed + still sticky: stay at finalTop
-      // 3. Section scrolled past sticky point: follow section upward
+      // Two phases:
+      // 1. Animating (progress < 1): lerp position, card is fixed
+      // 2. Landed (progress >= 1): scroll with the page
       card.style.position = "fixed";
       if (progress < 1) {
         card.style.left = `${left}px`;
         card.style.top = `${top}px`;
       } else {
-        const stickyH = sticky ? sticky.offsetHeight : vh * 0.8;
-        const unstickThreshold = -(section.offsetHeight - stickyH);
-        const overshoot = sectionTop < unstickThreshold ? sectionTop - unstickThreshold : 0;
         card.style.left = `${finalLeft}px`;
-        card.style.top = `${finalTop + overshoot}px`;
+        card.style.top = `${finalTop + (sectionTop - animEnd)}px`;
       }
 
       content.style.opacity = String(Math.max(0, (progress - 0.55) / 0.45));
@@ -192,10 +187,9 @@ export default function EthosSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#FEFABB]"
-      style={{ height: "105vh" }}
+      className="relative"
     >
-      <div ref={stickyRef} className="sticky top-0 bg-[#FEFABB] z-[4] relative" style={{ height: "80vh" }}>
+      <div ref={stickyRef} className="z-[4]">
         {/* Shrinking hero card — starts full-screen, lands as small left card */}
         <div
           ref={cardRef}
@@ -219,8 +213,7 @@ export default function EthosSection() {
         {/* Right column text — fades in as card lands */}
         <div
           ref={contentRef}
-          className="absolute h-full flex flex-col justify-start z-[6]"
-          style={{ left: "40vw", right: "5.5vw", opacity: 0, top: "18vh" }}
+          className=" flex flex-col z-[6] p-20 pl-[40%]"
         >
           <p
             className="text-[45px] leading-[1.05] tracking-[-1px] text-black"

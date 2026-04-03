@@ -44,7 +44,7 @@ export default function UseCaseSection() {
         />
 
         {/* Right: video — z-20 so it sits in front of character */}
-        <div className="flex-1 m-6 ml-0 rounded-[8px] bg-black/[0.06] border border-black/10 flex items-center justify-center z-20 relative">
+        <div className="flex-1 m-6 ml-0 rounded-[8px] bg-gray-50 border border-gray-200 flex items-center justify-center z-20 relative">
           <p
             className="text-[11px] uppercase tracking-widest text-black/30"
             style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
