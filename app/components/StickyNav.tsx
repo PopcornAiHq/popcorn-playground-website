@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function StickyNav() {
   const [heroGone, setHeroGone] = useState(false);
@@ -43,10 +44,13 @@ export default function StickyNav() {
       }}
     >
       <div className="h-12.5 overflow-clip relative shrink-0" style={{ width: "133.333px" }}>
-        <img
+        <Image
           alt="Popcorn"
           className="block size-full"
           src="/popcorn-logo.svg"
+          width={133}
+          height={50}
+          unoptimized
           style={{ filter: "brightness(0) invert(1)" }}
         />
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useRef, useEffect } from "react";
 
 const PopcornCanvas = dynamic(() => import("./PopcornCanvas"), { ssr: false });
@@ -14,7 +15,7 @@ const SPARKLES = [
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
-  const sparkleRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const sparkleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -255,9 +256,15 @@ export default function Footer() {
 
       {/* Full-footer sparkle + button overlay */}
       <div className="absolute inset-0 z-20 pointer-events-none">
-        <img ref={el => { sparkleRefs.current[0] = el; }} src="/red-sparkle.png"    alt="" className="absolute w-14 pointer-events-none" style={{ bottom: "224px", left: "12%" }} />
-        <img ref={el => { sparkleRefs.current[1] = el; }} src="/yellow-sparkle.png" alt="" className="absolute w-16 pointer-events-none" style={{ top:  "80px",  right: "18%" }} />
-        <img ref={el => { sparkleRefs.current[2] = el; }} src="/red-sparkle.png"    alt="" className="absolute w-12 pointer-events-none" style={{ top: "176px",  right: "10%" }} />
+        <div ref={el => { sparkleRefs.current[0] = el; }} className="absolute w-14 pointer-events-none" style={{ bottom: "224px", left: "12%" }}>
+          <Image src="/red-sparkle.png" alt="" width={56} height={56} />
+        </div>
+        <div ref={el => { sparkleRefs.current[1] = el; }} className="absolute w-16 pointer-events-none" style={{ top: "80px", right: "18%" }}>
+          <Image src="/yellow-sparkle.png" alt="" width={64} height={64} />
+        </div>
+        <div ref={el => { sparkleRefs.current[2] = el; }} className="absolute w-12 pointer-events-none" style={{ top: "176px", right: "10%" }}>
+          <Image src="/red-sparkle.png" alt="" width={48} height={48} />
+        </div>
 
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ top: 0, height: "800px" }}>
           <button
@@ -277,7 +284,7 @@ export default function Footer() {
 
       {/* Wordmark */}
       <div className="relative z-10 -mt-56 mb-0">
-        <img src="/popcorn-logo.svg" alt="Popcorn" style={{ height: "clamp(96px,17vw,216px)" }} />
+        <Image src="/popcorn-logo.svg" alt="Popcorn" width={576} height={216} unoptimized style={{ height: "clamp(96px,17vw,216px)", width: "auto" }} />
       </div>
 
       {/* Bottom bar */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
@@ -96,13 +97,13 @@ export default function EthosSection() {
     let rafId: number;
     let running = false;
 
-    const spawnBurst = () => {
+    const spawnParticles = (count: number) => {
       const rect = span.getBoundingClientRect();
       const canvasRect = canvas.getBoundingClientRect();
       const cx = rect.left + rect.width / 2 - canvasRect.left;
       const cy = rect.top + rect.height / 2 - canvasRect.top;
-      for (let i = 0; i < 28; i++) {
-        const angle = (Math.PI * 2 * i) / 28 + Math.random() * 0.4;
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
         const speed = 2 + Math.random() * 5;
         particles.push({
           x: cx + (Math.random() - 0.5) * rect.width * 0.8,
@@ -154,6 +155,7 @@ export default function EthosSection() {
       }
       ctx.globalAlpha = 1;
 
+      if (running) spawnParticles(3);
       if (particles.length > 0 || running) rafId = requestAnimationFrame(tick);
     };
 
@@ -168,7 +170,7 @@ export default function EthosSection() {
       running = true;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      spawnBurst();
+      spawnParticles(28);
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
     };
@@ -204,9 +206,11 @@ export default function EthosSection() {
             borderStyle: "solid",
           }}
         >
-          <div
-            className="w-full h-full"
-            style={{ background: "url('/background.jpeg') center / cover no-repeat" }}
+          <Image
+            src="/background.jpeg"
+            alt=""
+            fill
+            className="object-cover"
           />
         </div>
 

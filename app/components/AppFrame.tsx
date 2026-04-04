@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import UnicornScene from "unicornstudio-react/next";
 import ChannelsSidebar from "./ChannelsSidebar";
 import ChatSidebar from "./ChatSidebar";
@@ -137,7 +138,7 @@ export default function AppFrame() {
           <Nav />
 
           <div className="flex-1 flex flex-col items-center justify-center gap-8 z-10">
-            <img alt="Popcorn" className="max-w-none size-50" src={"/popcorn-3d.png"} />
+            <Image alt="Popcorn" className="max-w-none size-50" src="/popcorn-3d.png" width={200} height={200} />
 
             <h1
               className="text-[clamp(48px,8vw,95px)] leading-[0.9] text-center tracking-[-8px] text-black"

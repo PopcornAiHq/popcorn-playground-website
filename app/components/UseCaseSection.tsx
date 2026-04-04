@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function UseCaseSection() {
   return (
     <section id="usecase-section" className="pt-40 pb-20 px-8 flex justify-center">
@@ -36,10 +38,12 @@ export default function UseCaseSection() {
         </div>
 
         {/* Character — z-10, positioned relative to card */}
-        <img
+        <Image
           src="/thumbsup.png"
           alt=""
           className="absolute w-36 z-10"
+          width={144}
+          height={144}
           style={{ top: "104px", left: "425px" }}
         />
 
