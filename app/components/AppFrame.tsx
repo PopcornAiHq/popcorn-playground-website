@@ -152,7 +152,7 @@ export default function AppFrame() {
               className="text-[clamp(48px,8vw,100px)] leading-[0.9] text-center tracking-[-8px] text-black"
               style={{ fontFamily: "var(--font-alike-angular)" }}
             >
-              Your prototype deserves a better conversation.
+              Your prototype deserves<br />a better conversation.
             </h1>
 
             <p
