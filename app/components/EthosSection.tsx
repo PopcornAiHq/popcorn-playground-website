@@ -37,7 +37,7 @@ export default function EthosSection() {
       const animStart = ucHeight * 0.5;
       const animEnd = vh * 0.2; // ethos section top reaches viewport top
       const raw = (animStart - sectionTop) / (animStart - animEnd);
-      const progress = easeOutCubic(Math.max(0, Math.min(1, raw)));
+      const progress = Math.max(0, Math.min(1, raw)); // removed easeOutCubic for now
 
       const vw = window.innerWidth;
 
@@ -195,7 +195,7 @@ export default function EthosSection() {
         {/* Shrinking hero card — starts full-screen, lands as small left card */}
         <div
           ref={cardRef}
-          className="fixed border-black border-solid overflow-hidden z-[5]"
+          className="fixed border-black border-solid overflow-hidden z-5"
           style={{
             width: "100vw",
             height: "100vh",
@@ -217,7 +217,7 @@ export default function EthosSection() {
         {/* Right column text — fades in as card lands */}
         <div
           ref={contentRef}
-          className=" flex flex-col z-[6] p-20 pl-[40%]"
+          className="relative flex flex-col z-6 p-20 pl-[40%]"
         >
           <p
             className="text-[45px] leading-[1.05] tracking-[-1px] text-black"

@@ -6,6 +6,7 @@ import UnicornScene from "unicornstudio-react/next";
 import ChannelsSidebar from "./ChannelsSidebar";
 import ChatSidebar from "./ChatSidebar";
 import Nav from "./Nav";
+import AppToolbar from "./AppToolbar";
 
 const SPRING = "linear(0, 0.006, 0.025, 0.057 3.7%, 0.102 5.2%, 0.202 7.8%, 0.553 16.2%, 0.657 19.1%, 0.743, 0.816, 0.876, 0.924 30.4%, 0.961 33.6%, 0.986 36.5%, 1.004 39.8%, 1.015 43.3%, 1.021 47.4%, 1.02 53.6%, 1.003 77%, 1)";
 
@@ -21,6 +22,8 @@ const DEFAULTS = {
   leftDelay: 2,
   rightDelay: 2,
   autoPlayDelay: 1,
+  toolbarDelay: 2.3,
+  toolbarDuration: 0.3,
 };
 
 type Cfg = typeof DEFAULTS;
@@ -93,6 +96,7 @@ export default function AppFrame() {
   const frameTransition = `all ${cfg.frameDuration}s ease-in-out ${cfg.frameDelay}s`;
   const leftTransition = `all ${cfg.sidebarDuration}s ${SPRING} ${cfg.leftDelay}s`;
   const rightTransition = `all ${cfg.sidebarDuration}s ${SPRING} ${cfg.rightDelay}s`;
+  const toolbarTransition = `all ${cfg.toolbarDuration}s ${SPRING} ${cfg.toolbarDelay}s`;
 
   return (
     <div
@@ -135,13 +139,17 @@ export default function AppFrame() {
             />
           </div>
 
+          {/* Navigation */}
           <Nav />
+
+          {/* Toolbar */}
+          <AppToolbar open={windowed} transition={toolbarTransition} />
 
           <div className="flex-1 flex flex-col items-center justify-center gap-8 z-10">
             <Image alt="Popcorn" className="max-w-none size-50" src="/popcorn-3d.png" width={200} height={200} />
 
             <h1
-              className="text-[clamp(48px,8vw,95px)] leading-[0.9] text-center tracking-[-8px] text-black"
+              className="text-[clamp(48px,8vw,100px)] leading-[0.9] text-center tracking-[-8px] text-black"
               style={{ fontFamily: "var(--font-alike-angular)" }}
             >
               Your prototype deserves a better conversation.
