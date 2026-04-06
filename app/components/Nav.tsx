@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Nav() {
   return (
     <nav className="absolute top-0 left-0 right-0 flex items-center justify-between px-11 py-5 z-10">
@@ -6,7 +8,7 @@ export default function Nav() {
         className="h-12.5 overflow-clip relative shrink-0"
         style={{ width: "133.333px" }}
       >
-        <img alt="P" className="block size-full" src="/popcorn-logo.svg" />
+        <Image alt="P" className="block size-full" src="/popcorn-logo.svg" width={133} height={50} unoptimized />
       </div>
 
       {/* Nav buttons */}

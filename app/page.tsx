@@ -1,32 +1,28 @@
 import AppFrame from "./components/AppFrame";
-import Nav from "./components/Nav";
+import UseCaseSection from "./components/UseCaseSection";
+import StickyNav from "./components/StickyNav";
+import EthosSection from "./components/EthosSection";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
-      {/* Fixed background — visible through all sections */}
-      <div
-        className="fixed inset-0 -z-10"
-        style={{ background: "url('/background.png') center / cover no-repeat" }}
-      />
+      <StickyNav />
 
       {/* Section 1: Full-screen animated intro */}
-      <AppFrame />
+      <div id="hero-section" className="relative z-[20]">
+        <AppFrame />
+      </div>
 
-      {/* Section 2: Use cases slideshow */}
-      <section className="min-h-screen flex items-center justify-center">
-        <p className="text-white text-sm">Use Cases</p>
-      </section>
+      {/* Section 2: Use cases */}
+      <div className="relative z-[20]">
+        <UseCaseSection />
+      </div>
 
       {/* Section 3: Ethos */}
-      <section className="min-h-screen flex items-center justify-center bg-[#FEFABB]/30">
-        <p className="text-white text-sm">Chat Ethos</p>
-      </section>
+      <EthosSection />
 
-      {/* Footer */}
-      <footer className="flex items-center justify-center py-16 bg-black">
-        <p className="text-white text-sm">Footer</p>
-      </footer>
+      <Footer />
     </>
   );
 }
