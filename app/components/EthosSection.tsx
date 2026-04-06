@@ -92,10 +92,27 @@ export default function EthosSection() {
       color: string;
     };
 
+    // --- Sparkle controls ---
+    const COLORS = ["#ffffff", "#FFD700"];
+    const SPEED_MIN = 0.4;        // minimum launch speed
+    const SPEED_MAX = 1;        // added on top of SPEED_MIN (random)
+    const SIZE_MIN = 6;         // minimum star size in px
+    const SIZE_MAX = 8;         // added on top of SIZE_MIN (random)
+    const LIFE_MIN = 1.6;       // minimum lifetime (arbitrary units)
+    const LIFE_MAX = 0.6;       // added on top of LIFE_MIN (random)
+    const DECAY = 0.02;         // life lost per frame (higher = faster fade/shrink)
+    const SPAWN_BURST = 10;     // particles on initial hover
+    const SPAWN_CONTINUOUS = 1; // particles per frame while hovering
+    const SPREAD_X = 1.1;       // horizontal spawn spread as fraction of word width
+    const SPREAD_Y = 0.9;       // vertical spawn spread as fraction of word height
+    const ANGLE_VARIANCE = 0.3; // radians of random jitter added to outward direction
+    // ------------------------
+
     const particles: Particle[] = [];
-    const COLORS = ["#FF5555", "#FF8888", "#FFD700", "#FF5555", "#ffffff"];
     let rafId: number;
     let running = false;
+    let mouseX = 0;
+    let mouseY = 0;
 
     const spawnParticles = (count: number) => {
       const rect = span.getBoundingClientRect();
@@ -103,18 +120,21 @@ export default function EthosSection() {
       const cx = rect.left + rect.width / 2 - canvasRect.left;
       const cy = rect.top + rect.height / 2 - canvasRect.top;
       for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 2 + Math.random() * 5;
+        const speed = SPEED_MIN + Math.random() * SPEED_MAX;
+        const sx = cx + (Math.random() - 0.5) * rect.width * SPREAD_X;
+        const sy = cy + (Math.random() - 0.5) * rect.height * SPREAD_Y;
+        const baseAngle = Math.atan2(sy - mouseY, sx - mouseX);
+        const angle = baseAngle + (Math.random() - 0.5) * 2 * ANGLE_VARIANCE;
         particles.push({
-          x: cx + (Math.random() - 0.5) * rect.width * 0.8,
-          y: cy + (Math.random() - 0.5) * rect.height * 0.5,
+          x: sx,
+          y: sy,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 1,
+          vy: Math.sin(angle) * speed,
           life: 1,
-          maxLife: 0.6 + Math.random() * 0.6,
-          size: 4 + Math.random() * 8,
-          rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.3,
+          maxLife: LIFE_MIN + Math.random() * LIFE_MAX,
+          size: SIZE_MIN + Math.random() * SIZE_MAX,
+          rotation: 0,
+          rotSpeed: 0,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
         });
       }
@@ -145,17 +165,15 @@ export default function EthosSection() {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.15; // gravity
-        p.life -= 0.02 / p.maxLife;
-        p.rotation += p.rotSpeed;
+        p.life -= DECAY / p.maxLife;
         if (p.life <= 0) { particles.splice(i, 1); continue; }
-        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.globalAlpha = 1;
         ctx.fillStyle = p.color;
-        drawStar(ctx, p.x, p.y, p.size, p.rotation);
+        drawStar(ctx, p.x, p.y, p.size * p.life, p.rotation);
       }
       ctx.globalAlpha = 1;
 
-      if (running) spawnParticles(3);
+      if (running) spawnParticles(SPAWN_CONTINUOUS);
       if (particles.length > 0 || running) rafId = requestAnimationFrame(tick);
     };
 
@@ -170,18 +188,26 @@ export default function EthosSection() {
       running = true;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      spawnParticles(28);
+      spawnParticles(SPAWN_BURST);
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
     };
 
     const onLeave = () => { running = false; };
 
+    const onMouseMove = (e: MouseEvent) => {
+      const canvasRect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - canvasRect.left;
+      mouseY = e.clientY - canvasRect.top;
+    };
+
     span.addEventListener("mouseenter", onEnter);
     span.addEventListener("mouseleave", onLeave);
+    span.addEventListener("mousemove", onMouseMove);
     return () => {
       span.removeEventListener("mouseenter", onEnter);
       span.removeEventListener("mouseleave", onLeave);
+      span.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(rafId);
     };
   }, []);
@@ -249,7 +275,7 @@ export default function EthosSection() {
       {/* Full-viewport canvas for sparkle particles */}
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-[50]"
+        className="fixed inset-0 pointer-events-none z-6"
         style={{ width: "100vw", height: "100vh" }}
       />
     </section>
