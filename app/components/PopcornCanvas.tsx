@@ -1,10 +1,9 @@
 "use client";
 
-import { Suspense, useRef, Component, type ReactNode } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import type { Group } from "three";
+import { Suspense, useRef, useEffect, Component, type ReactNode } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
+import { Box3, Vector3, type Group } from "three";
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { error: string | null }> {
   state = { error: null };
@@ -16,32 +15,23 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: string |
 }
 
 function PopcornModel() {
-  const gltf = useLoader(GLTFLoader, "/popcorn.glb", (loader) => {
-    const draco = new DRACOLoader();
-    draco.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.6/");
-    (loader as GLTFLoader).setDRACOLoader(draco);
-  });
+  const gltf = useGLTF("/popcorn.glb");
   const ref = useRef<Group>(null);
 
-  // Log bounding box to figure out actual model size
-  if (ref.current === null && gltf.scene) {
-    const { Box3, Vector3 } = require("three");
+  useEffect(() => {
+    if (!gltf.scene) return;
     const box = new Box3().setFromObject(gltf.scene);
-    const size = new Vector3();
-    box.getSize(size);
     const center = new Vector3();
     box.getCenter(center);
-    console.log(`model size: ${size.x.toFixed(2)} x ${size.y.toFixed(2)} x ${size.z.toFixed(2)}`);
-    console.log(`model center: ${center.x.toFixed(2)}, ${center.y.toFixed(2)}, ${center.z.toFixed(2)}`);
-  }
+    gltf.scene.position.sub(center);
+  }, [gltf.scene]);
 
   useFrame((_, delta) => {
     if (ref.current) ref.current.rotation.y += delta * 4;
   });
   return (
     <group ref={ref}>
-      {/* Offset the scene inside so it rotates around its own center */}
-      <primitive object={gltf.scene} scale={6} position={[2.62 * 6, -3.08 * 6, 0]} />
+      <primitive object={gltf.scene} scale={6} />
     </group>
   );
 }
