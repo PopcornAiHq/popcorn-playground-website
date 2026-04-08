@@ -12,7 +12,7 @@ export default function Footer({ onLogoBurst }: { onLogoBurst?: (e: React.MouseE
           <button onClick={onLogoBurst} className="inline-flex items-center justify-center cursor-pointer">
             <Image
               src="/assets/popcorn-wordmark.png"
-              alt="Popcorn" style={{ filter: "brightness(0) invert(1)", dropShadow: "0 1px 4px rgba(0,0,0,0.4)" }}
+              alt="Popcorn" style={{ filter: "brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,0.4))" }}
               width={300}
               height={105}
               className="h-auto w-[180px] md:w-[220px]"
@@ -68,7 +68,7 @@ export default function Footer({ onLogoBurst }: { onLogoBurst?: (e: React.MouseE
             <button onClick={onLogoBurst} className="inline-flex items-center justify-center cursor-pointer">
               <Image
                 src="/assets/popcorn-wordmark.png"
-                alt="Popcorn" style={{ filter: "brightness(0) invert(1)", dropShadow: "0 1px 4px rgba(0,0,0,0.4)" }}
+                alt="Popcorn" style={{ filter: "brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,0.4))" }}
                 width={400}
                 height={140}
                 className="h-auto"
