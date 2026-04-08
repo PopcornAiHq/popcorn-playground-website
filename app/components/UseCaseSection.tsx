@@ -20,8 +20,8 @@ export default function UseCaseSection() {
           </p>
 
           <h2
-            className="text-[55px] leading-[0.9] tracking-[-2px] text-black"
-            style={{ fontFamily: "var(--font-alike-angular)" }}
+            className="text-[55px] leading-[0.9] tracking-normal text-black"
+            style={{ fontFamily: "var(--font-synt)" }}
           >
             Iterate on your prototypes together
           </h2>

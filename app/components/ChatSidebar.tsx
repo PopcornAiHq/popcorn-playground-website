@@ -1,7 +1,5 @@
 "use client";
 
-
-
 const SYSTEM_FONT =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
@@ -9,61 +7,59 @@ function formatTime(date: Date) {
   return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
 }
 
-// minutesAgo: offset from "now" (Popcorn's message = 0 = current time)
 const MESSAGE_DEFS = [
   {
-    id: "root",
+    id: "m1",
     name: "Brina Lee",
-    avatarColor: "#e8490f",
-    avatarColor2: "#f5a623",
+    avatarGradient: "linear-gradient(135deg, #FF0C51, #F69224, #EFFF00)",
     initial: "B",
-    minutesAgo: 2,
-    body: (
-      <> hey everyone, here is the landing page we've been working on </>
-    ),
-    status: null as string | null,
-    isRoot: true,
+    minutesAgo: 5,
+    body: "Hey all! New landing page incoming. Check it out and let me know what you think!",
     reactions: undefined as string[] | undefined,
     isAgent: false,
   },
   {
-    id: "r1",
+    id: "m2",
     name: "Ben Garrett",
-    avatarColor: "#faad00",
-    avatarColor2: "#f5821f",
+    avatarGradient: "linear-gradient(135deg, #D1FF03, #EAC501, #FF9804)",
     initial: "B",
-    minutesAgo: 1,
-    body: (
-      <>oh this is good! but it&apos;s feeling a little empty. i want the background to feel like i&apos;m floating in a pool of butter</>
-    ),
-    status: null as string | null,
-    isRoot: false,
+    minutesAgo: 3,
+    body: "This is great! Excited for this new landing page. It feels a little empty, make the background feel like a floating pool of buttttter....",
     reactions: ["👀"],
     isAgent: false,
   },
   {
-    id: "r2",
+    id: "m3",
+    name: "Brina Lee",
+    avatarGradient: "linear-gradient(135deg, #FF0C51, #F69224, #EFFF00)",
+    initial: "B",
+    minutesAgo: 2,
+    body: "/update",
+    reactions: undefined as string[] | undefined,
+    isAgent: false,
+  },
+  {
+    id: "m4",
     name: "Popcorn",
     isAgent: true,
-    avatarColor: "#f26522",
-    avatarColor2: "#f5a623",
+    avatarGradient: "linear-gradient(135deg, #F69224, #FF0C51)",
     initial: "P",
-    minutesAgo: 0,
-    body: (
-      <>Updated the page for more buttery vibes with a shader background.</>
-    ),
-    status: null as string | null,
-    isRoot: false,
+    minutesAgo: 1,
+    body: "Done! ✅ Floating pool of butter for buttery vibes and some fun shader tech.",
     reactions: undefined as string[] | undefined,
   },
 ];
 
-function Avatar({ color, color2, initial }: { color: string; color2: string; initial: string }) {
+function MessageAvatar({ gradient, initial, size = 34 }: { gradient: string; initial: string; size?: number }) {
   return (
     <div
-      className="w-6 h-6 rounded-sm shrink-0 flex items-center justify-center text-white/70 text-[10px] font-bold"
+      className="shrink-0 flex items-center justify-center text-white font-bold"
       style={{
-        background: `linear-gradient(135deg, ${color2}, ${color})`,
+        width: size,
+        height: size,
+        borderRadius: 8,
+        background: gradient,
+        fontSize: size * 0.38,
         fontFamily: SYSTEM_FONT,
       }}
     >
@@ -72,7 +68,7 @@ function Avatar({ color, color2, initial }: { color: string; color2: string; ini
   );
 }
 
-export default function ChatSidebar({ open, width, transition }: { open: boolean, width: number, transition: string }) {
+export default function ChatSidebar({ open, width, transition }: { open: boolean; width: number; transition: string }) {
   const now = new Date();
   const messages = MESSAGE_DEFS.map((m) => {
     const t = new Date(now.getTime() - m.minutesAgo * 60_000);
@@ -80,106 +76,99 @@ export default function ChatSidebar({ open, width, transition }: { open: boolean
   });
 
   return (
+    <div
+      className="bg-[#FCFAF6] absolute top-0 bottom-0 flex flex-col -z-40 border-l-[3px] border-black rounded-r-[10px] overflow-hidden"
+      style={{
+        width: `${width + 50}px`,
+        paddingLeft: "50px",
+        right: open ? "0px" : `${width}px`,
+        transition,
+        fontFamily: SYSTEM_FONT,
+      }}
+    >
+      {/* Header */}
       <div
-        className="bg-white absolute top-0 bottom-0 flex flex-col -z-40"
-        style={{
-          width: `${width+50}px`,
-          paddingLeft: "50px",
-          right: open ? "0px" : `${width}px`,
-          transition,
-          fontFamily: SYSTEM_FONT,
-        }}
+        className="flex items-center justify-between px-4 border-b shrink-0"
+        style={{ height: 60, minHeight: 60, borderColor: "#E6E0D6" }}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3.5 border-b border-black/8 shrink-0">
-          <span className="text-[15px] font-bold text-black">Thread</span>
-          {/* <button className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-black/6 transition-colors text-black/40 hover:text-black/70">
-            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-              <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </button> */}
-        </div>
+        <h3 className="text-[14px] font-semibold text-[#3B3B3C]">Landing page</h3>
+        <button className="w-7 h-7 flex items-center justify-center rounded-md hover:bg-black/5 transition-colors text-[#79747E] hover:text-[#3B3B3C]">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto py-3 flex flex-col gap-2">
-          {messages.map((msg, i) => (
-            <div key={msg.id}>
-              {/* Replies divider after root message */}
-              {i === 1 && (
-                <div className="flex items-center gap-2 px-4 py-2 my-1">
-                  <div className="h-px flex-1 bg-black/8" />
-                  <span className="text-[12px] text-black/40 whitespace-nowrap">
-                    {messages.length - 1} replies · {new Set(messages.map(m => m.name)).size} participants
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto flex flex-col">
+        {messages.map((msg) => (
+          <div key={msg.id} className="flex gap-3 px-4 pt-2 pb-1 hover:bg-[#e5e7eb]/50 group">
+            <MessageAvatar gradient={msg.avatarGradient} initial={msg.initial} />
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-baseline gap-2">
+                <span
+                  className="text-[14px] text-[#3B3B3C] shrink-0"
+                  style={{ fontWeight: msg.isAgent ? 600 : 700 }}
+                >
+                  {msg.name}
+                </span>
+                {msg.isAgent && (
+                  <span className="text-[10px] font-bold text-[#909090] bg-[#909090]/10 px-1 py-0.5 rounded">
+                    AGENT
                   </span>
-                  <div className="h-px flex-1 bg-black/8" />
+                )}
+                <span className="text-[12px] text-[#79747E] whitespace-nowrap">{msg.time}</span>
+              </div>
+              <p className="text-[14px] leading-[1.5] text-[#3B3B3C] mt-0.5">{msg.body}</p>
+
+              {/* Reactions */}
+              {msg.reactions && (
+                <div className="flex gap-1 mt-1">
+                  {msg.reactions.map((r) => (
+                    <span key={r} className="text-[13px] bg-black/5 rounded-full px-2 py-0.5 cursor-pointer hover:bg-black/10 transition-colors">
+                      {r}
+                    </span>
+                  ))}
+                  <button className="text-[#79747E] hover:text-[#3B3B3C] transition-colors px-1">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                      <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+                      <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                  </button>
                 </div>
               )}
-
-              <div className="flex gap-2 items-start px-2 py-1 hover:bg-black/2 group">
-                <Avatar color={msg.avatarColor} color2={msg.avatarColor2} initial={msg.initial} />
-                <div className="flex flex-col gap-1 flex-1 min-w-0">
-                  {/* Name + agent badge + time */}
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[14px] font-semibold text-black leading-tight">{msg.name}</span>
-                    {msg.isAgent && (
-                      <span className="text-[10px] font-semibold text-black/40 bg-black/5 rounded px-1 py-px leading-tight tracking-wide">
-                        AGENT
-                      </span>
-                    )}
-                    <span className="text-[12px] text-black/35">{msg.time}</span>
-                  </div>
-                  {/* Body */}
-                  <p className="text-[14px] leading-[1.45] text-[#1d1c1d]">{msg.body}</p>
-                  {/* Status */}
-                  {msg.status && (
-                    <p className="text-[12px] text-black/40 italic">{msg.status}</p>
-                  )}
-                  {/* Reactions */}
-                  {msg.reactions && (
-                    <div className="flex gap-1 mt-0.5">
-                      {msg.reactions.map((r) => (
-                        <span key={r} className="text-[13px] bg-black/5 rounded-full px-2 py-0.5 cursor-pointer hover:bg-black/10 transition-colors">
-                          {r}
-                        </span>
-                      ))}
-                      <button className="text-black/25 hover:text-black/50 transition-colors px-1">
-                        <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
-                          <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.25" />
-                          <path d="M5.5 9.5s.8 1 2.5 1 2.5-1 2.5-1" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
-                          <circle cx="6" cy="7" r=".75" fill="currentColor" />
-                          <circle cx="10" cy="7" r=".75" fill="currentColor" />
-                        </svg>
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
 
-        {/* Reply input */}
-        <div className="shrink-0 px-3 py-3 border-t border-black/8">
-          <div className="flex items-center gap-2 border border-black/12 rounded-xl px-3 py-2.5">
-            <button className="text-black/35 hover:text-black/60 transition-colors shrink-0">
-              <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-                <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Composer */}
+      <div className="shrink-0 border-t" style={{ borderColor: "#E6E0D6" }}>
+        <div className="flex flex-col bg-white focus-within:bg-[#00B86E]/5 transition-colors" style={{ minHeight: 100 }}>
+          {/* Editor area */}
+          <div className="flex-1 px-3 pt-3">
+            <p className="text-[13px] text-[#79747E]">Message #landing-page</p>
+          </div>
+          {/* Actions bar */}
+          <div className="flex items-center justify-between px-3 pb-3">
+            {/* Plus menu */}
+            <button className="w-8 h-8 rounded-lg flex items-center justify-center text-[#79747E] hover:bg-black/5 hover:text-[#3B3B3C] transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
               </svg>
             </button>
-            <input
-              type="text"
-              placeholder="Reply in thread..."
-              readOnly
-              className="flex-1 bg-transparent text-[13px] text-black/35 placeholder:text-black/35 outline-none min-w-0"
-              style={{ fontFamily: SYSTEM_FONT }}
-            />
-            <button className="w-7 h-7 bg-black/8 rounded-lg flex items-center justify-center shrink-0 hover:bg-black/15 transition-colors">
-              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 text-black/40">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            {/* Send button */}
+            <button className="h-10 px-3.5 rounded-[14px] flex items-center justify-center gap-1.5 text-[13px] font-medium text-[#909090] hover:text-[#3B3B3C] hover:bg-[#00B86E]/10 transition-all">
+              Send
+              <kbd className="text-[15px] opacity-50">↵</kbd>
             </button>
           </div>
         </div>
       </div>
+    </div>
   );
 }

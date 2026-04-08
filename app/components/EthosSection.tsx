@@ -246,8 +246,8 @@ export default function EthosSection() {
           className="relative flex flex-col z-6 p-20 pl-[40%]"
         >
           <p
-            className="text-[45px] leading-[1.05] tracking-[-1px] text-black"
-            style={{ fontFamily: "var(--font-alike-angular)" }}
+            className="text-[45px] leading-[1.05] tracking-normal text-black"
+            style={{ fontFamily: "var(--font-synt)" }}
           >
             The way we build has changed completely. Teams are shipping
             prototypes in hours and iterating with AI. Your team is spending
@@ -256,15 +256,15 @@ export default function EthosSection() {
           </p>
 
           <p
-            className="mt-8 text-[45px] leading-[1.05] tracking-[-1px] text-black"
-            style={{ fontFamily: "var(--font-alike-angular)" }}
+            className="mt-8 text-[45px] leading-[1.05] tracking-normal text-black"
+            style={{ fontFamily: "var(--font-synt)" }}
           >
             It&apos;s a new dawn for team communication.
           </p>
 
           <p
-            className="mt-8 text-[45px] leading-[1.05] tracking-[-1px] text-black"
-            style={{ fontFamily: "var(--font-alike-angular)" }}
+            className="mt-8 text-[45px] leading-[1.05] tracking-normal text-black"
+            style={{ fontFamily: "var(--font-synt)" }}
           >
             We call it the{" "}
             <span ref={spanRef} className="text-[#FF5555] cursor-default">product playground</span>.

@@ -4,71 +4,46 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function StickyNav() {
-  const [heroGone, setHeroGone] = useState(false);
-  const [cardCentered, setCardCentered] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("hero-section");
-    const card = document.getElementById("usecase-card");
-    if (!hero || !card) return;
-
-    // Show when hero is fully out of viewport
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => setHeroGone(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-
-    // Show when the card is in the middle band of the viewport
-    const cardObserver = new IntersectionObserver(
-      ([entry]) => setCardCentered(entry.isIntersecting),
-      { rootMargin: "-30% 0px -30% 0px" }
-    );
-
-    heroObserver.observe(hero);
-    cardObserver.observe(card);
-
-    return () => {
-      heroObserver.disconnect();
-      cardObserver.disconnect();
-    };
+    const onScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const visible = heroGone && cardCentered;
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-11 py-5 transition-all duration-700"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-11 py-5 transition-all duration-700 ease-in-out"
       style={{
-        opacity: visible ? 1 : 0,
-        pointerEvents: visible ? "auto" : "none",
+        background: scrolled
+          ? "linear-gradient(to bottom, rgba(30,60,180,0.3) 0%, rgba(30,60,180,0.15) 40%, transparent 100%)"
+          : "linear-gradient(to bottom, rgba(30,60,180,0) 0%, transparent 100%)",
+        paddingBottom: scrolled ? "60px" : "20px",
       }}
     >
       <div className="h-12.5 overflow-clip relative shrink-0" style={{ width: "133.333px" }}>
         <Image
           alt="Popcorn"
-          className="block size-full"
+          className="block size-full transition-[filter] duration-700"
           src="/popcorn-logo.svg"
           width={133}
           height={50}
           unoptimized
-          style={{ filter: "brightness(0) invert(1)" }}
+          style={{ filter: scrolled
+            ? "brightness(0) drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white) drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)"
+            : "brightness(0) drop-shadow(1px 0 0 transparent) drop-shadow(-1px 0 0 transparent) drop-shadow(0 1px 0 transparent) drop-shadow(0 -1px 0 transparent) drop-shadow(1px 1px 0 transparent) drop-shadow(-1px -1px 0 transparent) drop-shadow(1px -1px 0 transparent) drop-shadow(-1px 1px 0 transparent)"
+          }}
         />
       </div>
 
-      <div className="flex gap-5 items-center">
-        <button
-          className="border border-white px-5 py-2.5 rounded-full text-sm text-white font-medium hover:bg-white hover:text-black active:scale-95 transition-all cursor-pointer"
-          style={{ fontFamily: "var(--font-albert-sans)" }}
-        >
-          Log in
-        </button>
-        <button
-          className="bg-white text-black px-5 py-2.5 rounded-[10px] text-sm font-medium hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
-          style={{ fontFamily: "var(--font-albert-sans)" }}
-        >
-          Book a demo
-        </button>
-      </div>
+      <button
+        className={`bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all duration-700 cursor-pointer border-[3px] ${scrolled ? "border-white" : "border-transparent"}`}
+        style={{ fontFamily: "var(--font-ibm-plex-mono)", boxShadow: scrolled ? "0 2px 12px rgba(0,0,0,0.4)" : "0 2px 12px rgba(0,0,0,0)" }}
+      >
+        GET SETUP
+      </button>
     </nav>
   );
 }

@@ -1,130 +1,141 @@
 
-const SYSTEM_FONT =
-  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
-
 const channels = [
-  { name: "welcome", unread: 0, active: false, muted: false },
-  { name: "home-page", unread: 0, active: true, muted: false },
-  { name: "release-notes", unread: 0, active: false, muted: false },
-  { name: "dashboard", unread: 0, active: false, muted: false },
-  { name: "architecture-diagram", unread: 0, active: false, muted: false },
-  { name: "gtm-checklist", unread: 0, active: false, muted: false },
-  { name: "in-the-news", unread: 0, active: false, muted: false },
+  { name: "welcome", active: false, unread: false },
+  { name: "landing-page", active: true, unread: false },
+  { name: "release-notes", active: false, unread: false },
+  { name: "dashboard", active: false, unread: false },
+  { name: "architecture-diagram", active: false, unread: false },
+  { name: "gtm-checklist", active: false, unread: false },
+  { name: "in-the-news", active: false, unread: false },
 ];
 
-export default function ChannelsSidebar({ open, width, transition }: { open: boolean, width: number, transition: string }) {
+export default function ChannelsSidebar({ open, width, transition }: { open: boolean; width: number; transition: string }) {
   return (
     <div
-      className="bg-white absolute top-0 bottom-0 flex flex-col -z-10"
+      className="bg-[#f8f5f0] absolute top-0 bottom-0 flex flex-col -z-10 border-r-[3px] border-black rounded-l-[10px] overflow-hidden"
       style={{
-        width: `${width+50}px`,
+        width: `${width + 50}px`,
         paddingRight: "50px",
         left: open ? "0px" : `${width}px`,
         transition,
-        fontFamily: SYSTEM_FONT,
+        fontFamily: "'Wix Madefor Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
     >
       {/* Workspace header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-black/8">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-8 h-8 rounded-lg bg-yellow-300 flex items-center justify-center shrink-0 overflow-hidden">
-            <div className="w-8 h-8 rounded-md bg-yellow-300 flex items-center justify-center text-[13px] font-bold text-white">
-              A
-            </div>
-          </div>
-          <div className="min-w-0">
-            <p className="text-[15px] font-bold text-black leading-tight truncate">ACME Corp</p>
-            <p className="text-[12px] text-black/40 leading-tight">Enterprise</p>
-          </div>
+      <div className="flex items-center gap-2.5 mx-2 px-3 py-2 mt-2 rounded-[6px] hover:bg-black/5 cursor-pointer">
+        <div className="w-9 h-9 rounded-[8px] bg-black flex items-center justify-center shrink-0">
+          <span className="text-white text-[16px]">🍿</span>
         </div>
-        <svg className="w-4 h-4 text-black/40 shrink-0" viewBox="0 0 16 16" fill="none">
+        <div className="min-w-0 flex-1">
+          <p className="text-[16px] font-bold text-black leading-[1.3] tracking-[0.5px] truncate">Popcorn</p>
+        </div>
+        <svg className="w-4 h-4 text-black/30 shrink-0" viewBox="0 0 16 16" fill="none">
           <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
 
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-black/8">
-        <div className="flex items-center gap-1.5 bg-black/5 rounded-md px-2.5 py-1.5 flex-1 mr-3">
-          <svg className="w-3.5 h-3.5 text-black/40 shrink-0" viewBox="0 0 16 16" fill="none">
-            <circle cx="6.5" cy="6.5" r="4" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M10 10l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <div className="flex items-center gap-1 px-4 py-2">
+        {/* Search */}
+        <button className="w-8 h-8 rounded-lg flex items-center justify-center text-black/40 hover:bg-black/5 hover:text-black/70 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
           </svg>
-          <span className="text-[12px] text-black/40 flex-1">Search</span>
-          <kbd className="text-[10px] text-black/30 border border-black/15 rounded px-1 leading-4">⌘K</kbd>
-        </div>
-        <div className="flex items-center gap-2 text-black/40">
-          {/* Plus */}
-          <svg className="w-4 h-4 cursor-pointer hover:text-black/70 transition-colors" viewBox="0 0 16 16" fill="none">
-            <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </button>
+        {/* Add to sidebar */}
+        <button className="w-8 h-8 rounded-lg flex items-center justify-center text-black/40 hover:bg-black/5 hover:text-black/70 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
-          {/* Pencil */}
-          <svg className="w-4 h-4 cursor-pointer hover:text-black/70 transition-colors" viewBox="0 0 16 16" fill="none">
-            <path d="M11 2.5l2.5 2.5-7.5 7.5H3.5V10L11 2.5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        </button>
+        {/* Compose */}
+        <button className="w-8 h-8 rounded-lg flex items-center justify-center text-black/40 hover:bg-black/5 hover:text-black/70 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
           </svg>
-          {/* Bell */}
-          <svg className="w-4 h-4 cursor-pointer hover:text-black/70 transition-colors" viewBox="0 0 16 16" fill="none">
-            <path d="M8 1.5v1M8 2.5A3.5 3.5 0 004.5 6c0 2-.5 3-1 3.5h9c-.5-.5-1-1.5-1-3.5A3.5 3.5 0 008 2.5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-            <path d="M3.5 9.5h9" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
-            <path d="M6.5 12a1.5 1.5 0 003 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </button>
+        <div className="flex-1" />
+        {/* Activity */}
+        <button className="w-8 h-8 rounded-lg flex items-center justify-center text-black/40 hover:bg-black/5 hover:text-black/70 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
-        </div>
+        </button>
+      </div>
+
+      {/* Category header */}
+      <div className="flex items-center gap-1 px-3 pt-3 pb-1">
+        <svg className="w-3 h-3 text-black/40" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span className="text-[11px] uppercase tracking-[0.5px] text-black/40 font-semibold">Channels</span>
       </div>
 
       {/* Channel list */}
-      <div className="flex-1 overflow-y-auto py-2 px-1">
+      <div className="flex-1 overflow-y-auto px-0 mt-0.5">
         {channels.map((ch) => (
           <div
             key={ch.name}
-            className={`flex items-center justify-between mx-1 px-2 py-[5px] rounded-md cursor-pointer group ${ch.active ? "bg-black/10" : "hover:bg-black/5"
-              }`}
+            className={`flex items-center gap-2.5 mx-2 px-3 h-8 rounded-[6px] cursor-pointer transition-colors ${
+              ch.active ? "bg-black text-white" : "hover:bg-black/5"
+            }`}
+            style={{ width: "calc(100% - 16px)" }}
           >
-            <div className="flex items-center gap-1.5 min-w-0">
-              <span className={`text-[14px] shrink-0 ${ch.muted ? "text-black/30" : ch.active ? "text-black/60" : "text-black/50"}`}>#</span>
-              <span
-                className={`text-[14px] truncate ${ch.active
-                  ? "font-semibold text-black"
-                  : ch.unread > 0
-                    ? "font-semibold text-black"
-                    : ch.muted
-                      ? "text-black/30"
-                      : "text-black/60"
-                  }`}
-              >
-                {ch.name}
-              </span>
-            </div>
-            {ch.unread > 0 && (
-              <span className="ml-1.5 shrink-0 min-w-[18px] h-[18px] bg-black text-white text-[11px] font-semibold rounded-full flex items-center justify-center px-1">
-                {ch.unread}
-              </span>
-            )}
+            <span className={`text-[14px] shrink-0 ${ch.active ? "text-white/60" : "text-black/40"}`}>#</span>
+            <span
+              className={`text-[14px] truncate tracking-[-0.2px] leading-[1.2] ${
+                ch.active ? "font-bold text-white" : ch.unread ? "font-semibold text-black" : "text-black/60"
+              }`}
+            >
+              {ch.name}
+            </span>
           </div>
         ))}
       </div>
 
-      {/* User bar */}
-      <div className="flex items-center justify-between px-3 py-3 border-t border-black/8">
-        <div className="flex items-center gap-2 min-w-0">
-          <div className="relative shrink-0">
-            <div className="w-8 h-8 rounded-md bg-yellow-300 flex items-center justify-center text-[13px] font-bold text-white">
-              Y
+      {/* User card */}
+      <div className="mx-3 mb-3 rounded-[8px] border border-black/10 bg-white px-4 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="relative shrink-0">
+              <div className="w-8 h-8 rounded-[6px] bg-[#FFD93D] flex items-center justify-center text-[13px] font-bold text-white">
+                B
+              </div>
+              <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />
             </div>
-            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />
+            <div className="min-w-0">
+              <p className="text-[13px] font-semibold text-black leading-tight truncate">Brina</p>
+              <p className="text-[11px] text-black/40 leading-tight">Online</p>
+            </div>
           </div>
-          <div className="min-w-0">
-            <p className="text-[13px] font-semibold text-black leading-tight truncate">You!!!</p>
-            <p className="text-[11px] text-black/40 leading-tight">Online</p>
+          <div className="flex items-center gap-1 shrink-0">
+            {/* Theme toggle */}
+            <button className="w-8 h-8 rounded-[6px] flex items-center justify-center text-black/30 hover:bg-black/5 hover:text-black/60 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </button>
+            {/* Settings */}
+            <button className="w-8 h-8 rounded-[6px] flex items-center justify-center text-black/30 hover:bg-black/5 hover:text-black/60 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 17H5" />
+                <path d="M19 7h-9" />
+                <circle cx="17" cy="17" r="3" />
+                <circle cx="7" cy="7" r="3" />
+              </svg>
+            </button>
           </div>
-        </div>
-        <div className="flex items-center gap-2 text-black/35 shrink-0">
-          <svg className="w-4 h-4 cursor-pointer hover:text-black/60 transition-colors" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-          <svg className="w-4 h-4 cursor-pointer hover:text-black/60 transition-colors" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M6 6a2 2 0 114 0c0 1.5-2 2-2 3.5M8 12.5v.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
         </div>
       </div>
     </div>

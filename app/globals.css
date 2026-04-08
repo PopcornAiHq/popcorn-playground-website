@@ -15,6 +15,16 @@ body {
   color: var(--foreground);
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  33% { transform: translateY(-6px) translateX(3px); }
+  66% { transform: translateY(4px) translateX(-2px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

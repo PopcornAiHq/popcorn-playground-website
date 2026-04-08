@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import {
-  Alike_Angular,
   Albert_Sans,
   IBM_Plex_Mono,
   Inter,
   Questrial,
 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const alikeAngular = Alike_Angular({
-  weight: "400",
-  variable: "--font-alike-angular",
-  subsets: ["latin"],
+const synt = localFont({
+  src: "./fonts/ABCSynt-Regular.otf",
+  variable: "--font-synt",
 });
 
 const albertSans = Albert_Sans({
@@ -54,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${alikeAngular.variable} ${albertSans.variable} ${ibmPlexMono.variable} ${inter.variable} ${questrial.variable} h-full antialiased`}
+      className={`${synt.variable} ${albertSans.variable} ${ibmPlexMono.variable} ${inter.variable} ${questrial.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
