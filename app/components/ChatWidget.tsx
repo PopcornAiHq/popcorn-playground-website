@@ -20,29 +20,19 @@ export default function ChatWidget() {
 
       {/* Messages */}
       <div className="bg-white p-3 flex flex-col gap-4 rounded-sm">
-        {/* Brina Lee */}
+        {/* Brina */}
         <div className="flex gap-2 items-start">
-          <div
-            className="h-[25.749px] w-[26.039px] rounded-full shrink-0 relative"
-            style={{ backgroundColor: "#ff699b" }}
-          >
-            <span
-              className="absolute mix-blend-overlay text-[13.824px] leading-[1.1] text-black"
-              style={{
-                fontFamily: "var(--font-questrial)",
-                left: "calc(50% - 5.02px)",
-                top: "calc(50% - 7.87px)",
-              }}
-            >
-              B
-            </span>
-          </div>
+          <img
+            src="/assets/brina.jpg"
+            alt="Brina"
+            className="h-[25.749px] w-[26.039px] rounded-full shrink-0 object-cover"
+          />
           <div className="flex flex-col gap-1 flex-1 text-[#212121]">
             <p
               className="text-[14px] leading-[1.1] font-medium whitespace-nowrap"
               style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
             >
-              Brina Lee
+              Brina
             </p>
             <p
               className="text-[15px] leading-[1.2] tracking-[-0.15px]"

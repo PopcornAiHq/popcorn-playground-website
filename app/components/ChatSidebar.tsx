@@ -10,7 +10,8 @@ function formatTime(date: Date) {
 const MESSAGE_DEFS = [
   {
     id: "m1",
-    name: "Brina Lee",
+    name: "Brina",
+    avatarImage: "/assets/brina.jpg",
     avatarGradient: "linear-gradient(135deg, #FF0C51, #F69224, #EFFF00)",
     initial: "B",
     minutesAgo: 5,
@@ -20,7 +21,8 @@ const MESSAGE_DEFS = [
   },
   {
     id: "m2",
-    name: "Ben Garrett",
+    name: "Ben",
+    avatarImage: "/assets/ben.jpeg",
     avatarGradient: "linear-gradient(135deg, #D1FF03, #EAC501, #FF9804)",
     initial: "B",
     minutesAgo: 3,
@@ -29,28 +31,64 @@ const MESSAGE_DEFS = [
     isAgent: false,
   },
   {
+    id: "m2b",
+    name: "Oguz",
+    avatarImage: "/assets/oguz.jpeg",
+    avatarGradient: "linear-gradient(135deg, #34FF7F, #67EEBC, #94DFF6)",
+    initial: "O",
+    minutesAgo: 2.5,
+    body: "Add \"Fastest\" to the headline because we are fastest. 🚀",
+    reactions: undefined as string[] | undefined,
+    isAgent: false,
+  },
+  {
+    id: "m2c",
+    name: "Shaun",
+    avatarImage: "/assets/shaun.jpeg",
+    avatarGradient: "linear-gradient(135deg, #6B8CFF, #3B5BDB, #1A3DE8)",
+    initial: "S",
+    minutesAgo: 2.2,
+    body: "I want popcorn to pop up from the bottom, like it's being freshly popped!",
+    reactions: ["❤️"],
+    isAgent: false,
+  },
+  {
     id: "m3",
-    name: "Brina Lee",
+    name: "Brina",
+    avatarImage: "/assets/brina.jpg",
     avatarGradient: "linear-gradient(135deg, #FF0C51, #F69224, #EFFF00)",
     initial: "B",
     minutesAgo: 2,
     body: "/update",
     reactions: undefined as string[] | undefined,
     isAgent: false,
+    delay: "3.6s",
   },
   {
     id: "m4",
     name: "Popcorn",
     isAgent: true,
+    avatarImage: "/assets/app-logo.png",
     avatarGradient: "linear-gradient(135deg, #F69224, #FF0C51)",
     initial: "P",
     minutesAgo: 1,
-    body: "Done! ✅ Floating pool of butter for buttery vibes and some fun shader tech.",
+    body: "Done! ✅ Floating pool of butter for buttery vibes, \"Fastest\" added and popcorn freshly popped to eat. Yum.",
     reactions: undefined as string[] | undefined,
+    delay: "4.3s",
   },
 ];
 
-function MessageAvatar({ gradient, initial, size = 34 }: { gradient: string; initial: string; size?: number }) {
+function MessageAvatar({ gradient, initial, image, size = 34 }: { gradient: string; initial: string; image?: string; size?: number }) {
+  if (image) {
+    return (
+      <img
+        src={image}
+        alt={initial}
+        className="shrink-0 object-cover"
+        style={{ width: size, height: size, borderRadius: 8 }}
+      />
+    );
+  }
   return (
     <div
       className="shrink-0 flex items-center justify-center text-white font-bold"
@@ -103,8 +141,8 @@ export default function ChatSidebar({ open, width, transition }: { open: boolean
       {/* Messages */}
       <div className="flex-1 overflow-y-auto flex flex-col">
         {messages.map((msg) => (
-          <div key={msg.id} className="flex gap-3 px-4 pt-2 pb-1 hover:bg-[#e5e7eb]/50 group">
-            <MessageAvatar gradient={msg.avatarGradient} initial={msg.initial} />
+          <div key={msg.id} className={`flex gap-3 px-4 pt-2 pb-1 hover:bg-[#e5e7eb]/50 group${msg.delay ? " animate-msg-in" : ""}`} style={msg.delay ? { "--msg-delay": msg.delay } as React.CSSProperties : undefined}>
+            <MessageAvatar gradient={msg.avatarGradient} initial={msg.initial} image={(msg as Record<string, unknown>).avatarImage as string | undefined} />
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-baseline gap-2">
                 <span

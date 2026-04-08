@@ -23,9 +23,7 @@ export default function ChannelsSidebar({ open, width, transition }: { open: boo
     >
       {/* Workspace header */}
       <div className="flex items-center gap-2.5 mx-2 px-3 py-2 mt-2 rounded-[6px] hover:bg-black/5 cursor-pointer">
-        <div className="w-9 h-9 rounded-[8px] bg-black flex items-center justify-center shrink-0">
-          <span className="text-white text-[16px]">🍿</span>
-        </div>
+        <img src="/assets/app-logo.png" alt="Popcorn" className="w-9 h-9 rounded-[8px] shrink-0" />
         <div className="min-w-0 flex-1">
           <p className="text-[16px] font-bold text-black leading-[1.3] tracking-[0.5px] truncate">Popcorn</p>
         </div>
@@ -101,9 +99,7 @@ export default function ChannelsSidebar({ open, width, transition }: { open: boo
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 min-w-0">
             <div className="relative shrink-0">
-              <div className="w-8 h-8 rounded-[6px] bg-[#FFD93D] flex items-center justify-center text-[13px] font-bold text-white">
-                B
-              </div>
+              <img src="/assets/brina.jpg" alt="Brina" className="w-8 h-8 rounded-[6px] object-cover" />
               <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />
             </div>
             <div className="min-w-0">

@@ -116,7 +116,7 @@ export default function AppFrame() {
           <Nav />
 
           <div className="flex-1 flex flex-col items-center justify-center gap-8 z-10">
-            <Image alt="Popcorn" className="max-w-none size-50 mt-[-32px] mb-[-22px]" src="/popcorn-3d.png" width={200} height={200} />
+            <Image alt="Popcorn" className="max-w-none size-50 mt-[-102px] mb-[-22px]" src="/popcorn-3d.png" width={200} height={200} />
 
             <h1
               className="text-[90px] leading-[1.0] text-center tracking-[-1.5px] text-black"
@@ -132,14 +132,82 @@ export default function AppFrame() {
               Seconds to plug in. One-click to share. Faster feedback than any Figma comment, Loom video, or Slack thread. The fastest way from &ldquo;I built this&rdquo; to &ldquo;let&rsquo;s ship this.&rdquo;
             </p>
 
-            <div className="flex flex-col items-center gap-2.5">
+            <div className="flex flex-col items-center gap-2.5 relative z-20">
               <button
-                className="bg-[#1a3de8] text-white px-12 py-5 rounded-[24px] text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[3px] border-[#5CE0D8]"
+                className="bg-[#1a3de8] text-white px-12 py-5 rounded-[24px] text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[4px] border-[#5CE0D8] flex items-center gap-3"
                 style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
               >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 GET SETUP
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 12H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M12 5L5 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </button>
             </div>
+          </div>
+
+          {/* Popcorn popping up from bottom — fills like a bucket, avoids center button */}
+          <div className="absolute bottom-0 h-[200px] pointer-events-none z-10" style={{ left: "-20px", right: "-20px" }}>
+            {[
+              /* Dense bottom strip — full width, covers very bottom */
+              { src: "/assets/popcorn-2.png", left: "69%", bottom: -50, size: 170, delay: "3.8s", rotate: "88deg" },
+              { src: "/popcorn-3d.png", left: "6%", bottom: -48, size: 165, delay: "3.85s", rotate: "145deg" },
+              { src: "/assets/popcorn-3.png", left: "83%", bottom: -52, size: 170, delay: "3.95s", rotate: "-35deg" },
+              { src: "/assets/popcorn-new.png", left: "34%", bottom: -46, size: 160, delay: "3.9s", rotate: "72deg" },
+              { src: "/popcorn-3d.png", left: "55%", bottom: -50, size: 170, delay: "4.05s", rotate: "-110deg" },
+              { src: "/assets/popcorn-2.png", left: "13%", bottom: -48, size: 165, delay: "4.1s", rotate: "25deg" },
+              { src: "/assets/popcorn-3.png", left: "90%", bottom: -52, size: 160, delay: "4.0s", rotate: "-160deg" },
+              { src: "/assets/popcorn-new.png", left: "48%", bottom: -46, size: 170, delay: "4.15s", rotate: "-45deg" },
+              { src: "/popcorn-3d.png", left: "27%", bottom: -50, size: 165, delay: "4.2s", rotate: "130deg" },
+              { src: "/assets/popcorn-2.png", left: "76%", bottom: -48, size: 170, delay: "4.12s", rotate: "-80deg" },
+              { src: "/assets/popcorn-3.png", left: "-2%", bottom: -50, size: 170, delay: "4.25s", rotate: "55deg" },
+              { src: "/assets/popcorn-new.png", left: "62%", bottom: -52, size: 160, delay: "4.3s", rotate: "-65deg" },
+              { src: "/popcorn-3d.png", left: "20%", bottom: -46, size: 170, delay: "4.35s", rotate: "15deg" },
+              { src: "/assets/popcorn-2.png", left: "41%", bottom: -50, size: 165, delay: "4.4s", rotate: "-140deg" },
+              /* Middle fill — covers gaps but stays low in center */
+              { src: "/assets/popcorn-3.png", left: "3%", bottom: -10, size: 160, delay: "4.5s", rotate: "170deg" },
+              { src: "/popcorn-3d.png", left: "88%", bottom: -12, size: 155, delay: "4.5s", rotate: "-25deg" },
+              { src: "/assets/popcorn-new.png", left: "10%", bottom: -8, size: 160, delay: "4.6s", rotate: "95deg" },
+              { src: "/assets/popcorn-2.png", left: "81%", bottom: -15, size: 160, delay: "4.65s", rotate: "-120deg" },
+              { src: "/assets/popcorn-3.png", left: "18%", bottom: -10, size: 155, delay: "4.75s", rotate: "50deg" },
+              { src: "/popcorn-3d.png", left: "74%", bottom: -12, size: 160, delay: "4.7s", rotate: "-175deg" },
+              { src: "/assets/popcorn-new.png", left: "25%", bottom: -14, size: 155, delay: "4.8s", rotate: "38deg" },
+              { src: "/assets/popcorn-2.png", left: "67%", bottom: -10, size: 160, delay: "4.85s", rotate: "-58deg" },
+              /* Sides climbing up — left side */
+              { src: "/assets/popcorn-3.png", left: "calc(-1% - 60px)", bottom: 40, size: 155, delay: "4.95s", rotate: "-90deg" },
+              { src: "/popcorn-3d.png", left: "calc(7% - 60px)", bottom: 50, size: 150, delay: "5.05s", rotate: "110deg" },
+              { src: "/assets/popcorn-new.png", left: "calc(14% - 60px)", bottom: 35, size: 155, delay: "5.15s", rotate: "-10deg" },
+              { src: "/assets/popcorn-2.png", left: "calc(3% - 60px)", bottom: 80, size: 140, delay: "5.25s", rotate: "68deg" },
+              { src: "/assets/popcorn-3.png", left: "calc(12% - 60px)", bottom: 75, size: 145, delay: "5.35s", rotate: "-155deg" },
+              { src: "/popcorn-3d.png", left: "calc(20% - 60px)", bottom: 45, size: 150, delay: "5.2s", rotate: "42deg" },
+              /* Sides climbing up — right side */
+              { src: "/assets/popcorn-new.png", left: "82%", bottom: 40, size: 155, delay: "5.0s", rotate: "155deg" },
+              { src: "/assets/popcorn-2.png", left: "90%", bottom: 50, size: 150, delay: "5.1s", rotate: "-78deg" },
+              { src: "/assets/popcorn-3.png", left: "75%", bottom: 35, size: 155, delay: "5.2s", rotate: "22deg" },
+              { src: "/popcorn-3d.png", left: "88%", bottom: 80, size: 140, delay: "5.3s", rotate: "-85deg" },
+              { src: "/assets/popcorn-new.png", left: "78%", bottom: 75, size: 145, delay: "5.4s", rotate: "140deg" },
+              { src: "/assets/popcorn-2.png", left: "70%", bottom: 45, size: 150, delay: "5.25s", rotate: "-32deg" },
+            ].map((p, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={p.src}
+                alt=""
+                className="absolute animate-pop-in"
+                style={{
+                  left: p.left,
+                  bottom: p.bottom,
+                  width: p.size,
+                  height: p.size,
+                  "--pop-delay": p.delay,
+                  "--pop-rotate": p.rotate,
+                } as React.CSSProperties}
+              />
+            ))}
           </div>
         </div>
 
