@@ -152,14 +152,14 @@ export default function AppFrame() {
               className="text-[clamp(48px,8vw,100px)] leading-[0.9] text-center tracking-[-8px] text-black"
               style={{ fontFamily: "var(--font-alike-angular)" }}
             >
-              Your prototype deserves<br />a better conversation.
+              Fastest prototype<br />playground for product teams
             </h1>
 
             <p
               className="text-[20px] leading-[1.3] text-center font-medium text-black max-w-190"
               style={{ fontFamily: "var(--font-albert-sans)" }}
             >
-              Meet the product playground where every prototype spins up its own channel for feedback, updates, and the next version. Popcorn is your feedback loop, finally in one place.
+              Seconds to plug in. One-click to share. Faster feedback than any Figma comment, Loom video, or Slack thread. The fastest way from &ldquo;I built this&rdquo; to &ldquo;let&rsquo;s ship this.&rdquo;
             </p>
 
             <div className="flex flex-col items-center gap-2.5">
