@@ -37,7 +37,7 @@ const MESSAGE_DEFS = [
     avatarGradient: "linear-gradient(135deg, #34FF7F, #67EEBC, #94DFF6)",
     initial: "O",
     minutesAgo: 2.5,
-    body: "Add \"Fastest\" to the headline because we are fastest. 🚀",
+    body: "Add \"Fastest\" to the headline. because we are. 🚗💨",
     reactions: undefined as string[] | undefined,
     isAgent: false,
   },
@@ -72,9 +72,22 @@ const MESSAGE_DEFS = [
     avatarGradient: "linear-gradient(135deg, #F69224, #FF0C51)",
     initial: "P",
     minutesAgo: 1,
-    body: "Done! ✅ Floating pool of butter for buttery vibes, \"Fastest\" added and popcorn freshly popped to eat. Yum.",
+    body: "Done! ✅ Floating pool of butter for buttery vibes, \"Fastest\" added and popcorn freshly popped to eat. Time to dig in!",
     reactions: undefined as string[] | undefined,
     delay: "4.3s",
+  },
+  {
+    id: "m5",
+    name: "Brina",
+    avatarImage: "/assets/brina.jpg",
+    avatarGradient: "linear-gradient(135deg, #FF0C51, #F69224, #EFFF00)",
+    initial: "B",
+    minutesAgo: 0.5,
+    body: "Great minds are always better together. Shipping it!",
+    reactions: ["👍", "🚀", "🎉"],
+    reactionsDelay: "7.0s",
+    isAgent: false,
+    delay: "6.5s",
   },
 ];
 
@@ -162,7 +175,7 @@ export default function ChatSidebar({ open, width, transition }: { open: boolean
 
               {/* Reactions */}
               {msg.reactions && (
-                <div className="flex gap-1 mt-1">
+                <div className={`flex gap-1 mt-1${(msg as Record<string, unknown>).reactionsDelay ? " animate-msg-in" : ""}`} style={(msg as Record<string, unknown>).reactionsDelay ? { "--msg-delay": (msg as Record<string, unknown>).reactionsDelay as string } as React.CSSProperties : undefined}>
                   {msg.reactions.map((r) => (
                     <span key={r} className="text-[13px] bg-black/5 rounded-full px-2 py-0.5 cursor-pointer hover:bg-black/10 transition-colors">
                       {r}
