@@ -4,6 +4,14 @@ import {
   IBM_Plex_Mono,
   Inter,
   Questrial,
+  DM_Serif_Display,
+  Libre_Baskerville,
+  Source_Serif_4,
+  Lora,
+  Petrona,
+  Fraunces,
+  Instrument_Serif,
+  Playfair_Display,
 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -39,6 +47,54 @@ const questrial = Questrial({
   subsets: ["latin"],
 });
 
+const dmSerifDisplay = DM_Serif_Display({
+  weight: "400",
+  variable: "--font-dm-serif-display",
+  subsets: ["latin"],
+});
+
+const libreBaskerville = Libre_Baskerville({
+  weight: ["400", "700"],
+  variable: "--font-libre-baskerville",
+  subsets: ["latin"],
+});
+
+const sourceSerif4 = Source_Serif_4({
+  weight: ["400", "600", "700"],
+  variable: "--font-source-serif-4",
+  subsets: ["latin"],
+});
+
+const lora = Lora({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-lora",
+  subsets: ["latin"],
+});
+
+const petrona = Petrona({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-petrona",
+  subsets: ["latin"],
+});
+
+const fraunces = Fraunces({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+});
+
+const playfairDisplay = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Popcorn — Your App Chat",
   description:
@@ -53,7 +109,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${synt.variable} ${albertSans.variable} ${ibmPlexMono.variable} ${inter.variable} ${questrial.variable} h-full antialiased`}
+      className={`${synt.variable} ${albertSans.variable} ${ibmPlexMono.variable} ${inter.variable} ${questrial.variable} ${dmSerifDisplay.variable} ${libreBaskerville.variable} ${sourceSerif4.variable} ${lora.variable} ${petrona.variable} ${fraunces.variable} ${instrumentSerif.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
