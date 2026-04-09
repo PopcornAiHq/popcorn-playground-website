@@ -63,6 +63,18 @@ body {
   animation: tint-cycle 6s steps(1) infinite;
 }
 
+@keyframes hero-tint {
+  0%, 18%   { filter: url(#tint-0); }
+  20%, 38%  { filter: url(#tint-1); }
+  40%, 58%  { filter: url(#tint-2); }
+  60%, 78%  { filter: url(#tint-3); }
+  80%, 98%  { filter: url(#tint-4); }
+}
+
+.animate-hero-tint {
+  animation: hero-tint 10s steps(1) infinite;
+}
+
 @keyframes msg-in {
   0% { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }

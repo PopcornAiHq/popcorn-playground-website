@@ -15,9 +15,26 @@ export default function AppFrame() {
 
       <div className="flex-1 flex flex-col relative min-w-0 min-h-full overflow-hidden">
 
-          <div className="flex-1 flex flex-col items-center justify-center gap-8 z-10 mt-[-50px]">
+          <div className="flex-1 flex flex-col items-center justify-center gap-8 z-10 mt-[-75px]">
+            {/* SVG filters for multiply tint — matches bottom popcorn overlays */}
+            <svg className="absolute w-0 h-0" aria-hidden="true">
+              <defs>
+                {TINT_COLORS.map((color, i) => {
+                  const r = parseInt(color.slice(1, 3), 16) / 255;
+                  const g = parseInt(color.slice(3, 5), 16) / 255;
+                  const b = parseInt(color.slice(5, 7), 16) / 255;
+                  const a = 0.7;
+                  const inv = 1 - a;
+                  return (
+                    <filter key={i} id={`tint-${i}`}>
+                      <feColorMatrix type="matrix" values={`${inv + a * r} 0 0 0 0  0 ${inv + a * g} 0 0 0  0 0 ${inv + a * b} 0 0  0 0 0 1 0`} />
+                    </filter>
+                  );
+                })}
+              </defs>
+            </svg>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img alt="Popcorn" className="max-w-none size-64 mt-[-102px] mb-[-22px] animate-tint-filter" src="/assets/popcorn_animated.webp" width={256} height={256} />
+            <img alt="Popcorn" className="max-w-none size-64 mt-[-102px] mb-[-22px] animate-hero-tint" src="/assets/popcorn_animated.webp" width={256} height={256} />
 
             <h1
               className="text-[76px] leading-[1.0] text-center tracking-[-1.5px] text-black"

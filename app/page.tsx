@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      <FontPreview />
+      {/* <FontPreview /> */}
 
       {/* Section 1: Full-screen animated intro */}
       <div id="hero-section" className="relative z-[20]">
