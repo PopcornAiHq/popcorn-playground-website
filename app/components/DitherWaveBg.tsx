@@ -17,7 +17,7 @@ const BAYER4 = [
 ];
 
 const EDGE_PARAMS = {
-  base: 0.85,
+  base: 0.7,
   transition: 0.38,
   waveAFreq: 4.3,
   waveAAmp: 0.021,

@@ -52,6 +52,17 @@ body {
   animation-delay: var(--pop-delay, 0s);
 }
 
+/* Purple → Caramel → Yellow */
+@keyframes tint-cycle {
+  0%, 31%  { background-color: #9B59B6; }
+  33%, 64% { background-color: #DFA56E; }
+  66%, 98% { background-color: #F9D674; }
+}
+
+.animate-tint-cycle {
+  animation: tint-cycle 6s steps(1) infinite;
+}
+
 @keyframes msg-in {
   0% { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }
