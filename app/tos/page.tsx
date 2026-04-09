@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import PageFooter from "../components/PageFooter";
 
 export default function TermsOfServicePage() {
   return (
@@ -8,6 +9,12 @@ export default function TermsOfServicePage() {
         <Link href="/">
           <Image alt="Popcorn" src="/popcorn-logo.svg" width={133} height={50} className="block" style={{ filter: "brightness(0)" }} />
         </Link>
+        <button
+          className="bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
+          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
+        >
+          GET SETUP
+        </button>
       </nav>
 
       <div className="max-w-[1200px] mx-auto px-10 pt-32 pb-20">
@@ -32,7 +39,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>3. Definitions.</strong> References to &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot; mean A Dream Inc. (d/b/a &quot;Popcorn&quot;). &quot;Popcorn&quot; is our product name. &quot;popcorn.ai&quot; is our domain. &quot;Services&quot; means the Popcorn online collaboration platform and related services made available via popcorn.ai and any related websites, applications, and support channels. References to &quot;you&quot; mean the individual accessing or using the Services. Capitalized terms not otherwise defined have the meanings assigned to them in the applicable Enterprise Services Agreement (defined in Section 5), <a href="#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</a>, or Privacy Policy.
+                <strong>3. Definitions.</strong> References to &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot; mean A Dream Inc. (d/b/a &quot;Popcorn&quot;). &quot;Popcorn&quot; is our product name. &quot;popcorn.ai&quot; is our domain. &quot;Services&quot; means the Popcorn online collaboration platform and related services made available via popcorn.ai and any related websites, applications, and support channels. References to &quot;you&quot; mean the individual accessing or using the Services. Capitalized terms not otherwise defined have the meanings assigned to them in the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> (defined in Section 5), <a href="#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</a>, or Privacy Policy.
               </p>
             </section>
 
@@ -44,7 +51,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>5. Enterprise Services Agreement.</strong> The Customer has entered into a separate agreement with the Company governing the provision of the Services (the &quot;Enterprise Services Agreement&quot;). Under that agreement, the Customer controls the workspace, including user access, permissions, integrations, retention settings, exports, and administrative actions. Content, messages, files, decisions, actions, and other information submitted to or generated within a workspace are Customer Data (&quot;Customer Data&quot;) and are controlled by the Customer.
+                <strong>5. <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.</strong> The Customer has entered into a separate agreement with the Company governing the provision of the Services (the &quot;<Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>&quot;). Under that agreement, the Customer controls the workspace, including user access, permissions, integrations, retention settings, exports, and administrative actions. Content, messages, files, decisions, actions, and other information submitted to or generated within a workspace are Customer Data (&quot;Customer Data&quot;) and are controlled by the Customer.
               </p>
             </section>
 
@@ -53,10 +60,10 @@ export default function TermsOfServicePage() {
                 <strong>6. Customer Data and Instructions.</strong> You acknowledge and agree that the Customer controls all user-created data submitted to, generated within, or processed through the Services at any level of the platform, including within workspaces, channels (public or private), threads, direct messages, and related features. This includes, without limitation, messages, files, prompts, content, communications, contextual information, and other data you provide or generate through the Services (&quot;User Data&quot;).
               </p>
               <p className="mt-4">
-                You further acknowledge and agree that the Customer may access, use, disclose, modify, export, transfer, or delete such User Data, including data associated with your account, at any time in accordance with the Enterprise Services Agreement, the Customer&apos;s policies, and applicable law. Customer actions, configurations, or system-defined retention limits may result in the access, use, disclosure, modification, or deletion of such data without further notice to you.
+                You further acknowledge and agree that the Customer may access, use, disclose, modify, export, transfer, or delete such User Data, including data associated with your account, at any time in accordance with the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>, the Customer&apos;s policies, and applicable law. Customer actions, configurations, or system-defined retention limits may result in the access, use, disclosure, modification, or deletion of such data without further notice to you.
               </p>
               <p className="mt-4">
-                For avoidance of doubt, we do not own or control Customer Data but process such data only as directed by the Customer and as described in the Enterprise Services Agreement and Privacy Policy.
+                For avoidance of doubt, we do not own or control Customer Data but process such data only as directed by the Customer and as described in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> and Privacy Policy.
               </p>
             </section>
 
@@ -228,7 +235,7 @@ export default function TermsOfServicePage() {
                 </p>
                 <ul className="list-disc pl-8 space-y-1">
                   <li>(i) provide, operate, maintain, and secure the Services;</li>
-                  <li>(ii) perform obligations under the applicable Enterprise Services Agreement;</li>
+                  <li>(ii) perform obligations under the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>;</li>
                   <li>(iii) enable collaboration, integrations, and AI-enabled features requested by you or the Customer;</li>
                   <li>(iv) comply with legal obligations and enforce the Terms of Service; and</li>
                   <li>(v) improve and develop the Services, including reliability, safety, and performance, in a manner consistent with the Privacy Policy and Customer instructions.</li>
@@ -286,16 +293,16 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>23. Governing Law, Arbitration, and Class Action Waiver.</strong> These User Terms are governed by the law specified in the applicable Enterprise Services Agreement, without regard to conflict-of-laws principles.
+                <strong>23. Governing Law, Arbitration, and Class Action Waiver.</strong> These User Terms are governed by the law specified in the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>, without regard to conflict-of-laws principles.
               </p>
               <p className="mt-4">
-                Except as expressly provided in the applicable Enterprise Services Agreement, any dispute, claim, or controversy arising out of or relating to these User Terms, the Services, or your use of the Services shall be resolved by binding arbitration, rather than in court, in accordance with the arbitration provisions set forth in the Enterprise Services Agreement. The arbitration shall be conducted by the arbitral forum and under the rules specified in the Enterprise Services Agreement, and judgment on the arbitration award may be entered in any court of competent jurisdiction.
+                Except as expressly provided in the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>, any dispute, claim, or controversy arising out of or relating to these User Terms, the Services, or your use of the Services shall be resolved by binding arbitration, rather than in court, in accordance with the arbitration provisions set forth in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>. The arbitration shall be conducted by the arbitral forum and under the rules specified in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>, and judgment on the arbitration award may be entered in any court of competent jurisdiction.
               </p>
               <p className="mt-4">
                 To the fullest extent permitted by applicable law, you agree that any arbitration or proceeding must be brought in your individual capacity and not as a plaintiff or class member in any purported class, collective, representative, private attorney general, or consolidated proceeding. Arbitrators may not consolidate claims or preside over any form of representative or class proceeding.
               </p>
               <p className="mt-4">
-                Nothing in this section limits either party&apos;s right to seek injunctive or equitable relief in a court of competent jurisdiction to prevent unauthorized use, misuse, or infringement of intellectual property or confidential information, or where such relief is expressly permitted under the Enterprise Services Agreement.
+                Nothing in this section limits either party&apos;s right to seek injunctive or equitable relief in a court of competent jurisdiction to prevent unauthorized use, misuse, or infringement of intellectual property or confidential information, or where such relief is expressly permitted under the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.
               </p>
             </section>
 
@@ -480,13 +487,7 @@ export default function TermsOfServicePage() {
         </article>
       </div>
 
-      <footer className="text-center py-8 text-sm text-[#1a1a1a]/50">
-        <div className="flex justify-center gap-8 mb-2">
-          <Link className="hover:underline" href="/privacy">Privacy Policy</Link>
-          <Link className="hover:underline" href="/about">About</Link>
-        </div>
-        <p>&copy; 2026 A Dream Inc. | All rights reserved.</p>
-      </footer>
+      <PageFooter />
     </main>
   );
 }

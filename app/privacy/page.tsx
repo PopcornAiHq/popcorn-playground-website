@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import PageFooter from "../components/PageFooter";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -8,6 +9,12 @@ export default function PrivacyPolicyPage() {
         <Link href="/">
           <Image alt="Popcorn" src="/popcorn-logo.svg" width={133} height={50} className="block" style={{ filter: "brightness(0)" }} />
         </Link>
+        <button
+          className="bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
+          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
+        >
+          GET SETUP
+        </button>
       </nav>
 
       <div className="max-w-[1200px] mx-auto px-10 pt-32 pb-20">
@@ -20,7 +27,7 @@ export default function PrivacyPolicyPage() {
           <div className="space-y-8 text-[18px] leading-relaxed" style={{ fontFamily: "var(--font-albert-sans)" }}>
             <section>
               <p>
-                <strong>1. Definitions.</strong> &quot;Personal data&quot; means information that identifies or reasonably relates to an identifiable individual. &quot;Customer Data&quot; means content and information submitted to, generated within, or processed through the Services by or on behalf of a Customer, including messages, files, prompts, inputs, outputs, and other communications. &quot;Other Information&quot; means information collected or generated in connection with operation of the Services that is not Customer Data. Customer Data that has been aggregated or de-identified such that it no longer constitutes Personal Data is not Customer Data and is treated as Other Information for the purposes of this Privacy Policy. Capitalized terms not defined here have the meanings given in the <Link href="/tos" className="text-[#1a3de8] hover:underline">User Terms of Service</Link>, <Link href="/tos#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</Link>, or Enterprise Services Agreement.
+                <strong>1. Definitions.</strong> &quot;Personal data&quot; means information that identifies or reasonably relates to an identifiable individual. &quot;Customer Data&quot; means content and information submitted to, generated within, or processed through the Services by or on behalf of a Customer, including messages, files, prompts, inputs, outputs, and other communications. &quot;Other Information&quot; means information collected or generated in connection with operation of the Services that is not Customer Data. Customer Data that has been aggregated or de-identified such that it no longer constitutes Personal Data is not Customer Data and is treated as Other Information for the purposes of this Privacy Policy. Capitalized terms not defined here have the meanings given in the <Link href="/tos" className="text-[#1a3de8] hover:underline">User Terms of Service</Link>, <Link href="/tos#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</Link>, or <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.
               </p>
             </section>
 
@@ -32,25 +39,25 @@ export default function PrivacyPolicyPage() {
                 This Privacy Policy does not apply to third-party applications, tools, artificial intelligence services, or other software that integrate with or are accessible through the Services (&quot;Third-Party Services&quot; or &quot;Third-Party Integrations&quot;). Third-Party Services operate under their own terms of service and privacy policies, and we do not control how such third parties collect, use, or process personal data. You are responsible for reviewing and complying with the terms and privacy practices of any Third-Party Services you enable or use.
               </p>
               <p className="mt-4">
-                Access to and use of the Services may be governed by a separate written agreement between the Customer and A Dream Inc. (an &quot;Enterprise Services Agreement&quot;) where applicable. That agreement governs delivery, configuration, and use of the Services, including the processing of messages, files, prompts, outputs, and other content submitted through the Services (&quot;Customer Data&quot;).
+                Access to and use of the Services may be governed by a separate written agreement between the Customer and A Dream Inc. (an &quot;<Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>&quot;) where applicable. That agreement governs delivery, configuration, and use of the Services, including the processing of messages, files, prompts, outputs, and other content submitted through the Services (&quot;Customer Data&quot;).
               </p>
               <p className="mt-4">
-                The organization or individual that enters into the Enterprise Services Agreement (the &quot;Customer&quot;) controls its workspace, including user access, settings, integrations, retention configurations, and administrative actions, as well as all Customer Data associated with that workspace. If you access the Services through a workspace, your use of the Services and the processing of Customer Data are subject to the Customer&apos;s policies and instructions. Questions regarding workspace-specific practices should be directed to the applicable Customer.
+                The organization or individual that enters into the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> (the &quot;Customer&quot;) controls its workspace, including user access, settings, integrations, retention configurations, and administrative actions, as well as all Customer Data associated with that workspace. If you access the Services through a workspace, your use of the Services and the processing of Customer Data are subject to the Customer&apos;s policies and instructions. Questions regarding workspace-specific practices should be directed to the applicable Customer.
               </p>
               <p className="mt-4">
-                This Privacy Policy describes our general data practices and does not override or modify the Enterprise Services Agreement or Customer instructions regarding Customer Data.
+                This Privacy Policy describes our general data practices and does not override or modify the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> or Customer instructions regarding Customer Data.
               </p>
             </section>
 
             <section>
               <p>
-                <strong>3. Controller and Processor Roles.</strong> For Customer Data, the applicable Customer is the data controller and we act as a service provider or data processor, processing Customer Data only in accordance with the Customer&apos;s instructions, the Enterprise Services Agreement, and applicable law. For Other Information, we act as the data controller (or &quot;business,&quot; &quot;controller,&quot; as applicable under relevant law). Responsibilities, rights, and obligations differ depending on this distinction.
+                <strong>3. Controller and Processor Roles.</strong> For Customer Data, the applicable Customer is the data controller and we act as a service provider or data processor, processing Customer Data only in accordance with the Customer&apos;s instructions, the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>, and applicable law. For Other Information, we act as the data controller (or &quot;business,&quot; &quot;controller,&quot; as applicable under relevant law). Responsibilities, rights, and obligations differ depending on this distinction.
               </p>
             </section>
 
             <section>
               <p>
-                <strong>4. Applicability of Enterprise Services Agreements.</strong> The processing of Customer Data is governed by the Enterprise Services Agreement and any applicable data processing addendum between us and the Customer. Requests relating to Customer Data, including access, deletion, or export, should generally be directed to the Customer that controls the workspace.
+                <strong>4. Applicability of <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>s.</strong> The processing of Customer Data is governed by the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> and any applicable data processing addendum between us and the Customer. Requests relating to Customer Data, including access, deletion, or export, should generally be directed to the Customer that controls the workspace.
               </p>
             </section>
 
@@ -68,7 +75,7 @@ export default function PrivacyPolicyPage() {
                 <li>AI-related inputs and contextual data required to generate outputs or perform automated tasks.</li>
               </ul>
               <p className="mt-4">
-                Some of this data is processed dynamically to fulfill user requests and enable functionality and may not be persistently stored by us except as described in this Privacy Policy, the User Terms of Service, or the applicable Enterprise Services Agreement.
+                Some of this data is processed dynamically to fulfill user requests and enable functionality and may not be persistently stored by us except as described in this Privacy Policy, the User Terms of Service, or the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.
               </p>
               <p className="mt-4">
                 The Services may generate derived data from Customer Data, including summaries, decisions, action items, participant associations, contextual inferences, and User Memory generated through AI-enabled features. Such derived information may be stored as Communication Memory or User Memory (collectively &quot;Derived Data&quot; or &quot;Memory&quot;).
@@ -94,7 +101,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <ul className="list-disc pl-8 space-y-2 mt-4">
                 <li>Derived Data may be used to personalize interactions, generate summaries, or support future actions within the Services.</li>
-                <li>Unless otherwise specified in the Enterprise Services Agreement, Customer Data submitted to AI features is not used by us to train general-purpose artificial intelligence models.</li>
+                <li>Unless otherwise specified in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>, Customer Data submitted to AI features is not used by us to train general-purpose artificial intelligence models.</li>
                 <li>We may process limited data to operate, secure, monitor, and improve the Services.</li>
                 <li>AI-related processing may involve transient storage, caching, or logging for performance, security, or abuse-prevention purposes.</li>
                 <li>Third-party artificial intelligence service providers may process Customer Data to generate outputs or perform requested tasks.</li>
@@ -260,13 +267,7 @@ export default function PrivacyPolicyPage() {
         </article>
       </div>
 
-      <footer className="text-center py-8 text-sm text-[#1a1a1a]/50">
-        <div className="flex justify-center gap-8 mb-2">
-          <Link className="hover:underline" href="/tos">Terms of Service</Link>
-          <Link className="hover:underline" href="/about">About</Link>
-        </div>
-        <p>&copy; 2026 A Dream Inc. | All rights reserved.</p>
-      </footer>
+      <PageFooter />
     </main>
   );
 }
