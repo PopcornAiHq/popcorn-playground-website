@@ -7,10 +7,11 @@ const sections = [
     ],
   },
   {
-    label: "Marketing",
+    label: "GTM",
     channels: [
       { name: "daily-email-campaign", active: false, unread: false },
       { name: "landing-page", active: true, unread: false },
+      { name: "launch-schedule", active: false, unread: false },
     ],
   },
   {
@@ -22,12 +23,20 @@ const sections = [
     ],
   },
   {
-    label: "Daily",
+    label: "Team",
     channels: [
       { name: "ai-news", active: false, unread: false },
-      { name: "launch-schedule", active: false, unread: false },
-      { name: "releases-versions", active: false, unread: false },
       { name: "backend-services", active: false, unread: false },
+      { name: "competitors", active: false, unread: false },
+      { name: "release-versions", active: false, unread: false },
+      { name: "timezone-clocks", active: false, unread: false },
+    ],
+  },
+  {
+    label: "Social",
+    channels: [
+      { name: "bonk-a-coworker", active: false, unread: false },
+      { name: "team-cat-whiskers", active: false, unread: false },
     ],
   },
 ];
