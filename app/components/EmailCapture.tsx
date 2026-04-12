@@ -1,6 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import Cal, { getCalApi } from "@calcom/embed-react";
+
+const CAL_LINK = "brina-lee-vytmz6/30min";
 
 export default function EmailCapture({ variant = "hero", scrolled = false }: { variant?: "hero" | "nav" | "nav-expand"; scrolled?: boolean }) {
   const [email, setEmail] = useState("");
@@ -9,6 +12,28 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
   const [hovered, setHovered] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "light",
+        hideEventTypeDetails: false,
+      });
+    })();
+  }, []);
+
+  const openCal = async () => {
+    const cal = await getCalApi();
+    cal("modal", {
+      calLink: CAL_LINK,
+      config: {
+        layout: "month_view",
+        name: "",
+        email: email.trim(),
+      },
+    });
+  };
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -56,6 +81,8 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
       if (!res.ok) {
         const data = await res.json();
         if (res.status === 409) {
+          // Already signed up — still open calendar
+          await openCal();
           setStatus("success");
           return;
         }
@@ -64,6 +91,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
         return;
       }
 
+      await openCal();
       setStatus("success");
     } catch {
       setErrorMsg("Something went wrong. Please try again.");
@@ -75,12 +103,13 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
   if (variant === "nav-expand") {
     if (status === "success") {
       return (
-        <span
-          className="text-sm font-medium text-white px-4"
+        <button
+          onClick={openCal}
+          className="text-sm font-medium text-black bg-[#5CE0D8] px-5 py-2.5 rounded-[20px] hover:bg-[#4bcfc7] active:scale-95 transition-all cursor-pointer shadow-md"
           style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
         >
-          You&apos;re in! ✓
-        </span>
+          Book a call with Brina
+        </button>
       );
     }
 
@@ -140,52 +169,23 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
 
   // Nav variant (unused now but kept for reference)
   if (variant === "nav") {
-    if (status === "success") {
-      return (
-        <span
-          className="text-sm font-medium text-green-600 px-4"
-          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-        >
-          You&apos;re in! ✓
-        </span>
-      );
-    }
-
-    return (
-      <form onSubmit={handleSubmit} noValidate className="flex items-center gap-0 bg-white/10 border border-white/20 rounded-[12px] overflow-hidden">
-        <input
-          type="email"
-          placeholder="Work email"
-          value={email}
-          onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
-          className="bg-transparent text-sm px-4 py-2.5 outline-none text-black placeholder:text-black/40 w-[160px]"
-          style={{ fontFamily: "var(--font-albert-sans)" }}
-        />
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="bg-black text-white px-5 py-2.5 text-sm font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5 shrink-0"
-          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-        >
-          GET BETA
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 17L17 7" />
-            <path d="M7 7H17V17" />
-          </svg>
-        </button>
-      </form>
-    );
+    return null;
   }
 
   // Hero variant
   if (status === "success") {
     return (
-      <div
-        className="bg-white/80 backdrop-blur-sm px-12 py-5 rounded-[24px] text-[22px] font-semibold shadow-lg border-[4px] border-[#5CE0D8] text-center text-black"
+      <button
+        onClick={openCal}
+        className="bg-[#1a3de8] text-white px-12 py-5 rounded-[24px] text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[4px] border-[#5CE0D8] flex items-center gap-3"
         style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
       >
-        You&apos;re in! We&apos;ll be in touch ✓
-      </div>
+        Book a call with Brina
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 17L17 7" />
+          <path d="M7 7H17V17" />
+        </svg>
+      </button>
     );
   }
 
