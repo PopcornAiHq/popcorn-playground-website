@@ -24,13 +24,13 @@ export async function POST(request: Request) {
     const sql = neon(process.env.DATABASE_URL!);
 
     await sql`
-      INSERT INTO waitlist (email, created_at)
+      INSERT INTO beta_signup (email, created_at)
       VALUES (${email.trim()}, ${new Date().toISOString()})
     `;
 
-    if (process.env.POPCORN_WEBHOOK_URL) {
+    if (process.env.POPCORN_BETA_SIGNUPS_WEBHOOK) {
       try {
-        await fetch(process.env.POPCORN_WEBHOOK_URL, {
+        await fetch(process.env.POPCORN_BETA_SIGNUPS_WEBHOOK, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
