@@ -1,12 +1,35 @@
 
-const channels = [
-  { name: "welcome", active: false, unread: false },
-  { name: "landing-page", active: true, unread: false },
-  { name: "release-notes", active: false, unread: false },
-  { name: "dashboard", active: false, unread: false },
-  { name: "architecture-diagram", active: false, unread: false },
-  { name: "gtm-checklist", active: false, unread: false },
-  { name: "in-the-news", active: false, unread: false },
+const sections = [
+  {
+    label: "Getting Started",
+    channels: [
+      { name: "how-to-popcorn", active: false, unread: false },
+    ],
+  },
+  {
+    label: "Marketing",
+    channels: [
+      { name: "daily-email-campaign", active: false, unread: false },
+      { name: "landing-page", active: true, unread: false },
+    ],
+  },
+  {
+    label: "Customer Prototypes",
+    channels: [
+      { name: "analytics-dash", active: false, unread: false },
+      { name: "health-monitor", active: false, unread: false },
+      { name: "onboarding-flow", active: false, unread: false },
+    ],
+  },
+  {
+    label: "Daily",
+    channels: [
+      { name: "ai-news", active: false, unread: false },
+      { name: "launch-schedule", active: false, unread: false },
+      { name: "releases-versions", active: false, unread: false },
+      { name: "backend-services", active: false, unread: false },
+    ],
+  },
 ];
 
 export default function ChannelsSidebar({ open, width, transition }: { open: boolean; width: number; transition: string }) {
@@ -25,7 +48,7 @@ export default function ChannelsSidebar({ open, width, transition }: { open: boo
       <div className="flex items-center gap-2.5 mx-2 px-3 py-2 mt-2 rounded-[6px] hover:bg-black/5 cursor-pointer">
         <img src="/assets/app-logo.png" alt="Popcorn" className="w-9 h-9 rounded-[8px] shrink-0" />
         <div className="min-w-0 flex-1">
-          <p className="text-[16px] font-bold text-black leading-[1.3] tracking-[0.5px] truncate">Popcorn</p>
+          <img src="/popcorn-logo.svg" alt="Popcorn" className="h-6" style={{ filter: "brightness(0)" }} />
         </div>
         <svg className="w-4 h-4 text-black/30 shrink-0" viewBox="0 0 16 16" fill="none">
           <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -39,13 +62,6 @@ export default function ChannelsSidebar({ open, width, transition }: { open: boo
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
-          </svg>
-        </button>
-        {/* Add to sidebar */}
-        <button className="w-8 h-8 rounded-lg flex items-center justify-center text-black/40 hover:bg-black/5 hover:text-black/70 transition-colors">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </button>
         {/* Compose */}
@@ -64,32 +80,36 @@ export default function ChannelsSidebar({ open, width, transition }: { open: boo
         </button>
       </div>
 
-      {/* Category header */}
-      <div className="flex items-center gap-1 px-3 pt-3 pb-1">
-        <svg className="w-3 h-3 text-black/40" viewBox="0 0 16 16" fill="none">
-          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="text-[11px] uppercase tracking-[0.5px] text-black/40 font-semibold">Channels</span>
-      </div>
-
-      {/* Channel list */}
-      <div className="flex-1 overflow-y-auto px-0 mt-0.5">
-        {channels.map((ch) => (
-          <div
-            key={ch.name}
-            className={`flex items-center gap-2.5 mx-2 px-3 h-8 rounded-[6px] cursor-pointer transition-colors ${
-              ch.active ? "bg-black text-white" : "hover:bg-black/5"
-            }`}
-            style={{ width: "calc(100% - 16px)" }}
-          >
-            <span className={`text-[14px] shrink-0 ${ch.active ? "text-white/60" : "text-black/40"}`}>#</span>
-            <span
-              className={`text-[14px] truncate tracking-[-0.2px] leading-[1.2] ${
-                ch.active ? "font-bold text-white" : ch.unread ? "font-semibold text-black" : "text-black/60"
-              }`}
-            >
-              {ch.name}
-            </span>
+      {/* Channel sections */}
+      <div className="flex-1 overflow-y-auto px-0 mt-1">
+        {sections.map((section) => (
+          <div key={section.label}>
+            <div className="flex items-center gap-1 px-3 pt-3 pb-1">
+              <svg className="w-3 h-3 text-black/40" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-[11px] uppercase tracking-[0.5px] text-black/40 font-semibold">{section.label}</span>
+            </div>
+            <div className="mt-0.5">
+              {section.channels.map((ch) => (
+                <div
+                  key={ch.name}
+                  className={`flex items-center gap-2.5 mx-2 px-3 h-8 rounded-[6px] cursor-pointer transition-colors ${
+                    ch.active ? "bg-black text-white" : "hover:bg-black/5"
+                  }`}
+                  style={{ width: "calc(100% - 16px)" }}
+                >
+                  <svg className={`w-3.5 h-3.5 shrink-0 ${ch.active ? "text-white/60" : "text-black/40"}`} viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3.474,2.784L14.897,6.958c.481,.176,.467,.861-.021,1.018l-5.228,1.673-1.673,5.228c-.156,.488-.842,.502-1.018,.021L2.784,3.474c-.157-.43,.26-.847,.69-.69Z" /></svg>
+                  <span
+                    className={`text-[14px] truncate tracking-[-0.2px] leading-[1.2] ${
+                      ch.active ? "font-bold text-white" : ch.unread ? "font-semibold text-black" : "text-black/60"
+                    }`}
+                  >
+                    {ch.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

@@ -1,33 +1,23 @@
 import Link from "next/link";
-import Image from "next/image";
 import PageFooter from "../components/PageFooter";
+import SubpageNav from "../components/SubpageNav";
 
 export default function TermsOfServicePage() {
   return (
     <main className="relative min-h-screen bg-[#FFFDF8] text-[#1a1a1a]">
-      <nav className="flex items-center justify-between px-10 py-6">
-        <Link href="/">
-          <Image alt="Popcorn" src="/popcorn-logo.svg" width={133} height={50} className="block" style={{ filter: "brightness(0)" }} />
-        </Link>
-        <button
-          className="bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
-          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-        >
-          GET SETUP
-        </button>
-      </nav>
+      <SubpageNav />
 
       <div className="max-w-[1200px] mx-auto px-10 pt-32 pb-20">
         <article className="max-w-[900px] mx-auto">
           <h1 className="text-[56px] leading-[1.1] tracking-tight mb-4" style={{ fontFamily: "var(--font-synt)" }}>
             Terms of Service
           </h1>
-          <p className="text-[16px] text-[#1a1a1a]/60 mb-12">Last Edited: January 19, 2026</p>
+          <p className="text-[16px] text-[#1a1a1a]/60 mb-12">Last Edited: April 16, 2026</p>
 
           <div className="space-y-8 text-[18px] leading-relaxed">
             <section>
               <p>
-                <strong>1. Scope and Acceptance.</strong> These User Terms of Service (&quot;User Terms&quot;), together with any documents expressly incorporated by reference, govern your access to and use of the online collaboration platform and related services provided by the Company (the &quot;Services&quot;). By accessing or using the Services, or by continuing to use the Services after notice of changes, you acknowledge that you have read, understand, and agree to be bound by these User Terms. If you do not agree, you must not use the Services.
+                <strong>1. Scope and Acceptance.</strong> These User Terms of Service (&quot;User Terms&quot;), together with any documents expressly incorporated by reference, govern your access to and use of the online collaboration platform and related services provided by A Dream (the &quot;Services&quot;). By accessing or using the Services, or by continuing to use the Services after notice of changes, you acknowledge that you have read, understand, and agree to be bound by these User Terms. If you do not agree, you must not use the Services.
               </p>
             </section>
 
@@ -39,7 +29,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>3. Definitions.</strong> References to &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot; mean A Dream Inc. (d/b/a &quot;Popcorn&quot;). &quot;Popcorn&quot; is our product name. &quot;popcorn.ai&quot; is our domain. &quot;Services&quot; means the Popcorn online collaboration platform and related services made available via popcorn.ai and any related websites, applications, and support channels. References to &quot;you&quot; mean the individual accessing or using the Services. Capitalized terms not otherwise defined have the meanings assigned to them in the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> (defined in Section 5), <a href="#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</a>, or Privacy Policy.
+                <strong>3. Definitions.</strong> References to &quot;we,&quot; &quot;us,&quot; or &quot;our&quot; mean A Dream. References to &quot;you&quot; mean the individual accessing or using the Services. Capitalized terms not otherwise defined have the meanings assigned to them in the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> (&quot;Enterprise Services Agreement&quot; is a defined term &ndash; see paragraph 5), <a href="#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</a>, or Privacy Policy.
               </p>
             </section>
 
@@ -51,7 +41,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>5. <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.</strong> The Customer has entered into a separate agreement with the Company governing the provision of the Services (the &quot;<Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>&quot;). Under that agreement, the Customer controls the workspace, including user access, permissions, integrations, retention settings, exports, and administrative actions. Content, messages, files, decisions, actions, and other information submitted to or generated within a workspace are Customer Data (&quot;Customer Data&quot;) and are controlled by the Customer.
+                <strong>5. <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.</strong> The Customer has entered into a separate agreement with A Dream governing the provision of the Services (the &quot;<Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>&quot;). Under that agreement, the Customer controls the workspace, including user access, permissions, integrations, retention settings, exports, and administrative actions. Content, messages, files, decisions, actions, and other information submitted to or generated within a workspace are Customer Data (&quot;Customer Data&quot;) and are controlled by the Customer.
               </p>
             </section>
 
@@ -81,7 +71,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>8. Allocation of Responsibilities.</strong> As between the Company and the Customer, the Customer is solely responsible for establishing, communicating, and enforcing workplace policies and practices governing use of the Services, including any policies relating to monitoring, access, data retention, use of artificial intelligence features, and Third-Party Integrations.
+                <strong>8. Allocation of Responsibilities.</strong> As between A Dream and the Customer, the Customer is solely responsible for establishing, communicating, and enforcing workplace policies and practices governing use of the Services, including any policies relating to monitoring, access, data retention, use of artificial intelligence features, and Third-Party Integrations.
               </p>
               <p className="mt-4">
                 The Customer is solely responsible for obtaining any rights, permissions, notices, or consents required for the lawful collection, use, disclosure, transfer, and processing of User Data and other information submitted to the Services, including as between the Customer and its users, employees, contractors, or collaborators.
@@ -195,6 +185,41 @@ export default function TermsOfServicePage() {
                 <p>
                   <strong>(l) User Controls.</strong> Certain Memory elements may be reviewed, corrected, or removed through features made available in the Services. Availability of such controls may vary by context, scope, or configuration. Please see our Privacy Policy for more information.
                 </p>
+                <p>
+                  <strong>(m) Talk-Through Feature.</strong> The Services include a Talk-Through Feature that enables you to narrate or walk through actions on screen while the Services simultaneously capture the following data: (i) your voice audio, which is used solely for transcription and is permanently deleted immediately upon transcription completion &mdash; raw audio is not retained; (ii) cursor movement data, including a recording of on-screen cursor activity during the session; (iii) screen state data, including screenshots, timestamped recording sections, and visual content displayed during the session; and (iv) corresponding code context associated with the content displayed during the narration (collectively, &quot;Talk-Through Session Data&quot;).
+                </p>
+                <p>
+                  By using the Talk-Through Feature, you acknowledge and agree that:
+                </p>
+                <ul className="list-disc pl-8 space-y-2 mt-2">
+                  <li>(i) Your voice will be processed to generate a text transcription, and the raw audio file will be immediately and permanently deleted following transcription. The transcribed text is retained as Customer Data;</li>
+                  <li>(ii) Cursor movement data, screenshots, and recording sections are retained as Customer Data and may be used by the AI agent to create or modify In-Channel Apps, execute /update commands, or perform other authorized actions;</li>
+                  <li>(iii) Talk-Through Session Data is packaged as a structured message within the channel and is therefore accessible to all channel members, including the AI agent;</li>
+                  <li>(iv) You should not use the Talk-Through Feature to narrate attorney-client privileged communications, legally sensitive matter discussions, or other information subject to professional confidentiality obligations, unless you have evaluated the risks described in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> and determined such use is appropriate; and</li>
+                  <li>(v) A Dream does not guarantee the accuracy of voice transcriptions, and you are responsible for reviewing transcribed content before relying on it or approving agent actions based upon it.</li>
+                </ul>
+                <p>
+                  <strong>(n) In-Channel Apps.</strong> The Services allow AI agents, acting on instructions from authorized users, to create, modify, and deploy lightweight applications within channels (&quot;In-Channel Apps&quot;). In-Channel Apps are scoped to the channel in which they are created and operate within the permissions, credentials, and integrations configured for that channel.
+                </p>
+                <ul className="list-disc pl-8 space-y-2 mt-2">
+                  <li>(i) In-Channel Apps are not private. They are visible and accessible to all members of the channel in which they are deployed, including the AI agent. You should not use In-Channel Apps to process or display information that should not be shared with all channel members.</li>
+                  <li>(ii) In-Channel Apps are persistent within the channel and remain available until explicitly removed by an authorized user or Channel Manager, or until the channel is deleted or retention policies apply.</li>
+                  <li>(iii) In-Channel Apps are created and modified by the AI agent based on user instructions, Talk-Through Session Data, or other inputs provided within the channel. The AI agent may update, rebuild, or modify In-Channel Apps in response to /update commands or other authorized instructions.</li>
+                  <li>(iv) In-Channel Apps may access web resources and external data sources to the extent permitted by the channel&apos;s configured integrations and credentials. Such access is subject to the same authorization controls and credential boundaries described elsewhere in these User Terms.</li>
+                  <li>(v) You are responsible for reviewing In-Channel Apps and their outputs before relying on them. We do not guarantee the accuracy, completeness, security, or fitness for purpose of any In-Channel App, and we disclaim liability for any actions taken or decisions made based on In-Channel App outputs.</li>
+                </ul>
+                <p>
+                  <strong>(o) Cross-Channel Agent Data Access &ndash; User Disclosure.</strong> AI agents operate within a virtual machine (&quot;VM&quot;) environment that may have access to data, files, context, and resources across multiple channels within the same workspace. While In-Channel Apps and agent responses are scoped to the channel in which they are invoked, the underlying VM environment is not strictly siloed by channel. This means that an AI agent acting within one channel may have the technical ability to access information from other channels within the same workspace, subject to workspace-level permissions and Customer-configured access controls. You acknowledge this cross-channel access boundary and should exercise care when submitting sensitive information to any channel within a workspace.
+                </p>
+                <p>
+                  <strong>(p) Privilege and Confidentiality.</strong> The Services, including AI-enabled features, Talk-Through, In-Channel Apps, and Memory, are not designed to preserve attorney-client privilege, work-product protection, or other professional confidentiality obligations.
+                </p>
+                <ul className="list-disc pl-8 space-y-2 mt-2">
+                  <li>(i) You should not submit privileged, work-product-protected, or professionally confidential information to the Services unless you have evaluated the risks described in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> and determined such use is appropriate.</li>
+                  <li>(ii) Information submitted to the Services may be processed by third-party AI models, stored in Memory, surfaced in summaries, or made accessible to other channel members or workspace participants, any of which may affect privilege or confidentiality protections.</li>
+                  <li>(iii) We make no representations regarding whether use of the Services will preserve or waive any privilege, protection, or confidentiality obligation, and we disclaim liability for any waiver or disclosure that results from your use of the Services.</li>
+                  <li>(iv) Customers are solely responsible for establishing policies governing the use of the Services in connection with privileged, confidential, or professionally sensitive information, and for ensuring that their users are aware of and comply with such policies.</li>
+                </ul>
               </div>
             </section>
 
@@ -249,9 +274,6 @@ export default function TermsOfServicePage() {
                 <p>
                   <strong>(f) No Implied Rights.</strong> Except as expressly stated in these User Terms, no rights or licenses are granted by us, whether by implication, estoppel, or otherwise.
                 </p>
-                <p>
-                  <strong>(g) Trademarks.</strong> &quot;Popcorn&quot; is a trademark of A Dream Inc. All other trademarks are the property of their respective owners.
-                </p>
               </div>
             </section>
 
@@ -269,7 +291,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>19. Notices.</strong> Notices to you may be provided by emailing the email address associated with your account or directly messaging you through the Services. Legal notices to the Company must be sent to: A Dream Inc., 5214F Diamond Heights Blvd #3226, San Francisco, CA 94131.
+                <strong>19. Notices.</strong> Notices to you may be provided by emailing the email address associated with your account or directly messaging you through the Services. Legal notices to A Dream must be sent to the address designated by us, which is: 2261 Market Street, STE 60578, San Francisco, CA, 94114.
               </p>
             </section>
 
@@ -332,7 +354,7 @@ export default function TermsOfServicePage() {
 
             <section>
               <p>
-                <strong>28. Entire Agreement.</strong> These User Terms constitute the entire agreement between you and the Company regarding use of the Services and supersede all prior agreements on that subject.
+                <strong>28. Entire Agreement.</strong> These User Terms constitute the entire agreement between you and A Dream regarding use of the Services and supersede all prior agreements on that subject.
               </p>
             </section>
           </div>
@@ -377,6 +399,23 @@ export default function TermsOfServicePage() {
               <p>
                 <strong>6. AI-Specific Restrictions and High-Risk Uses.</strong> You may not use AI-enabled features of the Services in ways that are unlawful, unsafe, or that create undue risk to individuals. You may not use AI features, including but not limited to AI Memory features, to make fully automated decisions about individuals that have legal, medical, financial, employment, housing, insurance, educational admissions, credit, or similarly material effects without meaningful human review and responsibility. You may not use AI features to generate or facilitate instructions for wrongdoing, evade safety controls, produce malicious code, conduct social engineering, or create or distribute content that is unlawful, exploitative, or harmful. You may not attempt to reverse engineer, extract, decompile, or discover underlying AI systems, prompts, safety mechanisms, or model behavior in order to bypass restrictions, or to build or train competing models using outputs or the Services in a manner not authorized by us.
               </p>
+              <p className="mt-4">
+                You may not use the Talk-Through Feature to capture voice, screen, or cursor data for purposes that are unlawful, that violate the privacy rights of third parties, or that involve the recording of individuals who have not consented to being recorded to the extent required by applicable law. You may not use the Talk-Through Feature to narrate or capture content that is subject to professional secrecy, attorney-client privilege, or other confidentiality obligations, unless you have evaluated the applicable risks and determined such use is appropriate. You may not use In-Channel Apps or agent-enabled features to create applications that are designed to circumvent authorization controls, harvest credentials, conduct surveillance, or perform actions outside the scope authorized by the applicable Customer.
+              </p>
+              <div className="mt-4 space-y-4">
+                <p>
+                  <strong>(a) Unauthorized Recording.</strong> You may not use the Talk-Through Feature to record, capture, or transcribe the voice, likeness, or communications of any individual without their knowledge and consent to the extent required by applicable law, including two-party or all-party consent jurisdictions.
+                </p>
+                <p>
+                  <strong>(b) Sensitive and Privileged Content.</strong> You may not use the Talk-Through Feature to narrate, capture, or process content that is subject to attorney-client privilege, work-product protection, professional secrecy, or other confidentiality obligations, unless you have independently evaluated the risks and determined such use is appropriate in light of applicable legal and ethical requirements.
+                </p>
+                <p>
+                  <strong>(c) Misuse of Transcriptions.</strong> You may not use Talk-Through transcriptions to misrepresent statements, fabricate records, or create misleading attributions. You are responsible for reviewing all transcribed content for accuracy before relying on it or authorizing agent actions based upon it.
+                </p>
+                <p>
+                  <strong>(d) Prohibited Data Capture.</strong> You may not use the Talk-Through Feature to intentionally capture credentials, passwords, API keys, personal identification numbers, financial account numbers, or other sensitive authentication or financial data displayed on screen during a session.
+                </p>
+              </div>
             </section>
 
             <section>
@@ -386,6 +425,20 @@ export default function TermsOfServicePage() {
               <p className="mt-4">
                 This includes attempting to cause an AI agent to perform actions for which it lacks valid credentials, permissions, or authorization, or attempting to induce the Services to access third-party systems beyond the scope configured by the applicable Customer or Channel Manager.
               </p>
+              <div className="mt-4 space-y-4">
+                <p>
+                  <strong>(a) Unauthorized Scope Expansion.</strong> You may not use In-Channel Apps or agent-enabled features to create applications that attempt to access data, systems, credentials, or resources outside the scope authorized by the applicable Customer or Channel Manager for that channel.
+                </p>
+                <p>
+                  <strong>(b) Credential Harvesting via Apps.</strong> You may not use In-Channel Apps to collect, store, display, or transmit credentials, API keys, tokens, passwords, or other authentication data, whether belonging to you or to other users.
+                </p>
+                <p>
+                  <strong>(c) Surveillance and Monitoring.</strong> You may not use In-Channel Apps to conduct unauthorized surveillance, monitoring, or tracking of users, their activities, or their data, whether within the Services or through connected Third-Party Tools.
+                </p>
+                <p>
+                  <strong>(d) Cross-Channel Data Exfiltration.</strong> You may not use In-Channel Apps or agent-enabled features to deliberately access, extract, copy, or surface data from other channels or contexts within the workspace that are not authorized for the channel in which the In-Channel App is deployed.
+                </p>
+              </div>
             </section>
 
             <section>
@@ -463,6 +516,9 @@ export default function TermsOfServicePage() {
             <section>
               <p>
                 <strong>14. Sensitive Information.</strong> You should not submit highly sensitive, privileged, or confidential information to the Services except in private or restricted contexts intended for such use. You are responsible for determining whether use of the Services is appropriate for any particular information, taking into account workspace configuration, sharing settings, and AI-enabled features. Channel managers and administrators should exercise care when adding members to channels that contain sensitive information. In addition, depending on workspace configuration and authorization settings, existing channel members may be able to invite or add additional participants using credentials or permissions associated with the channel, channel manager, or its integrations, which may expand access to information without further approval, including approval by the channel manager.
+              </p>
+              <p className="mt-4">
+                In-Channel Apps created within a channel are visible to all channel members and operate within the channel&apos;s configured permissions and credentials. You should not use In-Channel Apps to process or display sensitive, privileged, or confidential information unless all channel members are authorized to access such information. The underlying AI agent VM environment may have cross-channel access within the same workspace, subject to workspace-level permissions and Customer-configured access controls. You should exercise care when submitting sensitive information to any channel, taking into account the cross-channel access boundary described in the User Terms.
               </p>
             </section>
 

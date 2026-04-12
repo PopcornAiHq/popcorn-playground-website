@@ -37,7 +37,7 @@ const MESSAGE_DEFS = [
     avatarGradient: "linear-gradient(135deg, #34FF7F, #67EEBC, #94DFF6)",
     initial: "O",
     minutesAgo: 2.5,
-    body: "Add \"Fastest\" to the headline. because we are. 🚗💨",
+    body: "Emphasize multiplayer. we care about the moment we need to collab 🤝",
     reactions: undefined as string[] | undefined,
     isAgent: false,
   },

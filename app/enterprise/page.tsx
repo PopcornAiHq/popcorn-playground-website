@@ -1,33 +1,23 @@
 import Link from "next/link";
-import Image from "next/image";
 import PageFooter from "../components/PageFooter";
+import SubpageNav from "../components/SubpageNav";
 
 export default function EnterpriseServicesAgreementPage() {
   return (
     <main className="relative min-h-screen bg-[#FFFDF8] text-[#1a1a1a]">
-      <nav className="flex items-center justify-between px-10 py-6">
-        <Link href="/">
-          <Image alt="Popcorn" src="/popcorn-logo.svg" width={133} height={50} className="block" style={{ filter: "brightness(0)" }} />
-        </Link>
-        <button
-          className="bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
-          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-        >
-          GET SETUP
-        </button>
-      </nav>
+      <SubpageNav />
 
       <div className="max-w-[1200px] mx-auto px-10 pt-32 pb-20">
         <article className="max-w-[900px] mx-auto">
           <h1 className="text-[56px] leading-[1.1] tracking-tight mb-4" style={{ fontFamily: "var(--font-synt)" }}>
             Enterprise Services Agreement
           </h1>
-          <p className="text-[16px] text-[#1a1a1a]/60 mb-12">Last Edited: January 19, 2026</p>
+          <p className="text-[16px] text-[#1a1a1a]/60 mb-12">Last Edited: April 16, 2026</p>
 
           <div className="space-y-8 text-[18px] leading-relaxed">
             <section>
               <p>
-                This Enterprise Services Agreement (&quot;Agreement&quot;) is entered into by and between A Dream Inc. (d/b/a &quot;Popcorn&quot;) (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) and the entity or individual identified as the customer (&quot;Customer,&quot; &quot;you,&quot; or &quot;your&quot;). This Agreement governs Customer&apos;s access to and use of the Popcorn services available at popcorn.ai (the &quot;Services&quot;).
+                This Enterprise Services Agreement (&quot;Agreement&quot;) is entered into by and between A Dream (&quot;A Dream,&quot; &quot;we,&quot; or &quot;us&quot;) and the entity or individual identified as the customer (&quot;Customer,&quot; &quot;you,&quot; or &quot;your&quot;). This Agreement governs Customer&apos;s access to and use of the Services.
               </p>
             </section>
 
@@ -35,57 +25,69 @@ export default function EnterpriseServicesAgreementPage() {
             <section>
               <h2 className="text-[28px] font-bold mb-4">1. Definitions</h2>
               <p>
-                Capitalized terms used but not defined in this Agreement have the meanings given in the <Link href="/tos" className="text-[#1a3de8] hover:underline">User Terms of Service</Link>, <Link href="/tos#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</Link>, and <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link>, each incorporated by reference.
+                &ldquo;In-Channel App&rdquo; means a lightweight application created by the AI agent within a channel in response to a user prompt, which may include interactive elements, data visualizations, or functional tools. In-Channel Apps are visible and accessible to all members of the channel in which they are created.
+              </p>
+              <p className="mt-2">
+                &ldquo;Talk-Through Feature&rdquo; means the real-time voice and screen-sharing functionality within the Services that enables a user to speak with the AI agent while optionally sharing their screen and cursor position. The AI agent may observe, process, and respond to audio input, screen content, and cursor movement during a Talk-Through session.
+              </p>
+              <p className="mt-2">
+                &ldquo;Talk-Through Session Data&rdquo; means all data generated during a Talk-Through session, including but not limited to voice audio, transcriptions, screen captures, cursor tracking data, and any AI-generated responses, summaries, or outputs derived therefrom.
+              </p>
+              <p className="mt-2">
+                &ldquo;Workspace-Owned Computer&rdquo; means the cloud-hosted virtual machine (VM) provisioned by A Dream for a workspace, within which the AI agent may execute code, access files, run applications, browse the web, and perform other computational tasks on behalf of Authorized Users.
+              </p>
+              <p className="mt-2">
+                Other capitalized terms used but not defined in this Agreement have the meanings given in the <Link href="/tos" className="text-[#1a3de8] hover:underline">User Terms of Service</Link>, <Link href="/tos#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</Link>, and <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link>, each incorporated by reference.
               </p>
             </section>
 
             {/* Section 2 */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4">2. Company&apos;s Responsibilities</h2>
+              <h2 className="text-[28px] font-bold mb-4">2. A Dream&apos;s Responsibilities</h2>
 
               <div className="space-y-6">
                 <div>
                   <p><strong>2.1 Provision of the Services</strong></p>
                   <p className="mt-2">
-                    Subject to the terms and conditions of this Agreement, Company will make the Services available to Customer and its Authorized Users during the applicable subscription term.
+                    Subject to the terms and conditions of this Agreement, A Dream will make the Services available to Customer and its Authorized Users during the applicable subscription term.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>2.2 Availability and Modifications</strong></p>
                   <p className="mt-2">
-                    Company may perform scheduled or emergency maintenance, updates, or modifications to the Services from time to time. Company will use commercially reasonable efforts to minimize service disruptions but does not guarantee uninterrupted availability.
+                    A Dream may perform scheduled or emergency maintenance, updates, or modifications to the Services from time to time. A Dream will use commercially reasonable efforts to minimize service disruptions but does not guarantee uninterrupted availability.
                   </p>
                   <p className="mt-2">
-                    Company may update, enhance, modify, or discontinue features or functionality of the Services, including AI-Enabled features, integrations, or Memory functionality, provided that such changes do not materially degrade the core functionality of the Services.
+                    A Dream may update, enhance, modify, or discontinue features or functionality of the Services, including AI-Enabled features, integrations, or Memory functionality, provided that such changes do not materially degrade the core functionality of the Services.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>2.3 Processing and Protection of Customer Data</strong></p>
                   <p className="mt-2">
-                    Company will process Customer Data in accordance with the <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link> and any applicable data processing addendum.
+                    A Dream will process Customer Data in accordance with the <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link>.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>2.4 Security Measures</strong></p>
                   <p className="mt-2">
-                    Company will implement and maintain reasonable administrative, technical, and organizational measures designed to protect Customer Data against unauthorized access, loss, misuse, or disclosure, taking into account the nature of the Services and current industry practices. Customer acknowledges that no system can be guaranteed to be completely secure and that security obligations are subject to the limitations set forth in this Agreement.
+                    A Dream will implement and maintain reasonable administrative, technical, and organizational measures designed to protect Customer Data against unauthorized access, loss, misuse, or disclosure, taking into account the nature of the Services and current industry practices. Customer acknowledges that no system can be guaranteed to be completely secure and that security obligations are subject to the limitations set forth in this Agreement.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>2.5 Support</strong></p>
                   <p className="mt-2">
-                    Company will provide customer support for its Services. Customers may contact Company with questions regarding the Services or the operation of the product by emailing contact@popcorn.ai.
+                    A Dream will provide customer support for its Services. Customers may contact A Dream with questions regarding the Services or the operation of the product by emailing contact@popcorn.ai.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>2.6 No Other Obligations</strong></p>
                   <p className="mt-2">
-                    Except as expressly stated in this Agreement, Company has no other obligations.
+                    Except as expressly stated in this Agreement, A Dream has no other obligations.
                   </p>
                 </div>
               </div>
@@ -120,14 +122,14 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>3.4 Credentials, Tokens, and Delegated Authorization</strong></p>
                   <p className="mt-2">
-                    Any action taken through the Services using credentials is deemed authorized by Customer, regardless of whether such action was initiated by: the Customer directly; an Authorized User; an AI agent acting on user instruction; or an automated workflow or integration. Customer must safeguard all credentials, promptly revoke or rotate compromised credentials, and notify Company without undue delay upon discovering any unauthorized access or misuse. See Section 5.3 of this Agreement for further details related to Third-Party Integrations.
+                    Any action taken through the Services using credentials is deemed authorized by Customer, regardless of whether such action was initiated by: the Customer directly; an Authorized User; an AI agent acting on user instruction; or an automated workflow or integration. Customer must safeguard all credentials, promptly revoke or rotate compromised credentials, and notify A Dream without undue delay upon discovering any unauthorized access or misuse. See Section 5.3 of this Agreement for further details related to Third-Party Integrations.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>3.5 Notices, Consents, and Workplace Policies</strong></p>
                   <p className="mt-2">
-                    Customer is solely responsible for establishing, communicating, and enforcing its own workplace policies governing use of the Services, including policies relating to: monitoring and access; data retention and deletion; use of AI-Enabled Features and Memory systems; Third-Party Integrations; and acceptable use sufficient to meet its requirements under this Agreement, the User Terms of Service, Acceptable Use Policy, and the Privacy Policy.
+                    Customer is solely responsible for establishing, communicating, and enforcing its own workplace policies governing use of the Services, including policies relating to: monitoring and access; data retention and deletion; use of AI-Enabled Features and Memory systems; Third-Party Integrations; and acceptable use that fulfill its requirements under this Agreement, the User Terms of Service, Acceptable Use Policy, and the Privacy Policy.
                   </p>
                   <p className="mt-2">
                     Customer is responsible for obtaining all required notices, consents, permissions, and authorizations from Authorized Users and other data subjects for the lawful collection, use, disclosure, transfer, and processing of Customer Data, including in connection with AI Features, Memory systems, and integrations.
@@ -155,6 +157,9 @@ export default function EnterpriseServicesAgreementPage() {
                   <p className="mt-2">
                     See the <Link href="/tos" className="text-[#1a3de8] hover:underline">User Terms of Service</Link>, <Link href="/tos#acceptable-use-policy" className="text-[#1a3de8] hover:underline">Acceptable Use Policy</Link>, and <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link> for more information.
                   </p>
+                  <p className="mt-2">
+                    Customer further acknowledges that In-Channel Apps created within a channel are accessible to all members of that channel and are not subject to the same privacy protections that apply to private messages or private channels. In-Channel Apps are workspace-accessible artifacts and should be treated accordingly for purposes of information security and privilege analysis. Customer is solely responsible for determining whether creation of an In-Channel App within a given channel is appropriate for any information accessible within that channel.
+                  </p>
                 </div>
               </div>
             </section>
@@ -170,7 +175,16 @@ export default function EnterpriseServicesAgreementPage() {
                     Customer acknowledges that the Services include artificial intelligence-enabled features, including AI agents, automation, summarization, reasoning, memory, and action execution (&quot;AI Features&quot; or &quot;AI-Enabled Features&quot;). AI Features operate based on user inputs, workspace context, available memory, configured permissions, and authorized integrations and credentials at the time of invocation.
                   </p>
                   <p className="mt-2">
-                    Customer authorizes Company to process Customer Data through AI Features as necessary to provide the Services in accordance with this Agreement and the <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link>.
+                    Customer authorizes A Dream to process Customer Data through AI Features as necessary to provide the Services in accordance with this Agreement and the <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link>.
+                  </p>
+                  <p className="mt-2">
+                    <strong>(a) Talk-Through Feature.</strong> The Services include a Talk-Through Feature that enables real-time voice interaction between an Authorized User and the AI agent, with optional screen and cursor sharing. During a Talk-Through session, the AI agent may observe, process, and respond to voice input, on-screen content, and cursor position. Talk-Through Session Data may be retained, summarized, and incorporated into workspace memory or channel context in accordance with workspace configuration and the <Link href="/privacy" className="text-[#1a3de8] hover:underline">Privacy Policy</Link>. Customer is solely responsible for ensuring that Authorized Users are informed of and consent to the capture, processing, and retention of Talk-Through Session Data, including voice recordings and screen content, and for compliance with all applicable laws governing such capture (including, without limitation, wiretapping, eavesdropping, biometric, and electronic surveillance laws).
+                  </p>
+                  <p className="mt-2">
+                    <strong>(b) In-Channel Apps.</strong> The AI agent may create In-Channel Apps within channels in response to user prompts. In-Channel Apps are visible and accessible to all members of the channel in which they are created. Customer acknowledges that In-Channel Apps may contain, display, or reference Customer Data, and that the creation of an In-Channel App within a channel effectively publishes such data to all channel members. Customer is solely responsible for determining whether the creation of an In-Channel App within a given channel is appropriate in light of the information accessible within that channel and the membership of that channel.
+                  </p>
+                  <p className="mt-2">
+                    <strong>(c) Workspace-Owned Computer.</strong> The Services include a Workspace-Owned Computer, a cloud-hosted virtual machine provisioned for the workspace. The AI agent may use the Workspace-Owned Computer to execute code, access files, run applications, install packages, browse the web, and perform other computational tasks on behalf of Authorized Users. Customer acknowledges that the Workspace-Owned Computer operates as a shared resource within the workspace and that files, applications, and data within the VM may be accessible to the AI agent acting on behalf of any Authorized User within the workspace. Customer is solely responsible for managing what data and credentials are stored within or accessible to the Workspace-Owned Computer.
                   </p>
                 </div>
 
@@ -180,7 +194,7 @@ export default function EnterpriseServicesAgreementPage() {
                     Customer agrees that it is solely responsible for reviewing, validating, and exercising human judgment over all AI-generated outputs, summaries, recommendations, action items, or automated actions.
                   </p>
                   <p className="mt-2">
-                    Customer agrees not to use the Services for high-risk or regulated uses that are prohibited by applicable law or that require additional risk management obligations, including where the Services would be used to make or materially support decisions in areas such as employment, education admissions, essential public services, credit, insurance, housing, or the administration of justice, without meaningful human review and without complying with applicable legal requirements. Customer will notify Company in writing if it intends to use the Services for such regulated uses so the parties can assess compliance and, if applicable, agree on additional terms.
+                    To ensure the continued reliability and safety of our platform, Customers agree not to deploy the Services for any purposes classified as &ldquo;High-Risk&rdquo; under applicable global AI regulations (such as the EU AI Act) without written authorization from A Dream. Specifically, Customer agrees not to use this system in critical infrastructure management, educational admissions or evaluation, employment recruitment or promotion, or in the administration of justice and essential public services.
                   </p>
                 </div>
 
@@ -194,7 +208,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>4.4 No Model Transparency or Audit Obligations</strong></p>
                   <p className="mt-2">
-                    Customer acknowledges that Company has no obligation to:
+                    Customer acknowledges that A Dream has no obligation to:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>explain, interpret, or disclose AI model logic, prompts, parameters, training data, or reasoning processes;</li>
@@ -209,7 +223,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>4.5 Third-Party AI Providers</strong></p>
                   <p className="mt-2">
-                    Customer acknowledges that AI Features rely on third-party artificial intelligence providers (&quot;Third-Party AI Providers&quot;), which may include OpenAI, Anthropic, Perplexity, or other providers selected by Company from time to time.
+                    Customer acknowledges that AI Features rely on third-party artificial intelligence providers (&quot;Third-Party AI Providers&quot;), which may include OpenAI, Anthropic, Perplexity, or other providers selected by A Dream from time to time.
                   </p>
                   <p className="mt-2">
                     Customer acknowledges and agrees that:
@@ -217,10 +231,13 @@ export default function EnterpriseServicesAgreementPage() {
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>Customer Data may be transmitted to and processed by Third-Party AI Providers solely to provide requested functionality;</li>
                     <li>Third-Party AI Providers operate under their own terms, policies, and technical constraints, which may change over time; and</li>
-                    <li>Company does not control Third-Party AI Provider internal data handling beyond contractual commitments.</li>
+                    <li>A Dream does not control Third-Party AI Provider internal data handling beyond contractual commitments.</li>
                   </ul>
                   <p className="mt-2">
                     Customer is responsible for compliance with all applicable Third-Party AI Provider acceptable use policies and restrictions.
+                  </p>
+                  <p className="mt-2">
+                    Customer further acknowledges that certain AI Features, including web browsing capabilities within the Workspace-Owned Computer, may utilize the Perplexity API or similar third-party services to retrieve, summarize, or interact with content from the public internet. A Dream does not control, endorse, or guarantee the accuracy, completeness, or legality of any content retrieved through such services. Customer is solely responsible for evaluating and verifying any information obtained through web browsing features and for ensuring that its use of such features complies with applicable law and third-party terms.
                   </p>
                 </div>
 
@@ -234,8 +251,47 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>4.7 No Monitoring Obligation</strong></p>
                   <p className="mt-2">
-                    Customer acknowledges that Company does not monitor, review, or validate AI outputs, memory content, or automated actions. Customer remains solely responsible for supervising Authorized Users, reviewing AI outputs, and enforcing internal policies governing AI use.
+                    Customer acknowledges that A Dream does not monitor, review, or validate AI outputs, memory content, or automated actions. Customer remains solely responsible for supervising Authorized Users, reviewing AI outputs, and enforcing internal policies governing AI use.
                   </p>
+                </div>
+
+                <div>
+                  <p><strong>4.8 Cross-Channel Agent Data Access &ndash; Architecture Disclosure</strong></p>
+                  <p className="mt-2">
+                    Customer acknowledges and agrees that the AI agent architecture operates as follows:
+                  </p>
+                  <ul className="list-disc pl-8 space-y-2 mt-2">
+                    <li><strong>(a)</strong> The AI agent operates within a shared execution environment (the Workspace-Owned Computer) that may serve multiple channels and users within a workspace.</li>
+                    <li><strong>(b)</strong> While A Dream implements design-level constraints intended to scope the AI agent&apos;s data access to the channel and user context from which a request originates, Customer acknowledges that these constraints are enforced at the application layer and are not equivalent to hardware-level or OS-level isolation.</li>
+                    <li><strong>(c)</strong> As with any AI system operating across shared infrastructure, there is an inherent risk that adversarial prompt injection, context manipulation, or other exploitation techniques could cause the AI agent to access, reference, or disclose data from channels or contexts other than the one in which the requesting user is operating.</li>
+                    <li><strong>(d)</strong> A Dream will use commercially reasonable efforts to mitigate such risks through prompt engineering, access scoping, and monitoring, but does not warrant that cross-channel data leakage cannot occur.</li>
+                    <li><strong>(e)</strong> Customer is solely responsible for evaluating whether the shared-VM architecture is appropriate for its use case, particularly where channels contain sensitive, privileged, or regulated information that must not be disclosed across channel boundaries.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p><strong>4.9 Workspace-Owned Computer and Cloud Execution Environment</strong></p>
+                  <p className="mt-2">
+                    Customer acknowledges and agrees that:
+                  </p>
+                  <ul className="list-disc pl-8 space-y-2 mt-2">
+                    <li><strong>(a)</strong> The Workspace-Owned Computer is a shared cloud-hosted VM that the AI agent may use to execute code, access files, install software, browse the web, and perform other tasks. Files, data, applications, and credentials stored within the VM may persist across sessions and may be accessible to the AI agent acting on behalf of any Authorized User within the workspace.</li>
+                    <li><strong>(b)</strong> The AI agent may take actions within the Workspace-Owned Computer autonomously or in response to user commands (including the /update command or equivalent invocations). Such actions may include file creation, modification, or deletion; code execution; application deployment; package installation; web browsing; and data retrieval.</li>
+                    <li><strong>(c)</strong> A Dream does not guarantee the integrity, availability, or security of files, applications, or data stored within the Workspace-Owned Computer. Customer is solely responsible for backing up critical data and for managing what information is stored within or accessible to the VM.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p><strong>4.10 Privilege and Confidentiality Considerations</strong></p>
+                  <p className="mt-2">
+                    Customer acknowledges and agrees that:
+                  </p>
+                  <ul className="list-disc pl-8 space-y-2 mt-2">
+                    <li><strong>(a)</strong> The use of AI Features, including the Talk-Through Feature, Memory systems, In-Channel Apps, and the Workspace-Owned Computer, may result in the creation, storage, or disclosure of information in ways that could affect legal privilege, confidentiality, or regulatory compliance.</li>
+                    <li><strong>(b)</strong> Customer is solely responsible for determining whether use of any feature of the Services is appropriate in light of applicable privilege, confidentiality, or regulatory requirements.</li>
+                    <li><strong>(c)</strong> A Dream makes no representation that use of the Services will preserve legal privilege or confidentiality protections that may otherwise apply to Customer&apos;s information.</li>
+                    <li><strong>(d)</strong> Customer should consult with its own legal counsel regarding the implications of using the Services for privileged, confidential, or regulated information.</li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -248,7 +304,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>5.1 Third-Party Integrations Generally</strong></p>
                   <p className="mt-2">
-                    The Services may enable Customer to connect, authorize, access, or use third-party applications, platforms, services, APIs, data sources, or tools that are not provided by Company, including without limitation project management tools, document repositories, ticketing systems, messaging platforms, storage services, and developer tools (&quot;Third-Party Integrations&quot; or &quot;Third-Party Tools&quot;).
+                    The Services may enable Customer to connect, authorize, access, or use third-party applications, platforms, services, APIs, data sources, or tools that are not provided by A Dream, including without limitation project management tools, document repositories, ticketing systems, messaging platforms, storage services, and developer tools (&quot;Third-Party Integrations&quot; or &quot;Third-Party Tools&quot;).
                   </p>
                   <p className="mt-2">
                     Third-Party Integrations are provided solely by the applicable third-party providers and operate under their own terms of service, privacy policies, security practices, and acceptable use requirements.
@@ -281,7 +337,7 @@ export default function EnterpriseServicesAgreementPage() {
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>an invited user may be able to invoke an AI agent or request actions that rely on previously authorized credentials;</li>
                     <li>such actions may succeed, fail, or require additional authorization depending on scope and permissions; and</li>
-                    <li>Company has no obligation to confirm whether an invited user was intended to have access to such integrations or actions.</li>
+                    <li>A Dream has no obligation to confirm whether an invited user was intended to have access to such integrations or actions.</li>
                   </ul>
                   <p className="mt-2">
                     Customer is solely responsible for all credentials used in connection with Third-Party Integrations.
@@ -293,10 +349,10 @@ export default function EnterpriseServicesAgreementPage() {
                     <li>safeguard all credentials against unauthorized access or disclosure;</li>
                     <li>configure credentials with appropriate scopes and permissions;</li>
                     <li>promptly revoke, rotate, or disable compromised or unauthorized credentials; and</li>
-                    <li>notify Company without undue delay upon discovering any compromise or misuse.</li>
+                    <li>notify A Dream without undue delay upon discovering any compromise or misuse.</li>
                   </ul>
                   <p className="mt-2">
-                    Company is entitled to rely on the validity of any credentials presented to the Services and has no obligation to verify the authority, intent, or appropriateness of any action taken using such credentials.
+                    A Dream is entitled to rely on the validity of any credentials presented to the Services and has no obligation to verify the authority, intent, or appropriateness of any action taken using such credentials.
                   </p>
                   <p className="mt-2">
                     See the User Terms of Service, Acceptable Use Policy, and Privacy Policy, which are incorporated by reference here, for more information.
@@ -306,7 +362,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>5.4 Failure or Limitation of Integration Actions</strong></p>
                   <p className="mt-2">
-                    Customer acknowledges that actions involving Third-Party Integrations may fail, be denied, delayed, or partially executed due to the following: insufficient permissions or scopes; expired or revoked credentials; Third-Party Integration limitations or outages; or changes to third-party APIs or terms. Company makes no guarantee that any integration-dependent action will succeed and has no obligation to retry, escalate, or remediate failed actions.
+                    Customer acknowledges that actions involving Third-Party Integrations may fail, be denied, delayed, or partially executed due to the following: insufficient permissions or scopes; expired or revoked credentials; Third-Party Integration limitations or outages; or changes to third-party APIs or terms. A Dream makes no guarantee that any integration-dependent action will succeed and has no obligation to retry, escalate, or remediate failed actions.
                   </p>
                 </div>
 
@@ -320,7 +376,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>5.6 Suspension or Disabling of Integrations</strong></p>
                   <p className="mt-2">
-                    Company may suspend, limit, or disable any Third-Party Integration or integration-dependent functionality where reasonably necessary to:
+                    A Dream may suspend, limit, or disable any Third-Party Integration or integration-dependent functionality where reasonably necessary to:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>comply with applicable law or third-party restrictions;</li>
@@ -346,7 +402,7 @@ export default function EnterpriseServicesAgreementPage() {
             <section>
               <h2 className="text-[28px] font-bold mb-4">6. Fees and Payment</h2>
               <p>
-                At this time, Company is providing Customer access to the Services free of charge. Company reserves the right to introduce fees for the Services in the future. If Company introduces fees, Company will provide reasonable notice, and any applicable fees and payment terms will be set forth in an Order Form or other written agreement between the parties.
+                A Dream reserves the right to introduce fees for the Services in the future. A Dream will provide reasonable notice prior to imposing fees for continued use of the Services. Information regarding payment obligations and related terms, including without limitation fees, payment terms, due dates, taxes, late payments, disputed charges, offsets, and the effect of termination, is available at [INSERT LINK]. The terms made available at that link are incorporated by reference into this Agreement and are binding on Customer.
               </p>
             </section>
 
@@ -358,7 +414,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>7.1 Ownership of the Services</strong></p>
                   <p className="mt-2">
-                    As between the parties, Company and its licensors retain all right, title, and interest in and to the Services, including without limitation:
+                    As between the parties, A Dream and its licensors retain all right, title, and interest in and to the Services, including without limitation:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>the software, platform, and infrastructure underlying the Services;</li>
@@ -375,7 +431,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>7.2 License to Use the Services</strong></p>
                   <p className="mt-2">
-                    Subject to Customer&apos;s compliance with this Agreement, Company grants Customer a limited, non-exclusive, non-transferable, non-sublicensable license during the applicable subscription term to access and use the Services solely for Customer&apos;s internal business purposes and in accordance with this Agreement, the User Terms of Service, Acceptable Use Policy, and Privacy Policy. Customer may permit Authorized Users to use the Services on its behalf, subject to Customer&apos;s responsibility for such use.
+                    Subject to Customer&apos;s compliance with this Agreement, A Dream grants Customer a limited, non-exclusive, non-transferable, non-sublicensable license during the applicable subscription term to access and use the Services solely for Customer&apos;s internal business purposes and in accordance with this Agreement, the User Terms of Service, Acceptable Use Policy, and Privacy Policy. Customer may permit Authorized Users to use the Services on its behalf, subject to Customer&apos;s responsibility for such use.
                   </p>
                 </div>
 
@@ -396,14 +452,14 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>7.4 Customer Data Ownership</strong></p>
                   <p className="mt-2">
-                    As between the parties, Customer retains all right, title, and interest in and to Customer Data, and nothing in this Agreement transfers ownership of Customer Data to Company.
+                    As between the parties, Customer retains all right, title, and interest in and to Customer Data, and nothing in this Agreement transfers ownership of Customer Data to A Dream.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>7.5 License to Process Customer Data</strong></p>
                   <p className="mt-2">
-                    In accordance with the Privacy Policy and this Agreement, Customer grants Company a limited, non-exclusive, worldwide, royalty-free license to process Customer Data solely as necessary to:
+                    In accordance with the Privacy Policy and this Agreement, Customer grants A Dream a limited, non-exclusive, worldwide, royalty-free license to process Customer Data solely as necessary to:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>provide, operate, secure, and maintain the Services;</li>
@@ -425,17 +481,17 @@ export default function EnterpriseServicesAgreementPage() {
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>AI-generated outputs, summaries, action items, and memory artifacts are generated based on Customer Data, system context, and probabilistic models;</li>
                     <li>such outputs constitute Customer Data for purposes of this Agreement; and</li>
-                    <li>Company does not claim ownership of AI outputs generated for Customer.</li>
+                    <li>A Dream does not claim ownership of AI outputs generated for Customer.</li>
                   </ul>
                   <p className="mt-2">
-                    Nothing in this Agreement grants Customer any ownership or rights in Company&apos;s models, algorithms, prompts, system architecture, or underlying AI technology.
+                    Nothing in this Agreement grants Customer any ownership or rights in A Dream&apos;s models, algorithms, prompts, system architecture, or underlying AI technology.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>7.7 Feedback</strong></p>
                   <p className="mt-2">
-                    If Customer or Authorized Users provide feedback, suggestions, ideas, or recommendations regarding the Services (&quot;Feedback&quot;), Customer grants Company a perpetual, irrevocable, worldwide, royalty-free license to use, incorporate, modify, and exploit such Feedback without obligation or restriction. Feedback does not create any confidentiality or compensation obligation on behalf of Company.
+                    If Customer or Authorized Users provide feedback, suggestions, ideas, or recommendations regarding the Services (&quot;Feedback&quot;), Customer grants A Dream a perpetual, irrevocable, worldwide, royalty-free license to use, incorporate, modify, and exploit such Feedback without obligation or restriction. Feedback does not create any confidentiality or compensation obligation on behalf of A Dream.
                   </p>
                 </div>
 
@@ -449,14 +505,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>7.9 Reservation of Rights</strong></p>
                   <p className="mt-2">
-                    All rights not expressly granted in this Agreement are reserved by Company and its licensors.
-                  </p>
-                </div>
-
-                <div>
-                  <p><strong>7.10 Trademarks</strong></p>
-                  <p className="mt-2">
-                    &quot;Popcorn&quot; is a trademark of A Dream Inc. All other trademarks are the property of their respective owners. Except as expressly permitted in writing by Company, Customer may not use Company&apos;s trademarks.
+                    All rights not expressly granted in this Agreement are reserved by A Dream and its licensors.
                   </p>
                 </div>
               </div>
@@ -479,7 +528,7 @@ export default function EnterpriseServicesAgreementPage() {
                     <li>Customer Data (which is Customer&apos;s Confidential Information);</li>
                     <li>a party&apos;s business, financial, product, technical, operational, security, and compliance information;</li>
                     <li>Order Forms and pricing;</li>
-                    <li>Company&apos;s Confidential Information, including the Services (including non-public features), system design, architecture, workflows, AI/memory systems, non-public documentation, roadmaps, and security measures; and</li>
+                    <li>A Dream&apos;s Confidential Information, including the Services (including non-public features), system design, architecture, workflows, AI/memory systems, non-public documentation, roadmaps, and security measures; and</li>
                     <li>the existence and terms of this Agreement (to the extent not publicly known through no fault of the Receiving Party).</li>
                   </ul>
                 </div>
@@ -506,7 +555,7 @@ export default function EnterpriseServicesAgreementPage() {
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>its and its affiliates&apos; employees, contractors, and agents who have a bona fide need to know for purposes of this Agreement and who are bound by written confidentiality obligations at least as protective as those herein;</li>
                     <li>its professional advisers (e.g., legal, accounting, insurance) who are bound by professional duties of confidentiality or written confidentiality obligations; and</li>
-                    <li>in Company&apos;s case, its service providers and subprocessors (including hosting, infrastructure, security, support, and AI inference providers) who are bound by written confidentiality obligations at least as protective as those herein.</li>
+                    <li>in A Dream&apos;s case, its service providers and subprocessors (including hosting, infrastructure, security, support, and AI inference providers) who are bound by written confidentiality obligations at least as protective as those herein.</li>
                   </ul>
                   <p className="mt-2">
                     The Receiving Party remains responsible for any breach of this Section by the persons or entities to whom it discloses Confidential Information, except to the extent prohibited by applicable law.
@@ -527,7 +576,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>8.6 Customer Data as Confidential Information; Operational Access</strong></p>
                   <p className="mt-2">
-                    Customer Data is Customer&apos;s Confidential Information. Company will treat Customer Data as Confidential Information and will access, use, and disclose Customer Data only:
+                    Customer Data is Customer&apos;s Confidential Information. A Dream will treat Customer Data as Confidential Information and will access, use, and disclose Customer Data only:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>as necessary to provide, operate, secure, and support the Services;</li>
@@ -542,7 +591,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>8.7 AI, Memory, and Confidentiality</strong></p>
                   <p className="mt-2">
-                    Customer acknowledges the following. Customer Data (which may include Confidential Information) may be processed by AI-Enabled Features and memory systems to provide requested functionality (e.g., summarization, action items, recall, automation), consistent with the Services&apos; design and Customer configuration, where applicable. AI-generated outputs, summaries, and memory artifacts may reflect or reference Customer Data (including Confidential Information) provided through use of the Services. Customer Data may be transmitted to and processed by Third-Party AI Providers and other subprocessors as necessary to provide AI-Enabled Features, subject to Company&apos;s contractual arrangements with such providers and the Privacy Policy.
+                    Customer acknowledges the following. Customer Data (which may include Confidential Information) may be processed by AI-Enabled Features and memory systems to provide requested functionality (e.g., summarization, action items, recall, automation), consistent with the Services&apos; design and Customer configuration, where applicable. AI-generated outputs, summaries, and memory artifacts may reflect or reference Customer Data (including Confidential Information) provided through use of the Services. Customer Data may be transmitted to and processed by Third-Party AI Providers and other subprocessors as necessary to provide AI-Enabled Features, subject to A Dream&apos;s contractual arrangements with such providers and the Privacy Policy.
                   </p>
                   <p className="mt-2">
                     Customer is responsible for determining whether it is appropriate to use the Services (including AI and memory features) for particular categories of Confidential Information, and for training and instructing Authorized Users regarding safe use (including private/restricted channel use for sensitive or privileged information, and careful channel membership management).
@@ -552,7 +601,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>8.8 Return, Deletion, and Retention</strong></p>
                   <p className="mt-2">
-                    Upon termination or expiration of the Agreement, Company will handle Customer Data in accordance with this Agreement (including any agreed export provisions), system behavior (including any fixed retention limits), and applicable law. Customer is responsible for exporting Customer Data prior to termination if Customer requires continued access. Notwithstanding the foregoing, the Receiving Party may retain Confidential Information to the extent required to comply with applicable law, regulation, or bona fide internal compliance requirements, provided that any retained Confidential Information remains subject to the confidentiality obligations of this Section for so long as it is retained.
+                    Upon termination or expiration of the Agreement, A Dream will handle Customer Data in accordance with this Agreement (including any agreed export provisions), system behavior (including any fixed retention limits), and applicable law. Customer is responsible for exporting Customer Data prior to termination if Customer requires continued access. Notwithstanding the foregoing, the Receiving Party may retain Confidential Information to the extent required to comply with applicable law, regulation, or bona fide internal compliance requirements, provided that any retained Confidential Information remains subject to the confidentiality obligations of this Section for so long as it is retained.
                   </p>
                 </div>
 
@@ -599,20 +648,10 @@ export default function EnterpriseServicesAgreementPage() {
                 </div>
 
                 <div>
-                  <p><strong>9.3 Company&apos;s Limited Warranty</strong></p>
+                  <p><strong>9.3 A Dream&apos;s Limited Warranty</strong></p>
                   <p className="mt-2">
-                    Company warrants that it will provide the Services during the Term.
+                    A Dream warrants that it will provide the Services during the Term.
                   </p>
-                  <p className="mt-2">
-                    Without limitation, this warranty does not apply to issues caused by:
-                  </p>
-                  <ul className="list-disc pl-8 space-y-2 mt-2">
-                    <li>Customer Data;</li>
-                    <li>Third-Party AI Providers or Third-Party Tools;</li>
-                    <li>integrations, credentials, or configurations controlled by Customer or third parties;</li>
-                    <li>misuse of the Services; or</li>
-                    <li>failures resulting from actions deemed authorized by Customer.</li>
-                  </ul>
                 </div>
 
                 <div>
@@ -621,10 +660,10 @@ export default function EnterpriseServicesAgreementPage() {
                     EXCEPT AS EXPRESSLY PROVIDED IN THIS AGREEMENT, THE SERVICES ARE PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE.&quot;
                   </p>
                   <p className="mt-2 uppercase">
-                    TO THE MAXIMUM EXTENT PERMITTED BY LAW, COMPANY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, OR ACCURACY.
+                    TO THE MAXIMUM EXTENT PERMITTED BY LAW, A DREAM DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, OR ACCURACY.
                   </p>
                   <p className="mt-2 uppercase">
-                    WITHOUT LIMITING THE FOREGOING, COMPANY DOES NOT WARRANT THAT:
+                    WITHOUT LIMITING THE FOREGOING, A DREAM DOES NOT WARRANT THAT:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>the Services will be uninterrupted, error-free, or completely secure;</li>
@@ -640,7 +679,7 @@ export default function EnterpriseServicesAgreementPage() {
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>AI outputs are probabilistic and non-deterministic;</li>
                     <li>AI systems may generate content that is incomplete, misleading, or incorrect;</li>
-                    <li>Company does not guarantee explainability, auditability, or transparency of AI model logic;</li>
+                    <li>A Dream does not guarantee explainability, auditability, or transparency of AI model logic;</li>
                     <li>AI memory and summaries may reflect subjective interpretations of prior interactions;</li>
                     <li>Memory systems may be incomplete, inaccurate, or context-dependent;</li>
                     <li>Summaries, reports or periodic outputs (including daily, weekly, monthly, or annual summaries) may omit relevant information or reflect incorrect assumptions; and</li>
@@ -657,7 +696,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>9.5 Third-Party Services - No Warranty</strong></p>
                   <p className="mt-2">
-                    Without limitation, Company does not warrant and is not responsible for the following:
+                    Without limitation, A Dream does not warrant and is not responsible for the following:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>Third-Party Tools and Integrations;</li>
@@ -680,7 +719,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>9.7 No Additional Warranties</strong></p>
                   <p className="mt-2">
-                    No oral or written information or advice given by Company, its employees, agents, or partners creates any warranty not expressly stated in this Agreement.
+                    No oral or written information or advice given by A Dream, its employees, agents, or partners creates any warranty not expressly stated in this Agreement.
                   </p>
                 </div>
               </div>
@@ -694,7 +733,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>10.1 Indemnification by Customer</strong></p>
                   <p className="mt-2">
-                    Customer will defend, indemnify, and hold harmless Company and its affiliates, officers, directors, employees, contractors, and agents from and against any and all claims (including third-party claims), demands, actions, proceedings, damages, losses, liabilities, costs, and expenses (including reasonable attorneys&apos; fees) arising out of or relating to:
+                    Customer will defend, indemnify, and hold harmless A Dream and its affiliates, officers, directors, employees, contractors, and agents from and against any and all claims (including third-party claims), demands, actions, proceedings, damages, losses, liabilities, costs, and expenses (including reasonable attorneys&apos; fees) arising out of or relating to:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>Customer Data, including any allegation that Customer Data infringes, misappropriates, or violates intellectual property rights, privacy rights, publicity rights, employment laws, or other legal obligations;</li>
@@ -704,8 +743,10 @@ export default function EnterpriseServicesAgreementPage() {
                     <li>failure to obtain required notices, consents, or authorizations, including employee monitoring disclosures, AI usage notices, and third-party integration permissions;</li>
                     <li>Third-Party AI Providers or Third-Party Tools, including claims arising from Customer&apos;s use of outputs, actions, or data processed by such providers;</li>
                     <li>credentials, integrations, or webhooks, including misuse, compromise, inheritance, or unauthorized actions deemed authorized under this Agreement;</li>
-                    <li>violation of law by Customer or Authorized Users, including employment, surveillance, data protection, export control, or consumer protection laws; or</li>
-                    <li>breach of this Agreement, the User Terms of Service, Acceptable Use Policy, Privacy Policy, or applicable third-party terms.</li>
+                    <li>violation of law by Customer or Authorized Users, including employment, surveillance, data protection, export control, or consumer protection laws;</li>
+                    <li>breach of this Agreement, the User Terms of Service, Acceptable Use Policy, Privacy Policy, or applicable third-party terms;</li>
+                    <li>Use of the Talk-Through Feature, including claims arising from the capture, transcription, or retention of voice, screen, or cursor data; and</li>
+                    <li>Actions taken by the AI agent within the Workspace-Owned Computer, including file access, code execution, application creation or modification, and data retrieval, whether initiated directly or via /update command or equivalent invocation.</li>
                   </ul>
                   <p className="mt-2">
                     This indemnity applies regardless of whether the claim arises from content generated by AI, memory systems, automated actions, or human input.
@@ -713,17 +754,17 @@ export default function EnterpriseServicesAgreementPage() {
                 </div>
 
                 <div>
-                  <p><strong>10.2 Indemnification by Company</strong></p>
+                  <p><strong>10.2 Indemnification by A Dream</strong></p>
                   <p className="mt-2">
-                    Company will defend, indemnify, and hold harmless Customer from and against any third-party claim alleging that the Services, when used in accordance with this Agreement, infringe a U.S. patent, copyright, or trademark, provided that such claim does not arise from:
+                    A Dream will defend, indemnify, and hold harmless Customer from and against any third-party claim alleging that the Services, when used in accordance with this Agreement, infringe a U.S. patent, copyright, or trademark, provided that such claim does not arise from:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>Customer Data;</li>
                     <li>AI outputs, summaries, memory artifacts, or derivative content;</li>
                     <li>Third-Party AI Providers or Third-Party Tools;</li>
-                    <li>modifications not made by Company;</li>
+                    <li>modifications not made by A Dream;</li>
                     <li>use of the Services in violation of this Agreement or applicable law; or</li>
-                    <li>combination of the Services with products or services not provided by Company.</li>
+                    <li>combination of the Services with products or services not provided by A Dream.</li>
                   </ul>
                 </div>
 
@@ -759,7 +800,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>10.4 Mitigation and Remedies</strong></p>
                   <p className="mt-2">
-                    If Company reasonably believes the Services may become subject to an infringement claim, Company may, at its option and expense: (1) procure the right for Customer to continue using the Services; (2) modify the Services to avoid infringement without materially degrading functionality; or (3) terminate the affected Services and refund prepaid fees for the unused portion of the subscription term. This Section states Customer&apos;s sole and exclusive remedy for intellectual property infringement claims against Company.
+                    If A Dream reasonably believes the Services may become subject to an infringement claim, A Dream may, at its option and expense: (1) procure the right for Customer to continue using the Services; (2) modify the Services to avoid infringement without materially degrading functionality; or (3) terminate the affected Services and refund prepaid fees for the unused portion of the subscription term. This Section states Customer&apos;s sole and exclusive remedy for intellectual property infringement claims against A Dream.
                   </p>
                 </div>
               </div>
@@ -790,7 +831,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>11.2 Cap on Liability</strong></p>
                   <p className="mt-2 uppercase">
-                    EXCEPT FOR EXCLUDED CLAIMS IDENTIFIED IN SECTION 11.3, EACH PARTY&apos;S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THIS AGREEMENT WILL NOT EXCEED THE AMOUNT PAID OR PAYABLE BY CUSTOMER TO COMPANY UNDER THIS AGREEMENT IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
+                    EXCEPT FOR EXCLUDED CLAIMS IDENTIFIED IN SECTION 11.3, EACH PARTY&apos;S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THIS AGREEMENT WILL NOT EXCEED THE AMOUNT PAID OR PAYABLE BY CUSTOMER TO A DREAM UNDER THIS AGREEMENT IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
                   </p>
                 </div>
 
@@ -804,17 +845,29 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>11.4 AI-Specific Risk Allocation</strong></p>
                   <p className="mt-2 uppercase">
-                    WITHOUT LIMITING THE FOREGOING, CUSTOMER ACKNOWLEDGES AND AGREES THAT COMPANY SHALL HAVE NO LIABILITY FOR DECISIONS, ACTIONS, OR OUTCOMES BASED ON AI OUTPUTS OR MEMORY-DERIVED INFORMATION. FURTHER, COMPANY SHALL HAVE NO LIABILITY FOR EMPLOYMENT, DISCIPLINARY, LEGAL, COMPLIANCE, OR FINANCIAL DECISIONS MADE USING THE SERVICES. ALL SUCH USE IS AT CUSTOMER&apos;S SOLE RISK.
+                    WITHOUT LIMITING THE FOREGOING, CUSTOMER ACKNOWLEDGES AND AGREES THAT A DREAM SHALL HAVE NO LIABILITY FOR:
                   </p>
-                  <p className="mt-2">
-                    These limitations apply regardless of whether the claim is framed in contract, tort (including negligence), strict liability, statutory liability, or otherwise.
+                  <p className="mt-2 uppercase">
+                    DECISIONS, ACTIONS, OR OUTCOMES BASED ON AI OUTPUTS, MEMORY-DERIVED INFORMATION, OR TALK-THROUGH SESSION DATA, INCLUDING INACCURATE OR INCOMPLETE TRANSCRIPTIONS;
+                  </p>
+                  <p className="mt-2 uppercase">
+                    EMPLOYMENT, DISCIPLINARY, LEGAL, COMPLIANCE, OR FINANCIAL DECISIONS MADE USING OR IN RELIANCE ON THE SERVICES OR ANY AI-GENERATED OUTPUT;
+                  </p>
+                  <p className="mt-2 uppercase">
+                    ACTIONS TAKEN BY THE AI AGENT WITHIN THE WORKSPACE-OWNED COMPUTER, INCLUDING FILE ACCESS, CODE EXECUTION, APPLICATION CREATION OR MODIFICATION, DATA RETRIEVAL, OR WEB BROWSING CONDUCTED VIA THE EMBEDDED BROWSER OR PERPLEXITY API, WHETHER SUCH ACTIONS SUCCEED, FAIL, OR PRODUCE UNINTENDED RESULTS; OR
+                  </p>
+                  <p className="mt-2 uppercase">
+                    ANY UNAUTHORIZED CROSS-CHANNEL ACCESS TO CUSTOMER DATA RESULTING FROM ADVERSARIAL PROMPT INJECTION OR OTHER EXPLOITATION OF THE VM ARCHITECTURE DESCRIBED IN SECTION 4.8, PROVIDED THAT A DREAM HAS IMPLEMENTED THE DESIGN-LEVEL CONSTRAINTS DESCRIBED THEREIN.
+                  </p>
+                  <p className="mt-2 uppercase">
+                    ALL SUCH USE IS AT CUSTOMER&apos;S SOLE RISK. THESE LIMITATIONS APPLY REGARDLESS OF WHETHER THE CLAIM IS FRAMED IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, STATUTORY LIABILITY, OR OTHERWISE.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>11.5 Third-Party Services and AI Providers</strong></p>
                   <p className="mt-2 uppercase">
-                    COMPANY SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM OR RELATING TO:
+                    A DREAM SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM OR RELATING TO:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2 uppercase">
                     <li>THIRD-PARTY AI PROVIDERS;</li>
@@ -841,25 +894,25 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>12.2 Suspension of Services</strong></p>
                   <p className="mt-2">
-                    Company may suspend Customer&apos;s or any Authorized User&apos;s access to the Services, in whole or in part, immediately upon notice (or without notice where legally required or operationally necessary), if Company reasonably determines that:
+                    A Dream may suspend Customer&apos;s or any Authorized User&apos;s access to the Services, in whole or in part, immediately upon notice (or without notice where legally required or operationally necessary), if A Dream reasonably determines that:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>Customer or an Authorized User has violated this Agreement, the User Terms of Service, the Acceptable Use Policy, or applicable law;</li>
-                    <li>Customer&apos;s use of the Services poses a security risk, creates risk of harm to Company, other customers, users, or third parties, or threatens the integrity or availability of the Services;</li>
+                    <li>Customer&apos;s use of the Services poses a security risk, creates risk of harm to A Dream, other customers, users, or third parties, or threatens the integrity or availability of the Services;</li>
                     <li>credentials, integrations, tokens, webhooks, or automated workflows are being misused, compromised, or used in an unauthorized manner;</li>
                     <li>Customer&apos;s use of AI features or memory systems presents legal, regulatory, or compliance risk;</li>
                     <li>required fees are overdue; or</li>
                     <li>suspension is required to comply with law, court order, or governmental request.</li>
                   </ul>
                   <p className="mt-2">
-                    Where reasonably practicable, Company will provide notice and an opportunity to cure prior to suspension. Suspension does not relieve Customer of any payment obligations.
+                    Where reasonably practicable, A Dream will provide notice and an opportunity to cure prior to suspension. Suspension does not relieve Customer of any payment obligations.
                   </p>
                 </div>
 
                 <div>
                   <p><strong>12.3 Termination for Cause</strong></p>
                   <p className="mt-2">
-                    Either party may terminate this Agreement for cause upon written notice if the other party materially breaches this Agreement and fails to cure such breach within thirty (30) days after receiving written notice thereof, except that Company may terminate immediately for uncured breaches relating to security, unlawful activity, misuse of AI features, or violation of acceptable use restrictions.
+                    Either party may terminate this Agreement for cause upon written notice if the other party materially breaches this Agreement and fails to cure such breach within thirty (30) days after receiving written notice thereof, except that A Dream may terminate immediately for uncured breaches relating to security, unlawful activity, misuse of AI features, or violation of acceptable use restrictions.
                   </p>
                 </div>
 
@@ -886,15 +939,15 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>12.6 Customer Data After Termination</strong></p>
                   <p className="mt-2">
-                    Following termination or expiration, Company will retain Customer Data in accordance with:
+                    Following termination or expiration, A Dream will retain Customer Data in accordance with:
                   </p>
                   <ul className="list-disc pl-8 space-y-2 mt-2">
                     <li>system-defined retention limits (including fixed deletion periods for certain private communications);</li>
                     <li>applicable law; and</li>
-                    <li>Company&apos;s backup, security, and audit requirements.</li>
+                    <li>A Dream&apos;s backup, security, and audit requirements.</li>
                   </ul>
                   <p className="mt-2">
-                    Unless otherwise separately agreed in writing, Company has no obligation to retain Customer Data beyond the applicable retention period, which is thirty (30) days (subject to any shorter system-defined deletion periods for certain private communications). Customer is solely responsible for exporting any Customer Data prior to termination.
+                    Unless otherwise separately agreed in writing, A Dream has no obligation to retain Customer Data beyond the applicable retention period, which is thirty (30) days (subject to any shorter system-defined deletion periods for certain private communications). Customer is solely responsible for exporting any Customer Data prior to termination.
                   </p>
                 </div>
 
@@ -936,7 +989,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>13.3 Assignment</strong></p>
                   <p className="mt-2">
-                    Customer may not assign or transfer this Agreement, in whole or in part, whether by operation of law, merger, acquisition, sale of assets, or otherwise, without Company&apos;s prior written consent, which shall not be unreasonably withheld. Company may assign this Agreement without Customer&apos;s consent in connection with a merger, acquisition, corporate reorganization, or sale of all or substantially all of its assets. Any prohibited assignment is void.
+                    Customer may not assign or transfer this Agreement, in whole or in part, whether by operation of law, merger, acquisition, sale of assets, or otherwise, without A Dream&apos;s prior written consent, which shall not be unreasonably withheld. A Dream may assign this Agreement without Customer&apos;s consent in connection with a merger, acquisition, corporate reorganization, or sale of all or substantially all of its assets. Any prohibited assignment is void.
                   </p>
                 </div>
 
@@ -950,7 +1003,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>13.5 Export Controls and Sanctions</strong></p>
                   <p className="mt-2">
-                    Customer represents and warrants that it is not subject to sanctions or located in a jurisdiction subject to comprehensive trade sanctions. Customer agrees to comply with all applicable export control, economic sanctions, and trade laws in connection with its use of the Services, including restrictions on access to AI-enabled functionality. Company may suspend access as required to comply with applicable law.
+                    Customer represents and warrants that it is not subject to sanctions or located in a jurisdiction subject to comprehensive trade sanctions. Customer agrees to comply with all applicable export control, economic sanctions, and trade laws in connection with its use of the Services, including restrictions on access to AI-enabled functionality. A Dream may suspend access as required to comply with applicable law.
                   </p>
                 </div>
 
@@ -1002,7 +1055,7 @@ export default function EnterpriseServicesAgreementPage() {
                 <div>
                   <p><strong>13.12 Updates to this Agreement</strong></p>
                   <p className="mt-2">
-                    Company may update this Agreement from time to time. Company will provide notice of any updates to Customer by email, through the Services, or by other reasonable means. Unless otherwise stated in the notice, updates will become effective on the date specified by Company, and Customer&apos;s continued access to or use of the Services after the effective date constitutes Customer&apos;s acceptance of the updated Agreement.
+                    A Dream may update this Agreement from time to time. A Dream will provide notice of any updates to Customer by email, through the Services, or by other reasonable means. Unless otherwise stated in the notice, updates will become effective on the date specified by A Dream, and Customer&apos;s continued access to or use of the Services after the effective date constitutes Customer&apos;s acceptance of the updated Agreement.
                   </p>
                 </div>
 

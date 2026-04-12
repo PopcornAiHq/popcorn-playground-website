@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import EmailCapture from "./EmailCapture";
 
 export default function StickyNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,12 +39,7 @@ export default function StickyNav() {
         />
       </div>
 
-      <button
-        className={`bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all duration-700 cursor-pointer border-[3px] ${scrolled ? "border-white" : "border-transparent"}`}
-        style={{ fontFamily: "var(--font-ibm-plex-mono)", boxShadow: scrolled ? "0 2px 12px rgba(0,0,0,0.4)" : "0 2px 12px rgba(0,0,0,0)" }}
-      >
-        GET SETUP
-      </button>
+      <EmailCapture variant="nav-expand" scrolled={scrolled} />
     </nav>
   );
 }

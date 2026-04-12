@@ -2,7 +2,7 @@
 
 import { useRef, useCallback } from "react";
 import AppFrame from "./components/AppFrame";
-import UseCaseSection from "./components/UseCaseSection";
+
 import StickyNav from "./components/StickyNav";
 import Footer from "./components/Footer";
 import { PopcornBurst, type PopcornBurstHandle } from "./components/PopcornBurst";
@@ -27,10 +27,6 @@ export default function Home() {
         <AppFrame />
       </div>
 
-      {/* Section 2: Use cases */}
-      <div className="relative z-[20]">
-        <UseCaseSection />
-      </div>
 
       <Footer onLogoBurst={handleBurst} />
 

@@ -1,21 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import PageFooter from "../components/PageFooter";
+import SubpageNav from "../components/SubpageNav";
 
 export default function AboutPage() {
   return (
     <main className="relative min-h-screen bg-[#FFFDF8] text-[#1a1a1a] flex flex-col">
-      <nav className="flex items-center justify-between px-10 py-6">
-        <Link href="/">
-          <Image alt="Popcorn" src="/popcorn-logo.svg" width={133} height={50} className="block" style={{ filter: "brightness(0)" }} />
-        </Link>
-        <button
-          className="bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
-          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-        >
-          GET SETUP
-        </button>
-      </nav>
+      <SubpageNav />
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-16 sm:pt-24 md:pt-32 pb-20 lg:pb-8 flex-1">
         <article className="max-w-[900px] mx-auto">

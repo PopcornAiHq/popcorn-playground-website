@@ -1,28 +1,18 @@
 import Link from "next/link";
-import Image from "next/image";
 import PageFooter from "../components/PageFooter";
+import SubpageNav from "../components/SubpageNav";
 
 export default function PrivacyPolicyPage() {
   return (
     <main className="relative min-h-screen bg-[#FFFDF8] text-[#1a1a1a]">
-      <nav className="flex items-center justify-between px-10 py-6">
-        <Link href="/">
-          <Image alt="Popcorn" src="/popcorn-logo.svg" width={133} height={50} className="block" style={{ filter: "brightness(0)" }} />
-        </Link>
-        <button
-          className="bg-black text-white px-7 py-3.5 rounded-[12px] text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
-          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-        >
-          GET SETUP
-        </button>
-      </nav>
+      <SubpageNav />
 
       <div className="max-w-[1200px] mx-auto px-10 pt-32 pb-20">
         <article className="max-w-[900px] mx-auto">
           <h1 id="privacy-policy" className="text-[56px] leading-[0.92] tracking-tight mb-4 scroll-mt-32" style={{ fontFamily: "var(--font-synt)" }}>
             Privacy Policy
           </h1>
-          <p className="text-[16px] text-[#1a1a1a]/60 mb-12">Last Edited: January 19, 2026</p>
+          <p className="text-[16px] text-[#1a1a1a]/60 mb-12">Last Edited: April 16, 2026</p>
 
           <div className="space-y-8 text-[18px] leading-relaxed" style={{ fontFamily: "var(--font-albert-sans)" }}>
             <section>
@@ -72,7 +62,10 @@ export default function PrivacyPolicyPage() {
                 <li>Contextual and configuration information, including user time zone, workspace settings, permissions, and feature configurations;</li>
                 <li>Information retrieved from or transmitted to external services through authorized integrations;</li>
                 <li>Webhook payloads, API requests, and responses necessary to perform requested actions;</li>
-                <li>AI-related inputs and contextual data required to generate outputs or perform automated tasks.</li>
+                <li>AI-related inputs and contextual data required to generate outputs or perform automated tasks;</li>
+                <li>Talk-Through Session Data, including: (i) voice audio captured during a Talk-Through session, which is processed solely for transcription and is permanently deleted immediately upon transcription completion; (ii) transcribed text generated from voice audio, which is retained as Customer Data; (iii) cursor movement recordings, including timestamped records of on-screen cursor activity during a session; (iv) screen state data, including screenshots and visual recordings of on-screen content captured during a session; and (v) code context associated with content displayed during the session. Raw audio is not retained beyond the transcription process;</li>
+                <li>In-Channel App data, including application code, configuration, and associated outputs generated within a channel by Authorized Users or the AI agent using the /update command or equivalent invocation;</li>
+                <li>Agent execution logs, including records of actions taken by the AI agent within the Workspace-Owned Computer, retrieved data, web browsing activity conducted via the embedded browser or Perplexity API, and success/failure outcomes of agent-initiated operations. Agent execution logs may be accessed by A Dream personnel for debugging, performance monitoring, and product improvement purposes as described in Section 6.</li>
               </ul>
               <p className="mt-4">
                 Some of this data is processed dynamically to fulfill user requests and enable functionality and may not be persistently stored by us except as described in this Privacy Policy, the User Terms of Service, or the applicable <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link>.
@@ -105,6 +98,37 @@ export default function PrivacyPolicyPage() {
                 <li>We may process limited data to operate, secure, monitor, and improve the Services.</li>
                 <li>AI-related processing may involve transient storage, caching, or logging for performance, security, or abuse-prevention purposes.</li>
                 <li>Third-party artificial intelligence service providers may process Customer Data to generate outputs or perform requested tasks.</li>
+              </ul>
+              <p className="mt-4">
+                <strong>Talk-Through Feature.</strong> When an Authorized User activates the Talk-Through Feature, the Services process voice audio in real time to generate a text transcription. The raw audio file is permanently deleted immediately upon completion of transcription and is not retained, stored, or accessible thereafter. Transcribed text, cursor movement data, screenshots, and associated code context are retained as Customer Data and processed as described in this Privacy Policy. The transcription process may involve transmission of audio data to third-party transcription service providers, which are subject to contractual confidentiality obligations.
+              </p>
+              <p className="mt-4">
+                <strong>A Dream explicitly discloses that its personnel may access certain Customer Data in the course of operating and improving the Services.</strong> The scope, purposes, and safeguards applicable to such access are described below.
+              </p>
+              <ul className="list-disc pl-8 space-y-2 mt-2">
+                <li>(a) <strong>Scope of Access.</strong> A Dream personnel may access the following categories of Customer Data: (i) agent execution logs, including records of actions taken by the AI agent within the Workspace-Owned Computer, retrieved data, web browsing activity, and success/failure outcomes; (ii) In-Channel App data, including application code, configuration, and associated outputs; (iii) Talk-Through session data, limited to transcribed text, cursor movement recordings, screen state data, and code context (but expressly excluding raw audio, which is permanently deleted upon transcription); (iv) messages and prompts submitted to AI-enabled features; and (v) metadata associated with the foregoing.</li>
+                <li>(b) <strong>Purposes.</strong> Access is limited to the following purposes: debugging errors and failures in agent operations; improving the success rate and reliability of AI-enabled features; monitoring for misuse, abuse, and policy violations; investigating security incidents; and supporting Customers upon request.</li>
+                <li>(c) <strong>Model Training.</strong> Customer Data accessed under this section is not used to train general-purpose artificial intelligence models unless the Customer has explicitly opted in to such use.</li>
+                <li>(d) <strong>Access Controls.</strong> Access to Customer Data is governed by internal access-control policies, limited to personnel with a documented business need, and subject to confidentiality obligations.</li>
+                <li>(e) <strong>Customer Notice.</strong> A Dream provides this disclosure so that Customers may make informed decisions about use of the Services, including configuring workspace settings and instructing Authorized Users accordingly.</li>
+              </ul>
+              <p className="mt-4">
+                <strong>Debugging.</strong> In connection with operating and improving the Services, A Dream personnel may engage in the following debugging-related activities:
+              </p>
+              <ul className="list-disc pl-8 space-y-2 mt-2">
+                <li>(a) Review agent execution logs to identify failure points, error patterns, and potential improvements to agent behavior;</li>
+                <li>(b) Review In-Channel App data to diagnose errors in application deployment, configuration, or output generation;</li>
+                <li>(c) Review Talk-Through session data (excluding raw audio) to diagnose transcription errors, cursor-tracking issues, or context-resolution failures; and</li>
+                <li>(d) Access metadata, timestamps, and operational telemetry associated with the foregoing data categories to correlate events and diagnose system-level issues.</li>
+              </ul>
+              <p className="mt-4">
+                <strong>Privilege and Confidentiality.</strong> Customers and Authorized Users should be aware of the following regarding data submitted to or processed through the Services:
+              </p>
+              <ul className="list-disc pl-8 space-y-2 mt-2">
+                <li>(a) A Dream personnel who access Customer Data under this section are not lawyers and do not provide legal advice. Access by A Dream personnel does not create an attorney-client relationship or any legal privilege;</li>
+                <li>(b) Submission of privileged, confidential, or legally protected information to or through the Services may result in disclosure of such information to A Dream personnel and, depending on the circumstances, may risk waiver of applicable privileges or protections;</li>
+                <li>(c) Customers are advised to evaluate whether submission of sensitive, privileged, or confidential information through the Services is appropriate in light of this disclosure and to implement internal policies and user guidance accordingly; and</li>
+                <li>(d) A Dream makes no warranty or representation that Customer Data processed through the Services will remain privileged, confidential, or protected from disclosure beyond the commitments expressly set forth in the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> and this Privacy Policy.</li>
               </ul>
             </section>
 
@@ -139,11 +163,14 @@ export default function PrivacyPolicyPage() {
                 <li>To develop new features and improve existing functionality; and</li>
                 <li>To generate aggregated or de-identified analytics for business and product improvement.</li>
               </ul>
+              <p className="mt-4">
+                Where permitted by law, we may also send marketing or promotional communications, which recipients may opt out of.
+              </p>
             </section>
 
             <section>
               <p>
-                <strong>10. Legal Bases for Processing.</strong> Where required by law, we process personal data based on performance of a contract, legitimate business purposes, compliance with legal obligations, and consent where applicable.
+                <strong>10. Legal Bases for Processing.</strong> Where required by law, we process personal data based on performance of a contract, legitimate business purposes, compliance with legal obligations, and consent where applicable. Legitimate business purposes include operating and improving the Services, maintaining security, preventing misuse, and supporting Customers; see paragraph 9 for more detail.
               </p>
             </section>
 
@@ -152,15 +179,21 @@ export default function PrivacyPolicyPage() {
                 <strong>11. Data Sharing and Disclosure.</strong> We share personal data in the following circumstances:
               </p>
               <ul className="list-disc pl-8 space-y-2 mt-4">
-                <li>With Customers and workspace administrators;</li>
-                <li>Within the Services, where information may be visible to other authorized users;</li>
-                <li>With service providers and subprocessors;</li>
-                <li>With third-party services, when enabled by a Customer or user;</li>
-                <li>With professional advisers;</li>
-                <li>In connection with corporate transactions;</li>
-                <li>For legal and safety purposes;</li>
+                <li>With Customers and workspace administrators, in accordance with Customer instructions, workspace configurations, and applicable law. Customers control access to Customer Data within their workspaces;</li>
+                <li>Within the Services, where information may be visible to other authorized users based on workspace settings, channel membership, and access-control configurations;</li>
+                <li>With service providers and subprocessors who assist in operating, securing, and improving the Services, subject to contractual obligations;</li>
+                <li>With third-party services, when enabled by a Customer or user through integrations, extensions, or connected applications;</li>
+                <li>With professional advisers, including legal counsel, auditors, and consultants, as necessary for compliance, dispute resolution, or corporate governance purposes;</li>
+                <li>In connection with corporate transactions, including mergers, acquisitions, reorganizations, divestitures, or asset sales, where personal data may be transferred as part of the transaction;</li>
+                <li>For legal and safety purposes, including to comply with applicable law, legal process, or governmental requests, and to protect the rights, safety, or property of A Dream, its users, or the public;</li>
                 <li>With consent, where an individual has authorized the disclosure.</li>
               </ul>
+              <p className="mt-4">
+                Users may opt out of certain non-essential data sharing as permitted by applicable law and subject to the functionality requirements of the Services. Opt-out requests may be submitted to contact@popcorn.ai.
+              </p>
+              <p className="mt-4">
+                Memory elements (including Communication Memory and User Memory) are visible to Authorized Users within the applicable workspace. Customers may configure workspace settings to control the scope and visibility of Memory elements, and Authorized Users may view, edit, or delete their User Memory through the Services.
+              </p>
             </section>
 
             <section>
@@ -179,11 +212,32 @@ export default function PrivacyPolicyPage() {
               <p>
                 <strong>14. Data Retention.</strong> We retain personal data only for as long as reasonably necessary to provide the Services, comply with legal obligations, resolve disputes, enforce agreements, and maintain security and integrity. Private messages are automatically deleted after approximately twenty-four (24) hours and are not recoverable thereafter.
               </p>
+              <p className="mt-4">
+                Deletion of messages or content by a user or Customer results in deletion of associated metadata and derived data, except where retention is required for legal compliance, security, or fraud-prevention purposes, or where such data has been aggregated or de-identified.
+              </p>
+              <p className="mt-4">
+                Public messages and posts are retained unless deleted by the author or a workspace administrator, or until the workspace is deleted or the applicable retention period expires.
+              </p>
+              <p className="mt-4">
+                Other account, usage, and technical information is retained for as long as the account is active and for a reasonable period thereafter, subject to applicable law and legal obligations.
+              </p>
+              <p className="mt-4">
+                Talk-Through raw audio is permanently deleted immediately upon completion of transcription and is not retained, stored, or accessible thereafter. Transcribed text and associated session data are retained as Customer Data, subject to the retention practices described in this section.
+              </p>
+              <p className="mt-4">
+                In-Channel App data, including application code, configuration, and associated outputs, is retained as Customer Data for the duration of the applicable workspace or until deleted by a Customer or workspace administrator.
+              </p>
             </section>
 
             <section>
               <p>
                 <strong>15. Security.</strong> We implement reasonable technical and organizational measures designed to protect personal data against unauthorized access, loss, misuse, or disclosure. No system can be guaranteed to be completely secure.
+              </p>
+              <p className="mt-4">
+                Clicking links to third-party sites navigates you off our website and platform; we do not control or endorse content and the security of third-party sites.
+              </p>
+              <p className="mt-4">
+                Access to Customer Data by A Dream personnel is subject to internal access-control policies, limited to personnel with a documented business need, and governed by confidentiality obligations. For more information regarding the scope and purposes of such access, see Section 6.
               </p>
             </section>
 
@@ -197,11 +251,52 @@ export default function PrivacyPolicyPage() {
               <p>
                 <strong>17. User Rights.</strong> Depending on your jurisdiction, you may have certain rights with respect to your personal data, including the right to request access, correction, deletion, or information about processing.
               </p>
+              <p className="mt-4">
+                Memory elements (including Communication Memory and User Memory) may be viewed, edited, or deleted by Authorized Users through the Services. Customers may configure workspace-level Memory settings, including enabling or disabling Memory features.
+              </p>
+              <p className="mt-4">
+                For Customer Data processed on behalf of a Customer in our capacity as a data processor, rights requests should be directed to the applicable Customer. We will assist the Customer in fulfilling such requests in accordance with the <Link href="/enterprise" className="text-[#1a3de8] hover:underline">Enterprise Services Agreement</Link> and applicable law.
+              </p>
+              <p className="mt-4">
+                For Other Information processed by us as a data controller, individuals may submit rights requests directly to us at contact@popcorn.ai. We will verify the identity of the requestor before fulfilling any request.
+              </p>
+              <p className="mt-4">
+                Certain rights may be limited where fulfillment would adversely affect the rights or freedoms of others, where data is required for legal compliance, or where an applicable exception or exemption applies. Where we are unable to fulfill a request, we will provide an explanation and, where reasonably practicable, offer voluntary assistance.
+              </p>
             </section>
 
             <section>
               <p>
-                <strong>18. California and U.S. State Privacy Rights.</strong> We do not sell personal data as defined under the CCPA/CPRA or similar U.S. state laws. Subject to applicable law, individuals may have the right to request access, correction, deletion, and opt-out of certain disclosures.
+                <strong>18. California and U.S. State Privacy Rights.</strong> This section provides additional disclosures required under the California Consumer Privacy Act, as amended by the California Privacy Rights Act (&quot;CCPA/CPRA&quot;), and similar U.S. state privacy laws.
+              </p>
+              <p className="mt-4">
+                <strong>Categories of Personal Information Collected.</strong> In the preceding twelve (12) months, we have collected the following categories of personal information as defined under the CCPA/CPRA:
+              </p>
+              <ul className="list-disc pl-8 space-y-2 mt-2">
+                <li>Identifiers (e.g., name, email address, account identifiers);</li>
+                <li>Internet or other electronic network activity information (e.g., browsing activity within the Services, interaction data, log data);</li>
+                <li>Professional or employment-related information (e.g., company name, job title, where provided);</li>
+                <li>Geolocation data (e.g., approximate location derived from IP address);</li>
+                <li>Audio, electronic, or visual information (e.g., Talk-Through transcribed text, cursor recordings, screen state data; raw audio is not retained);</li>
+                <li>Inferences drawn from the above (e.g., Derived Data, Memory elements).</li>
+              </ul>
+              <p className="mt-4">
+                <strong>No Sale of Personal Information.</strong> We do not sell personal data as defined under the CCPA/CPRA or similar U.S. state laws. We do not share personal information for cross-context behavioral advertising purposes.
+              </p>
+              <p className="mt-4">
+                <strong>Right to Know, Correct, and Delete.</strong> Subject to applicable law, California residents and residents of other applicable U.S. states may request: (i) disclosure of the categories and specific pieces of personal information collected; (ii) correction of inaccurate personal information; and (iii) deletion of personal information, subject to applicable exceptions.
+              </p>
+              <p className="mt-4">
+                <strong>Right to Opt Out.</strong> Because we do not sell personal information or share it for cross-context behavioral advertising, there is no applicable opt-out right under the CCPA/CPRA at this time. If our practices change, we will update this Privacy Policy and provide an opt-out mechanism.
+              </p>
+              <p className="mt-4">
+                <strong>Authorized Agents.</strong> You may designate an authorized agent to submit a request on your behalf. The authorized agent must provide proof of authorization, and we may require verification of identity directly from the consumer.
+              </p>
+              <p className="mt-4">
+                <strong>Non-Discrimination.</strong> We do not discriminate against individuals who exercise their privacy rights.
+              </p>
+              <p className="mt-4">
+                To submit a request, contact us at contact@popcorn.ai. We will verify the identity of the requestor before fulfilling any request.
               </p>
             </section>
 
@@ -222,7 +317,7 @@ export default function PrivacyPolicyPage() {
                 <strong>Email:</strong> contact@popcorn.ai
               </p>
               <p className="mt-2">
-                <strong>Mailing Address:</strong> 5214F Diamond Heights Blvd #3226, San Francisco, CA 94131
+                <strong>Mailing Address:</strong> 2261 Market Street, STE 60578, San Francisco, CA, 94114
               </p>
             </section>
           </div>

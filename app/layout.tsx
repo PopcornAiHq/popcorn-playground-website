@@ -40,7 +40,7 @@ const questrial = Questrial({
 });
 
 export const metadata: Metadata = {
-  title: "Popcorn — Your App Chat",
+  title: "Popcorn - Team Playground",
   description:
     "Team chat where every conversation contains an app. Talk about what you see, point at what matters, and watch it change, live.",
 };

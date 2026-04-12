@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import UnicornScene from "unicornstudio-react/next";
+import EmailCapture from "./EmailCapture";
 import ChannelsSidebar from "./ChannelsSidebar";
 import ChatSidebar from "./ChatSidebar";
 import Nav from "./Nav";
@@ -119,34 +120,21 @@ export default function AppFrame() {
             <Image alt="Popcorn" className="max-w-none size-50 mt-[-102px] mb-[-22px]" src="/popcorn-3d.png" width={200} height={200} />
 
             <h1
-              className="text-[90px] leading-[1.0] text-center tracking-[-1.5px] text-black"
+              className="text-[100px] leading-[1.0] text-center tracking-[-1.5px] text-black"
               style={{ fontFamily: "var(--font-synt)" }}
             >
-              Fastest<br />prototype playground<br />for product teams
+              Team playground<br />for builders
             </h1>
 
             <p
-              className="text-[20px] leading-[1.3] text-center font-medium text-black max-w-190"
+              className="text-[23px] leading-[1.3] text-center font-medium text-black max-w-190"
               style={{ fontFamily: "var(--font-albert-sans)" }}
             >
-              Seconds to plug in. One-click to share. Faster feedback than any Figma comment, Loom video, or Slack thread. The fastest way from &ldquo;I built this&rdquo; to &ldquo;let&rsquo;s ship this.&rdquo;
+              Where your build goes multiplayer. Show your team what you&rsquo;re building. Run your team on what you&rsquo;ve built.
             </p>
 
             <div className="flex flex-col items-center gap-2.5 relative z-20">
-              <button
-                className="bg-[#1a3de8] text-white px-12 py-5 rounded-[24px] text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[4px] border-[#5CE0D8] flex items-center gap-3"
-                style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                GET SETUP
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M19 12H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M12 5L5 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
+              <EmailCapture variant="hero" />
             </div>
           </div>
 
