@@ -16,7 +16,7 @@ export default function StickyNav() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-11 py-5 transition-all duration-700 ease-in-out"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-11 py-4 md:py-5 transition-all duration-700 ease-in-out"
       style={{
         background: scrolled
           ? "linear-gradient(to bottom, rgba(30,60,180,0.3) 0%, rgba(30,60,180,0.15) 40%, transparent 100%)"
@@ -39,7 +39,9 @@ export default function StickyNav() {
         />
       </div>
 
-      <EmailCapture variant="nav-expand" scrolled={scrolled} />
+      <div className="hidden md:block">
+        <EmailCapture variant="nav-expand" scrolled={scrolled} />
+      </div>
     </nav>
   );
 }

@@ -35,17 +35,29 @@ type Dims = {
 };
 
 export default function AppFrame() {
+  const [isMobile, setIsMobile] = useState(false);
   const [windowed, setWindowed] = useState(false);
   const [cfg] = useState<Cfg>(DEFAULTS);
   const [dims, setDims] = useState<Dims>({
     vw: 0, vh: 0, scale: 1, scaledW: 0, scaledH: 0, top: 0, left: 0,
   });
 
-  // Auto-play: trigger windowed state after configured delay
+  // Detect mobile
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    setMounted(true);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Auto-play: trigger windowed state after configured delay (desktop only)
+  useEffect(() => {
+    if (!mounted || isMobile) return;
     const t = setTimeout(() => setWindowed(true), cfg.autoPlayDelay * 1000);
     return () => clearTimeout(t);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [mounted, isMobile]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const compute = () => {
@@ -72,6 +84,92 @@ export default function AppFrame() {
   const rightTransition = `all ${cfg.sidebarDuration}s ${SPRING} ${cfg.rightDelay}s`;
   const toolbarTransition = `all ${cfg.toolbarDuration}s ${SPRING} ${cfg.toolbarDelay}s`;
 
+  // Mobile: static hero, no animation
+  if (isMobile) {
+    return (
+      <div className="relative overflow-hidden flex flex-col">
+        {/* Yellow animated background */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-amber-100">
+          <UnicornScene
+            projectId="Dy4crfooAOZD6FlsT7Xl"
+            width="100%"
+            height="100%"
+            scale={1}
+            dpi={1.5}
+            sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@2.1.5/dist/unicornStudio.umd.js"
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-6 px-6 pt-24 pb-40 z-10 relative">
+          <Image alt="Popcorn" className="max-w-none size-32 mt-[-40px] mb-[-8px]" src="/popcorn-3d.png" width={128} height={128} />
+
+          <h1
+            className="text-[42px] sm:text-[56px] leading-[1.0] text-center tracking-[-1.5px] text-black"
+            style={{ fontFamily: "var(--font-synt)" }}
+          >
+            Team playground<br />for builders
+          </h1>
+
+          <p
+            className="text-[16px] sm:text-[18px] leading-[1.3] text-center font-medium text-black px-2"
+            style={{ fontFamily: "var(--font-albert-sans)" }}
+          >
+            Where your build goes multiplayer. Show your team what you&rsquo;re building. Run your team on what you&rsquo;ve built.
+          </p>
+
+          <div className="flex flex-col items-center gap-2.5 relative z-20 w-full">
+            <EmailCapture variant="hero" />
+          </div>
+        </div>
+
+        {/* Popcorn popping up from bottom — dense fill like desktop, avoids center */}
+        <div className="absolute bottom-0 left-[-20px] right-[-20px] h-[200px] pointer-events-none z-10">
+          {[
+            /* Dense bottom strip — full width, covers very bottom */
+            { src: "/assets/popcorn-2.png", left: "-2%", bottom: -40, size: 100, delay: "0.3s", rotate: "88deg" },
+            { src: "/popcorn-3d.png", left: "12%", bottom: -38, size: 95, delay: "0.35s", rotate: "145deg" },
+            { src: "/assets/popcorn-3.png", left: "28%", bottom: -42, size: 100, delay: "0.4s", rotate: "-35deg" },
+            { src: "/assets/popcorn-new.png", left: "44%", bottom: -36, size: 95, delay: "0.38s", rotate: "72deg" },
+            { src: "/popcorn-3d.png", left: "58%", bottom: -40, size: 100, delay: "0.42s", rotate: "-110deg" },
+            { src: "/assets/popcorn-2.png", left: "72%", bottom: -38, size: 95, delay: "0.33s", rotate: "25deg" },
+            { src: "/assets/popcorn-3.png", left: "86%", bottom: -42, size: 100, delay: "0.45s", rotate: "-160deg" },
+            /* Middle fill — covers gaps */
+            { src: "/assets/popcorn-new.png", left: "4%", bottom: 5, size: 90, delay: "0.55s", rotate: "-45deg" },
+            { src: "/popcorn-3d.png", left: "20%", bottom: 8, size: 85, delay: "0.58s", rotate: "130deg" },
+            { src: "/assets/popcorn-2.png", left: "36%", bottom: 2, size: 90, delay: "0.6s", rotate: "-80deg" },
+            { src: "/assets/popcorn-3.png", left: "52%", bottom: 6, size: 85, delay: "0.53s", rotate: "42deg" },
+            { src: "/assets/popcorn-new.png", left: "68%", bottom: 4, size: 90, delay: "0.62s", rotate: "170deg" },
+            { src: "/popcorn-3d.png", left: "82%", bottom: 8, size: 85, delay: "0.57s", rotate: "-25deg" },
+            /* Sides climbing up — left side */
+            { src: "/assets/popcorn-3.png", left: "-4%", bottom: 40, size: 80, delay: "0.7s", rotate: "-90deg" },
+            { src: "/assets/popcorn-new.png", left: "6%", bottom: 45, size: 75, delay: "0.75s", rotate: "110deg" },
+            /* Sides climbing up — right side */
+            { src: "/assets/popcorn-new.png", left: "82%", bottom: 40, size: 80, delay: "0.72s", rotate: "155deg" },
+            { src: "/assets/popcorn-2.png", left: "90%", bottom: 45, size: 75, delay: "0.78s", rotate: "-78deg" },
+          ].map((p, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              src={p.src}
+              alt=""
+              className="absolute animate-pop-in"
+              style={{
+                left: p.left,
+                bottom: p.bottom,
+                width: p.size,
+                height: p.size,
+                "--pop-delay": p.delay,
+                "--pop-rotate": p.rotate,
+              } as React.CSSProperties}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop: animated hero
   return (
     <div
       className="h-screen relative overflow-hidden"

@@ -4,12 +4,20 @@ import { useState, useRef, useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 
 const CAL_LINK = "brina-lee-vytmz6/popcorn-beta-setup";
+const SIGNUP_EVENT = "popcorn-email-captured";
 
 export default function EmailCapture({ variant = "hero", scrolled = false }: { variant?: "hero" | "nav" | "nav-expand"; scrolled?: boolean }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [hovered, setHovered] = useState(false);
+
+  // Sync success state across all instances
+  useEffect(() => {
+    const handler = () => setStatus("success");
+    window.addEventListener(SIGNUP_EVENT, handler);
+    return () => window.removeEventListener(SIGNUP_EVENT, handler);
+  }, []);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -83,7 +91,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
         if (res.status === 409) {
           // Already signed up — still open calendar
           await openCal();
-          setStatus("success");
+          window.dispatchEvent(new Event(SIGNUP_EVENT));
           return;
         }
         setErrorMsg(data.error || "Something went wrong.");
@@ -92,7 +100,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
       }
 
       await openCal();
-      setStatus("success");
+      window.dispatchEvent(new Event(SIGNUP_EVENT));
     } catch {
       setErrorMsg("Something went wrong. Please try again.");
       setStatus("error");
@@ -177,7 +185,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
     return (
       <button
         onClick={openCal}
-        className="bg-[#1a3de8] text-white px-12 py-5 rounded-[24px] text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[4px] border-[#5CE0D8] flex items-center gap-3"
+        className="bg-[#1a3de8] text-white px-8 py-4 md:px-12 md:py-5 rounded-[18px] md:rounded-[24px] text-[17px] md:text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[3px] md:border-[4px] border-[#5CE0D8] flex items-center gap-3"
         style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
       >
         GET BETA
@@ -190,24 +198,24 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full max-w-[480px] px-4 md:px-0">
       <form
         onSubmit={handleSubmit}
         noValidate
-        className="flex items-center gap-0 bg-white/80 backdrop-blur-sm rounded-[24px] shadow-lg border-[4px] border-[#5CE0D8] p-1"
+        className="flex flex-col md:flex-row items-stretch md:items-center gap-1.5 md:gap-0 bg-white/80 backdrop-blur-sm rounded-[18px] md:rounded-[24px] shadow-lg border-[3px] md:border-[4px] border-[#5CE0D8] p-1.5 md:p-1"
       >
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => { setEmail(e.target.value); if (status === "error") { setStatus("idle"); setErrorMsg(""); } }}
-          className="bg-transparent text-[18px] px-7 py-4 outline-none text-black placeholder:text-black/40 w-[320px]"
+          className="bg-transparent text-[15px] md:text-[18px] px-4 py-3 md:px-7 md:py-4 outline-none text-black placeholder:text-black/40 flex-1 min-w-0 text-center md:text-left"
           style={{ fontFamily: "var(--font-albert-sans)" }}
         />
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="bg-[#1a3de8] text-white px-8 py-4 text-[20px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer rounded-[18px] flex items-center gap-2.5 shrink-0"
+          className="bg-[#1a3de8] text-white px-5 py-3 md:px-8 md:py-4 text-[15px] md:text-[20px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer rounded-[14px] md:rounded-[18px] flex items-center justify-center gap-2.5 shrink-0"
           style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
         >
           {status === "submitting" ? "Popping..." : "GET BETA"}
@@ -218,7 +226,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
         </button>
       </form>
       {status === "error" && errorMsg && (
-        <div className="absolute left-[80px] top-full mt-2 z-50" style={{ fontFamily: "var(--font-albert-sans)" }}>
+        <div className="absolute left-4 md:left-[80px] top-full mt-2 z-50" style={{ fontFamily: "var(--font-albert-sans)" }}>
           <div className="w-3 h-3 bg-white rotate-45 absolute -top-1.5 left-6 z-10" />
           <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-[10px] shadow-lg relative z-10">
             <div className="w-5 h-5 rounded-[4px] bg-red-400 flex items-center justify-center shrink-0">
