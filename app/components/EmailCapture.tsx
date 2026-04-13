@@ -108,7 +108,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
           className="text-sm font-medium text-black bg-[#5CE0D8] px-5 py-2.5 rounded-[20px] hover:bg-[#4bcfc7] active:scale-95 transition-all cursor-pointer shadow-md"
           style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
         >
-          Book a call with Brina
+          GET BETA
         </button>
       );
     }
@@ -143,7 +143,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
             className="bg-black text-white px-7 py-3.5 text-base font-medium hover:bg-neutral-800 active:scale-95 transition-all cursor-pointer shrink-0 flex items-center gap-2"
             style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
           >
-            {status === "submitting" ? "Sending..." : "GET BETA"}
+            {status === "submitting" ? "Popping..." : "GET BETA"}
             {hovered && (
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17L17 7" />
@@ -180,7 +180,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
         className="bg-[#1a3de8] text-white px-12 py-5 rounded-[24px] text-[22px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer shadow-lg border-[4px] border-[#5CE0D8] flex items-center gap-3"
         style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
       >
-        Book a call with Brina
+        GET BETA
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M7 17L17 7" />
           <path d="M7 7H17V17" />
@@ -210,7 +210,7 @@ export default function EmailCapture({ variant = "hero", scrolled = false }: { v
           className="bg-[#1a3de8] text-white px-8 py-4 text-[20px] font-semibold hover:bg-[#1533c4] active:scale-95 transition-all cursor-pointer rounded-[18px] flex items-center gap-2.5 shrink-0"
           style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
         >
-          {status === "submitting" ? "Sending..." : "GET BETA"}
+          {status === "submitting" ? "Popping..." : "GET BETA"}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M7 17L17 7" />
             <path d="M7 7H17V17" />
