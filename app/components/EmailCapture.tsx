@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 
-const CAL_LINK = "brina-lee-vytmz6/30min";
+const CAL_LINK = "brina-lee-vytmz6/popcorn-beta-setup";
 
 export default function EmailCapture({ variant = "hero", scrolled = false }: { variant?: "hero" | "nav" | "nav-expand"; scrolled?: boolean }) {
   const [email, setEmail] = useState("");
