@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import type { Platform } from "./page";
 import PageFooter from "../components/PageFooter";
 import SubpageNav from "../components/SubpageNav";
 
+const IOS_APP_STORE = "https://apps.apple.com/us/app/popcorn-ai/id6755568440";
+
 const LINKS = {
   mac: "#",
-  ios: "#",
+  ios: IOS_APP_STORE,
 };
 
 type DownloadOption = {
@@ -32,13 +34,19 @@ function getPrimaryCTA(platform: Platform): { label: string; href: string | null
 const allDownloads: DownloadOption[] = [
   { id: "mac", label: "macOS", href: LINKS.mac, icon: "apple", available: true },
   { id: "ios", label: "iOS", href: LINKS.ios, icon: "apple", available: true },
+  { id: "web", label: "Web app", href: "https://app.popcorn.ai/", icon: "web", available: true },
   { id: "windows", label: "Windows", href: null, icon: "windows", available: false },
   { id: "android", label: "Android", href: null, icon: "android", available: false },
-  { id: "web", label: "Web app", href: null, icon: "web", available: false },
 ];
 
 export default function DownloadClient({ platform }: { platform: Platform }) {
   const primary = useMemo(() => getPrimaryCTA(platform), [platform]);
+  const [showQR, setShowQR] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+  }, []);
 
   return (
     <main className="relative min-h-screen bg-[#FFFDF8] text-[#1a1a1a]">
@@ -60,26 +68,10 @@ export default function DownloadClient({ platform }: { platform: Platform }) {
             className="mt-6 text-[20px] leading-relaxed text-[#1a1a1a]/60"
             style={{ fontFamily: "var(--font-albert-sans)" }}
           >
-            Available for macOS and iOS. More platforms coming soon.
+            Available for macOS, iOS, and web. More platforms coming soon.
           </p>
 
-          {primary.available && primary.href && (
-            <div className="mt-10">
-              <a
-                href={primary.href}
-                className="inline-flex items-center justify-center gap-3 rounded-[24px] border-[4px] border-[#5CE0D8] bg-[#1a3de8] px-12 py-5 text-[22px] font-semibold text-white hover:bg-[#1533c4] active:scale-95 transition-all shadow-lg"
-                style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
-              >
-                <span>{primary.label}</span>
-                <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7H17V17" />
-                </svg>
-              </a>
-            </div>
-          )}
-
-          <div className="mt-16 flex flex-wrap justify-center gap-3">
+          <div className="mt-16 flex flex-wrap justify-center items-start gap-x-3 gap-y-4">
             {allDownloads.map((d) => (
               <DownloadButton
                 key={d.id}
@@ -87,6 +79,8 @@ export default function DownloadClient({ platform }: { platform: Platform }) {
                 label={d.label}
                 href={d.href}
                 available={d.available}
+                isMobile={isMobile}
+                onShowQR={() => setShowQR(true)}
               />
             ))}
           </div>
@@ -94,6 +88,48 @@ export default function DownloadClient({ platform }: { platform: Platform }) {
       </section>
 
       <PageFooter />
+
+      {showQR && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[20px]"
+          onClick={() => setShowQR(false)}
+        >
+          <div
+            className="relative bg-[#FFFDF8] rounded-[22px] border-[4px] border-[#5CE0D8] p-10 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.1)] max-w-sm mx-4 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowQR(false)}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-[8px] bg-black/5 text-[#1a1a1a]/40 hover:bg-black/10 hover:text-[#1a1a1a] transition-all"
+            >
+              <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18" />
+                <path d="M6 6l12 12" />
+              </svg>
+            </button>
+            <h2
+              className="text-[28px] leading-tight tracking-tight mb-2"
+              style={{ fontFamily: "var(--font-synt)" }}
+            >
+              Get Popcorn for iOS
+            </h2>
+            <p
+              className="text-[14px] text-[#1a1a1a]/50 mb-8"
+              style={{ fontFamily: "var(--font-albert-sans)" }}
+            >
+              Scan with your phone camera
+            </p>
+            <div className="rounded-[14px] overflow-hidden inline-block">
+              <Image
+                src="/assets/ios-qr-code.svg"
+                alt="Download Popcorn on the App Store"
+                width={220}
+                height={220}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
@@ -103,11 +139,15 @@ function DownloadButton({
   label,
   href,
   available,
+  isMobile,
+  onShowQR,
 }: {
   icon: string;
   label: string;
   href: string | null;
   available: boolean;
+  isMobile: boolean;
+  onShowQR: () => void;
 }) {
   if (!available) {
     return (
@@ -122,16 +162,58 @@ function DownloadButton({
     );
   }
 
-  return (
+  const isIOS = label === "iOS";
+
+  if (isIOS && !isMobile) {
+    return (
+      <div className="flex flex-col items-center gap-1.5">
+        <button
+          onClick={onShowQR}
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-[14px] bg-black text-white text-[15px] font-medium hover:bg-neutral-800 active:scale-95 transition-all border-2 border-black cursor-pointer"
+          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
+        >
+          <PlatformIcon icon={icon} />
+          <span>Download for {label}</span>
+        </button>
+        <span
+          className="text-[12px] text-[#1a1a1a]/40 whitespace-nowrap"
+          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
+        >
+          for iOS 17.5+
+        </span>
+      </div>
+    );
+  }
+
+  const buttonLabel = label === "Web app" ? "Go to web app" : `Download for ${label}`;
+
+  const button = (
     <a
       href={href!}
+      {...(label === "Web app" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="inline-flex items-center gap-2 px-5 py-3 rounded-[14px] bg-black text-white text-[15px] font-medium hover:bg-neutral-800 active:scale-95 transition-all border-2 border-black"
       style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
     >
       <PlatformIcon icon={icon} />
-      <span>Download for {label}</span>
+      <span>{buttonLabel}</span>
     </a>
   );
+
+  if (label === "macOS" || label === "iOS") {
+    return (
+      <div className="flex flex-col items-center gap-1.5">
+        {button}
+        <span
+          className="text-[12px] text-[#1a1a1a]/40 whitespace-nowrap"
+          style={{ fontFamily: "var(--font-ibm-plex-mono)" }}
+        >
+          {label === "macOS" ? "for Apple Silicon" : "for iOS 17.5+"}
+        </span>
+      </div>
+    );
+  }
+
+  return button;
 }
 
 function PlatformIcon({ icon, disabled }: { icon: string; disabled?: boolean }) {

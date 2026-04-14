@@ -22,7 +22,7 @@ export default function MCPPage() {
             <section>
               <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>What is Popcorn?</h2>
               <p>
-                Popcorn is a messaging and collaboration platform for teams. The Popcorn MCP connector lets Claude read your channels, send messages, search conversations, and deploy web projects to Popcorn app channels &mdash; all from within Claude.
+                Popcorn runs static sites, build-step frontends (React, Vite, Next.js), and apps with a live backend (Node/Express, Python/Flask), alongside built-in messaging and collaboration. The Popcorn MCP connector lets Claude read your channels, send messages, search conversations, and deploy apps to Popcorn app channels &mdash; all from within Claude.
               </p>
             </section>
 
@@ -34,7 +34,8 @@ export default function MCPPage() {
                 <li><strong>Send messages</strong> &mdash; Post to channels, reply in threads, upload files</li>
                 <li><strong>Search</strong> &mdash; Find messages, channels, DMs, and users across your workspace</li>
                 <li><strong>React</strong> &mdash; Add or remove emoji reactions on messages</li>
-                <li><strong>Deploy</strong> &mdash; Publish web projects to Popcorn app channels with a single command</li>
+                <li><strong>Deploy</strong> &mdash; Publish apps to Popcorn app channels from local files or a GitHub ref</li>
+                <li><strong>Export</strong> &mdash; Pull a site&apos;s source back to your local machine or push it to GitHub</li>
                 <li><strong>Channel management</strong> &mdash; View channel details, members, and site deployment status</li>
               </ul>
             </section>
@@ -89,6 +90,9 @@ export default function MCPPage() {
               <p className="mt-4">
                 Your session stays active as long as you use it regularly, expiring after 7 days of inactivity. You can revoke access at any time by disconnecting the integration in Claude&apos;s settings.
               </p>
+              <p className="mt-4">
+                If you belong to multiple Popcorn workspaces, ask Claude to <em>&ldquo;switch workspace&rdquo;</em> or call <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>whoami</code> to see all workspaces you have access to. Passing a <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>workspace_id</code> to <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>whoami</code> switches the active workspace for the session.
+              </p>
             </section>
 
             {/* Usage Examples */}
@@ -111,7 +115,13 @@ export default function MCPPage() {
                 <div>
                   <h3 className="text-[20px] font-bold mb-2">Deploy a project</h3>
                   <p className="bg-black/5 rounded-[10px] px-5 py-3 italic text-[#1a1a1a]/70 mb-2">&quot;Publish my project to Popcorn&quot;</p>
-                  <p className="text-[16px] text-[#1a1a1a]/60">Claude packages your project files, uploads them, and triggers a deploy to your Popcorn app channel. You get a live site URL and version number.</p>
+                  <p className="text-[16px] text-[#1a1a1a]/60">Claude packages your local project files and calls <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>deploy_site</code> to push them to your Popcorn app channel&apos;s VM. You get a live site URL and version number. Or pass a <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>git_ref</code> to deploy directly from GitHub instead.</p>
+                </div>
+
+                <div>
+                  <h3 className="text-[20px] font-bold mb-2">Export a site</h3>
+                  <p className="bg-black/5 rounded-[10px] px-5 py-3 italic text-[#1a1a1a]/70 mb-2">&quot;Export my site to a GitHub repo&quot;</p>
+                  <p className="text-[16px] text-[#1a1a1a]/60">Claude calls <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>export_site</code> to pull the current site source off the VM &mdash; either back to your local machine as a download or pushed up to a GitHub branch. Useful for forking a live site back into code.</p>
                 </div>
 
                 <div>
@@ -143,8 +153,8 @@ export default function MCPPage() {
                   <tbody className="text-[16px]">
                     <tr className="border-b border-black/5">
                       <td className="py-3 pr-4" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}><code>whoami</code></td>
-                      <td className="py-3 pr-4">Your workspace and user identity</td>
-                      <td className="py-3"><span className="bg-black/5 px-2 py-0.5 rounded text-[14px]">Read-only</span></td>
+                      <td className="py-3 pr-4">Show current workspace and user, list all workspaces you belong to, and optionally switch active workspace</td>
+                      <td className="py-3"><span className="bg-[#1a3de8]/10 text-[#1a3de8] px-2 py-0.5 rounded text-[14px]">Read / Write</span></td>
                     </tr>
                     <tr className="border-b border-black/5">
                       <td className="py-3 pr-4" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}><code>get_channel</code></td>
@@ -171,14 +181,35 @@ export default function MCPPage() {
                       <td className="py-3 pr-4">Add or remove emoji reactions</td>
                       <td className="py-3"><span className="bg-[#1a3de8]/10 text-[#1a3de8] px-2 py-0.5 rounded text-[14px]">Write</span></td>
                     </tr>
+                    <tr className="border-b border-black/5">
+                      <td className="py-3 pr-4" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}><code>deploy_site</code></td>
+                      <td className="py-3 pr-4">Deploy local code or a GitHub ref to a site (auto-creates channel)</td>
+                      <td className="py-3"><span className="bg-[#1a3de8]/10 text-[#1a3de8] px-2 py-0.5 rounded text-[14px]">Write</span></td>
+                    </tr>
+                    <tr className="border-b border-black/5">
+                      <td className="py-3 pr-4" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}><code>export_site</code></td>
+                      <td className="py-3 pr-4">Export site source from the VM to a local download or push to GitHub</td>
+                      <td className="py-3"><span className="bg-[#1a3de8]/10 text-[#1a3de8] px-2 py-0.5 rounded text-[14px]">Write</span></td>
+                    </tr>
                     <tr>
                       <td className="py-3 pr-4" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}><code>update_channel</code></td>
-                      <td className="py-3 pr-4">Create or update channels and trigger deploys</td>
+                      <td className="py-3 pr-4">Create or update channels <span className="text-[#1a1a1a]/50">(deprecated &mdash; use <code className="bg-black/5 px-1 rounded" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>deploy_site</code> / <code className="bg-black/5 px-1 rounded" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>export_site</code>)</span></td>
                       <td className="py-3"><span className="bg-[#1a3de8]/10 text-[#1a3de8] px-2 py-0.5 rounded text-[14px]">Write</span></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+            </section>
+
+            {/* Prompts */}
+            <section>
+              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>Prompts</h2>
+              <p>
+                The connector also exposes MCP prompts &mdash; invokable workflows that bundle the right tools and instructions for a common task.
+              </p>
+              <ul className="list-disc pl-8 space-y-2 mt-4">
+                <li><code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>pop</code> &mdash; Deploy or publish your local project files to a Popcorn app channel. Accepts optional <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>project_name</code> and <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>context</code> arguments and walks Claude through the full deploy flow.</li>
+              </ul>
             </section>
 
             {/* Privacy & Support */}
