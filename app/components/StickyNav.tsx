@@ -28,13 +28,13 @@ export default function StickyNav() {
         <Image
           alt="Popcorn"
           className="block size-full transition-[filter] duration-700"
-          src="/popcorn-logo.svg"
+          src="/assets/logo-beta-black.svg"
           width={133}
           height={50}
           unoptimized
           style={{ filter: scrolled
-            ? "brightness(0) drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white) drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)"
-            : "brightness(0) drop-shadow(1px 0 0 transparent) drop-shadow(-1px 0 0 transparent) drop-shadow(0 1px 0 transparent) drop-shadow(0 -1px 0 transparent) drop-shadow(1px 1px 0 transparent) drop-shadow(-1px -1px 0 transparent) drop-shadow(1px -1px 0 transparent) drop-shadow(-1px 1px 0 transparent)"
+            ? "drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white) drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)"
+            : "none"
           }}
         />
       </div>

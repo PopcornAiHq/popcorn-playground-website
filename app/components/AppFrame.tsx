@@ -117,14 +117,14 @@ export default function AppFrame() {
           className="text-[42px] sm:text-[56px] leading-[1.0] text-center tracking-[-1.5px] text-black"
           style={{ fontFamily: "var(--font-synt)" }}
         >
-          Team playground<br />for builders
+          Your team&rsquo;s<br />computer
         </h1>
 
         <p
           className="text-[16px] sm:text-[18px] leading-[1.3] text-center font-medium text-black px-2"
           style={{ fontFamily: "var(--font-albert-sans)" }}
         >
-          Where your build goes multiplayer. Show your team what you&rsquo;re building. Run your team on what you&rsquo;ve built.
+          Connect your tools. Popcorn builds live pages your whole team can see, use, and run on.
         </p>
 
         <div className="flex flex-col items-center gap-2.5 relative z-20 w-full">
@@ -226,14 +226,14 @@ export default function AppFrame() {
               className="text-[100px] leading-[1.0] text-center tracking-[-1.5px] text-black"
               style={{ fontFamily: "var(--font-synt)" }}
             >
-              Team playground<br />for builders
+              Your team&rsquo;s<br />computer
             </h1>
 
             <p
               className="text-[23px] leading-[1.3] text-center font-medium text-black max-w-190"
               style={{ fontFamily: "var(--font-albert-sans)" }}
             >
-              Where your build goes multiplayer. Show your team what you&rsquo;re building. Run your team on what you&rsquo;ve built.
+              Connect your tools. Popcorn builds live pages your whole team can see, use, and run on.
             </p>
 
             <div className="flex flex-col items-center gap-2.5 relative z-20">

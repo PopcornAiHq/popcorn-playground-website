@@ -9,7 +9,7 @@ export default function PageFooter() {
         <div className="flex flex-col items-center gap-6 lg:hidden">
           <Link href="/" className="inline-flex items-center justify-center">
             <Image
-              src="/assets/popcorn-wordmark.png"
+              src="/assets/logo-beta-black.svg"
               alt="Popcorn"
               width={300}
               height={105}
@@ -62,7 +62,7 @@ export default function PageFooter() {
           <div className="text-center">
             <Link href="/" className="inline-flex items-center justify-center">
               <Image
-                src="/assets/popcorn-wordmark.png"
+                src="/assets/logo-beta-black.svg"
                 alt="Popcorn"
                 width={150}
                 height={52}

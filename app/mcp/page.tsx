@@ -20,7 +20,7 @@ export default function MCPPage() {
 
             {/* What is Popcorn */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>What is Popcorn?</h2>
+              <h2 className="text-[28px] mb-4" style={{ fontFamily: "var(--font-synt)" }}>What is Popcorn?</h2>
               <p>
                 Popcorn runs static sites, build-step frontends (React, Vite, Next.js), and apps with a live backend (Node/Express, Python/Flask), alongside built-in messaging and collaboration. The Popcorn MCP connector lets Claude read your channels, send messages, search conversations, and deploy apps to Popcorn app channels &mdash; all from within Claude.
               </p>
@@ -28,7 +28,7 @@ export default function MCPPage() {
 
             {/* Features */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>Features</h2>
+              <h2 className="text-[28px] mb-4" style={{ fontFamily: "var(--font-synt)" }}>Features</h2>
               <ul className="list-disc pl-8 space-y-2">
                 <li><strong>Read messages</strong> &mdash; Browse channel history, threads, and DMs</li>
                 <li><strong>Send messages</strong> &mdash; Post to channels, reply in threads, upload files</li>
@@ -42,11 +42,11 @@ export default function MCPPage() {
 
             {/* Setup */}
             <section>
-              <h2 className="text-[28px] font-bold mb-6" style={{ fontFamily: "var(--font-synt)" }}>Setup</h2>
+              <h2 className="text-[28px] mb-6" style={{ fontFamily: "var(--font-synt)" }}>Setup</h2>
 
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-[22px] font-bold mb-3" style={{ fontFamily: "var(--font-synt)" }}>Claude.ai (Web)</h3>
+                  <h3 className="text-[22px] mb-3" style={{ fontFamily: "var(--font-synt)" }}>Claude.ai (Web)</h3>
                   <ol className="list-decimal pl-8 space-y-2">
                     <li>Go to <strong>Settings &rarr; Integrations &rarr; Add MCP Server</strong></li>
                     <li>Enter the server URL: <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>https://mcp.popcorn.ai/mcp</code></li>
@@ -56,7 +56,7 @@ export default function MCPPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-[22px] font-bold mb-3" style={{ fontFamily: "var(--font-synt)" }}>Claude Code (CLI)</h3>
+                  <h3 className="text-[22px] mb-3" style={{ fontFamily: "var(--font-synt)" }}>Claude Code (CLI)</h3>
                   <p className="mb-3">Add to your Claude Code settings or run:</p>
                   <pre className="bg-[#1a1a1a] text-white rounded-[12px] px-6 py-4 overflow-x-auto text-[15px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>
                     claude mcp add popcorn --transport streamable-http https://mcp.popcorn.ai/mcp
@@ -64,7 +64,7 @@ export default function MCPPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-[22px] font-bold mb-3" style={{ fontFamily: "var(--font-synt)" }}>Claude Desktop</h3>
+                  <h3 className="text-[22px] mb-3" style={{ fontFamily: "var(--font-synt)" }}>Claude Desktop</h3>
                   <p className="mb-3">Add to your <code className="bg-black/5 px-2 py-0.5 rounded text-[16px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>claude_desktop_config.json</code>:</p>
                   <pre className="bg-[#1a1a1a] text-white rounded-[12px] px-6 py-4 overflow-x-auto text-[15px]" style={{ fontFamily: "var(--font-ibm-plex-mono)" }}>{`{
   "mcpServers": {
@@ -79,7 +79,7 @@ export default function MCPPage() {
 
             {/* Authentication */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>Authentication</h2>
+              <h2 className="text-[28px] mb-4" style={{ fontFamily: "var(--font-synt)" }}>Authentication</h2>
               <p>
                 Popcorn uses OAuth 2.0 for authentication. When you connect, you&apos;ll be redirected to sign in with your Popcorn account. The connector requests two scopes:
               </p>
@@ -97,7 +97,7 @@ export default function MCPPage() {
 
             {/* Usage Examples */}
             <section>
-              <h2 className="text-[28px] font-bold mb-6" style={{ fontFamily: "var(--font-synt)" }}>Usage Examples</h2>
+              <h2 className="text-[28px] mb-6" style={{ fontFamily: "var(--font-synt)" }}>Usage Examples</h2>
 
               <div className="space-y-8">
                 <div>
@@ -140,7 +140,7 @@ export default function MCPPage() {
 
             {/* Available Tools */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>Available Tools</h2>
+              <h2 className="text-[28px] mb-4" style={{ fontFamily: "var(--font-synt)" }}>Available Tools</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
@@ -203,7 +203,7 @@ export default function MCPPage() {
 
             {/* Prompts */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>Prompts</h2>
+              <h2 className="text-[28px] mb-4" style={{ fontFamily: "var(--font-synt)" }}>Prompts</h2>
               <p>
                 The connector also exposes MCP prompts &mdash; invokable workflows that bundle the right tools and instructions for a common task.
               </p>
@@ -214,7 +214,7 @@ export default function MCPPage() {
 
             {/* Privacy & Support */}
             <section>
-              <h2 className="text-[28px] font-bold mb-4" style={{ fontFamily: "var(--font-synt)" }}>Privacy &amp; Support</h2>
+              <h2 className="text-[28px] mb-4" style={{ fontFamily: "var(--font-synt)" }}>Privacy &amp; Support</h2>
               <p>
                 The Popcorn connector only accesses channels and conversations your account has permission to view. No data is stored by the connector beyond your authenticated session.
               </p>
